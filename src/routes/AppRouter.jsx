@@ -19,6 +19,17 @@ import { WEEE } from '../pages/WEEE';
 import { Certifications } from '../pages/Certifications';
 import { QualityPolicy } from '../pages/QualityPolicy';
 import { Warranty } from '../pages/Warranty';
+import { Services } from '../pages/Services';
+import { ElectronicsRecycling } from '../pages/ElectronicsRecycling';
+import { ElectronicsRecyclingDropOffBox } from '../pages/ElectronicsRecyclingDropOffBox';
+import { EquipmentBuyback } from '../pages/EquipmentBuyback';
+import { EquipmentDecommission } from '../pages/EquipmentDecommission';
+import { ITAssetDisposition } from '../pages/ITAssetDisposition';
+import { ITAssetManagement } from '../pages/ITAssetManagement';
+import { RecyclingConsultation } from '../pages/RecyclingConsultation';
+import { HardDriveShredding } from '../pages/HardDriveShredding';
+import { AcceptedItems } from '../pages/AcceptedItems';
+import { JunkRemoval } from '../pages/JunkRemoval';
 export const AppRouter = () => {
   return (
     <BrowserRouter>
@@ -29,6 +40,7 @@ export const AppRouter = () => {
           <Route path="about" element={<About />} />
           {/* <Route path="laptops" element={<Laptop />} /> */}
           <Route path="laptops" element={<Laptop />} />
+          <Route path="accepted-items" element={<AcceptedItems />}/>
           <Route path="sustainability" element={<Sustainability />} />
           <Route path="education" element={<Education/>} />
           <Route path="contact" element={<Contact />} />
@@ -42,6 +54,16 @@ export const AppRouter = () => {
            <Route path="warranty" element={<Warranty />} />
            <Route path="quality-policy" element={<QualityPolicy />} />
            <Route path="regulations" element={<WEEE />} />
+           <Route path="services" element={<Services/>}/>
+           <Route path="/services/recycling" element={<ElectronicsRecycling />}/>
+           <Route path="/services/drop-off-box" element={<ElectronicsRecyclingDropOffBox />} />
+           <Route path="/services/equipment-buyback" element={<EquipmentBuyback />}/>
+           <Route path="/services/equipment-decommission" element={<EquipmentDecommission />} />
+           <Route path="/services/itad" element={<ITAssetDisposition />} />
+           <Route path="/services/it-asset-management" element={<ITAssetManagement />} />
+           <Route path="/services/recycling-consultation" element={<RecyclingConsultation />} />
+           <Route path="/services/data-destruction" element={<HardDriveShredding />}/>
+           <Route path="/services/junk-removal" element={<JunkRemoval />}/>
         </Route>
         
         {/* Full-screen routes (no Header/Footer) */}

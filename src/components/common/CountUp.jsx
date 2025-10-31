@@ -1,12 +1,53 @@
+// import React, { useState, useEffect } from 'react';
+// import { useOnScreen } from '../../hooks/useOnScreen';
+
+// export const CountUp = ({ end, duration = 2000, suffix = "", prefix = "" }) => {
+//   const [count, setCount] = useState(0);
+//   const [ref, isVisible] = useOnScreen({ threshold: 0.5, triggerOnce: true });
+
+//   useEffect(() => {
+//     if (isVisible) {
+//       let start = 0;
+//       const endValue = end;
+//       const startTime = Date.now();
+
+//       const easeOutQuad = (t) => t * (2 - t);
+
+//       const frame = () => {
+//         const now = Date.now();
+//         const progress = Math.min((now - startTime) / duration, 1);
+//         const easedProgress = easeOutQuad(progress);
+        
+//         setCount(Math.floor(easedProgress * endValue));
+
+//         if (progress < 1) {
+//           requestAnimationFrame(frame);
+//         }
+//       };
+//       requestAnimationFrame(frame);
+//     }
+//   }, [isVisible, end, duration]);
+
+//   return (
+//     <span ref={ref} className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+//       {prefix}{count.toLocaleString()}{suffix}
+//     </span>
+//   );
+// };
+
+
 import React, { useState, useEffect } from 'react';
-import { useOnScreen } from '../../hooks/useOnScreen';
+import { useInView } from 'react-intersection-observer';
 
 export const CountUp = ({ end, duration = 2000, suffix = "", prefix = "" }) => {
   const [count, setCount] = useState(0);
-  const [ref, isVisible] = useOnScreen({ threshold: 0.5, triggerOnce: true });
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
 
   useEffect(() => {
-    if (isVisible) {
+    if (inView) {
       let start = 0;
       const endValue = end;
       const startTime = Date.now();
@@ -22,14 +63,17 @@ export const CountUp = ({ end, duration = 2000, suffix = "", prefix = "" }) => {
 
         if (progress < 1) {
           requestAnimationFrame(frame);
+        } else {
+          setCount(endValue); // Ensure it ends exactly on the end value
         }
       };
       requestAnimationFrame(frame);
     }
-  }, [isVisible, end, duration]);
+  }, [inView, end, duration]);
 
   return (
-    <span ref={ref} className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+    // Updated to new green gradient
+    <span ref={ref} className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">
       {prefix}{count.toLocaleString()}{suffix}
     </span>
   );

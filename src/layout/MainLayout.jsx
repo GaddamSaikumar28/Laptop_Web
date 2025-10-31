@@ -5,7 +5,7 @@ import { Footer } from '../components/layout/Footer';
 
 export const MainLayout = () => {
   return (
-    <div className="font-inter bg-black">
+    <div className="font-inter bg-white">
       <Header />
       <main>
         <Outlet /> {/* This is where your pages will be rendered */}

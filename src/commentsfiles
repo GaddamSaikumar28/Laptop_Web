@@ -1,0 +1,3460 @@
+// // // // import React, { useRef } from 'react';
+// // // // import { useScrollProgress } from '../../hooks/useScrollProgress';
+// // // // import { Laptop } from 'lucide-react';
+
+// // // // // This component defines the text that fades in and out
+// // // // const ScrollFeature = ({ children, progress, start, end }) => {
+// // // //   // Calculate opacity based on scroll progress
+// // // //   let opacity = 0;
+// // // //   const range = end - start;
+// // // //   const progressInRange = (progress - start) / range;
+
+// // // //   if (progressInRange < 0) {
+// // // //     opacity = 0;
+// // // //   } else if (progressInRange < 0.25) { // Fade in
+// // // //     opacity = progressInRange * 4;
+// // // //   } else if (progressInRange < 0.75) { // Hold
+// // // //     opacity = 1;
+// // // //   } else if (progressInRange < 1) { // Fade out
+// // // //     opacity = (1 - progressInRange) * 4;
+// // // //   }
+
+// // // //   opacity = Math.max(0, Math.min(1, opacity));
+
+// // // //   return (
+// // // //     <div className="text-left max-w-md" style={{ opacity }}>
+// // // //       {children}
+// // // //     </div>
+// // // //   );
+// // // // };
+
+// // // // export const LaptopScrollAnimation = () => {
+// // // //   // This ref is for the *entire scrollable section* (which is 5x viewport height)
+// // // //   const scrollRef = useRef(null);
+// // // //   // Get the progress (0-1) of scrolling through that section
+// // // //   const progress = useScrollProgress(scrollRef);
+
+// // // //   // --- Animation Calculations ---
+  
+// // // //   // 1. Laptop Scale: Starts small, grows to full size, then shrinks again
+// // // //   let scale;
+// // // //   if (progress < 0.2) {
+// // // //     scale = 0.8 + progress * 5 * 0.2; // Grows from 0.8 to 1.0
+// // // //   } else if (progress > 0.8) {
+// // // //     scale = 1.0 - (progress - 0.8) * 5 * 0.2; // Shrinks from 1.0 to 0.8
+// // // //   } else {
+// // // //     scale = 1.0;
+// // // //   }
+
+// // // //   // 2. Laptop Rotation: Rotates slightly
+// // // //   const rotateY = -15 + progress * 30; // Rotates from -15deg to +15deg
+
+// // // //   // 3. Laptop "Opening" (simulated with rotateX)
+// // // //   // Starts at 60deg (closed), opens to 0deg (flat)
+// // // //   let rotateX;
+// // // //   if (progress < 0.2) {
+// // // //     rotateX = 60 - (progress / 0.2) * 60; // Opens from 60deg to 0deg
+// // // //   } else {
+// // // //     rotateX = 0; // Stays open
+// // // //   }
+
+// // // //   // 4. Background Glow Opacity
+// // // //   const glowOpacity = progress < 0.5 ? progress * 2 : 1 - (progress - 0.5) * 2;
+
+
+// // // //   return (
+// // // //     // This parent container defines the scrollable area.
+// // // //     // 500vh means it's 5 times the height of the screen.
+// // // //     <div ref={scrollRef} className="relative h-[500vh] bg-black">
+      
+// // // //       {/* This is the "pinned" element that stays on screen */}
+// // // //       <div className="sticky top-0 h-screen w-full overflow-hidden">
+        
+// // // //         {/* Animated Visuals (Laptop) */}
+// // // //         <div className="absolute inset-0 flex items-center justify-center" style={{ perspective: '1000px' }}>
+          
+// // // //           {/* Background Glow */}
+// // // //           <div 
+// // // //             className="absolute w-[60vw] h-[60vw] max-w-3xl max-h-3xl bg-cyan-500/30 rounded-full blur-[100px]"
+// // // //             style={{ opacity: glowOpacity, transform: `scale(${1 + progress})` }}
+// // // //           />
+
+// // // //           {/* The Laptop Icon */}
+// // // //           <div 
+// // // //             style={{
+// // // //               transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`,
+// // // //               transformStyle: 'preserve-3d',
+// // // //               transition: 'transform 0.1s linear',
+// // // //             }}
+// // // //           >
+// // // //             {/* Using a placeholder. Replace with a 3D model or image */}
+// // // //             <Laptop className="w-64 h-64 md:w-96 md:h-96 text-gray-300" />
+// // // //             {/* This would be the "screen" part of the laptop opening */}
+// // // //             <div 
+// // // //               className="absolute top-[11%] left-[16%] w-[68%] h-[68%] bg-black transition-opacity duration-300"
+// // // //               style={{ opacity: progress > 0.15 ? 1 : 0 }} // Screen turns on after "opening"
+// // // //             >
+// // // //               <div className="flex items-center justify-center h-full">
+// // // //                 <p className="text-cyan-400 text-xl font-bold">EonCircular OS</p>
+// // // //               </div>
+// // // //             </div>
+// // // //           </div>
+// // // //         </div>
+
+// // // //         {/* Text Content */}
+// // // //         <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 md:left-[10%] md:translate-x-0 w-full px-8 md:w-auto text-white">
+// // // //           <div className="relative h-48 flex items-center">
+            
+// // // //             {/* Step 1 */}
+// // // //             <div className="absolute w-full">
+// // // //               <ScrollFeature progress={progress} start={0.05} end={0.30}>
+// // // //                 <h3 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4">
+// // // //                   Built to Last.
+// // // //                 </h3>
+// // // //                 <p className="text-lg text-gray-300">
+// // // //                   Every device undergoes a rigorous, multi-point inspection to ensure it meets our highest standards.
+// // // //                 </p>
+// // // //               </ScrollFeature>
+// // // //             </div>
+
+// // // //             {/* Step 2 */}
+// // // //             <div className="absolute w-full">
+// // // //               <ScrollFeature progress={progress} start={0.30} end={0.55}>
+// // // //                 <h3 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4">
+// // // //                   Kitemark™ Certified.
+// // // //                 </h3>
+// // // //                 <p className="text-lg text-gray-300">
+// // // //                   We are globally recognized for quality and safety, giving you peace of mind with every purchase.
+// // // //                 </p>
+// // // //               </ScrollFeature>
+// // // //             </div>
+            
+// // // //             {/* Step 3 */}
+// // // //             <div className="absolute w-full">
+// // // //               <ScrollFeature progress={progress} start={0.55} end={0.80}>
+// // // //                 <h3 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4">
+// // // //                   Powerful Performance.
+// // // //                 </h3>
+// // // //                 <p className="text-lg text-gray-300">
+// // // //                   Featuring modern components, our laptops are ready for work, study, and creativity.
+// // // //                 </p>
+// // // //               </ScrollFeature>
+// // // //             </div>
+
+// // // //             {/* Step 4 */}
+// // // //             <div className="absolute w-full">
+// // // //               <ScrollFeature progress={progress} start={0.80} end={1.0}>
+// // // //                 <h3 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4">
+// // // //                   Ready for You.
+// // // //                 </h3>
+// // // //                 <p className="text-lg text-gray-300">
+// // // //                   Experience the EonCircular difference. Sustainable, powerful, and affordable.
+// // // //                 </p>
+// // // //               </ScrollFeature>
+// // // //             </div>
+
+// // // //           </div>
+// // // //         </div>
+
+// // // //       </div>
+// // // //     </div>
+// // // //   );
+// // // // };
+// // // import React from 'react';
+// // // import { FadeIn } from '../components/common/FadeIn.jsx';
+// // // import { CallToAction } from '../components/common/CallToAction.jsx';
+// // // import { LaptopScrollAnimation } from '../components/laptops/LaptopScrollAnimation.jsx';
+// // // import { CheckCircle, Zap, Cpu } from 'lucide-react';
+
+// // // // Re-using the brand component structure from our old 'Shop' idea,
+// // // // but now it's just for showcasing, not for shopping.
+// // // const BrandHighlight = ({ brand, description, link }) => (
+// // //   <div className="bg-gray-800/60 backdrop-blur-lg rounded-xl border border-gray-700 p-8 flex flex-col items-center text-center transition-all duration-300 hover:border-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-500/10 transform hover:-translate-y-1">
+// // //     <h3 className="text-5xl font-extrabold text-white mb-4" style={{ fontFamily: "'Exo 2', sans-serif" }}>{brand}</h3>
+// // //     <p className="text-gray-300 mb-6 flex-grow">{description}</p>
+// // //     <button className="font-semibold text-cyan-300 transition-all duration-300">
+// // //       Learn More
+// // //     </button>
+// // //   </div>
+// // // );
+
+// // // // New component for the "Our Process" section
+// // // const ProcessStep = ({ icon, title, text }) => (
+// // //   <div className="bg-gray-900/50 backdrop-blur-lg rounded-xl border border-gray-700/50 p-6 text-center transition-all duration-300 hover:scale-105 hover:border-cyan-500/50">
+// // //     <div className="flex justify-center mb-4">
+// // //       <div className="p-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full">
+// // //         {icon}
+// // //       </div>
+// // //     </div>
+// // //     <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
+// // //     <p className="text-gray-400">{text}</p>
+// // //   </div>
+// // // );
+
+// // // export const Laptops = () => {
+// // //   return (
+// // //     <div className="bg-black text-gray-200">
+// // //       {/* Hero Section */}
+// // //       <div className="pt-48 pb-32 relative overflow-hidden" style={{ backgroundImage: "url('https://placehold.co/1920x800/0a0a0a/1f1f1f?text=Abstract+Tech+Background&font=inter')" }}>
+// // //         <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+// // //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+// // //           <FadeIn>
+// // //             <h1 className="text-6xl md:text-8xl font-bold text-white mb-6">
+// // //               The Future of
+// // //               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 block">
+// // //                 Refurbished Tech
+// // //               </span>
+// // //             </h1>
+// // //             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+// // //               We don't just refurbish. We re-engineer for a new life, combining sustainability with elite performance.
+// // //             </p>
+// // //           </FadeIn>
+// // //         </div>
+// // //       </div>
+
+// // //       {/* Scrollytelling Component */}
+// // //       <LaptopScrollAnimation />
+
+// // //       {/* Our Process Section */}
+// // //       <div className="py-24 bg-gray-900/50">
+// // //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+// // //           <FadeIn>
+// // //             <h2 className="text-4xl font-bold text-center text-white mb-4">Our Unmatched Process</h2>
+// // //             <p className="text-lg text-gray-400 text-center max-w-2xl mx-auto mb-16">
+// // //               This is what sets our devices apart. A meticulous journey from used to renewed.
+// // //             </p>
+// // //             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+// // //               <ProcessStep 
+// // //                 icon={<Cpu className="w-8 h-8 text-black" />}
+// // //                 title="1. Deep Diagnostics"
+// // //                 text="Every component, from the CPU to the smallest port, is tested with enterprise-grade software."
+// // //               />
+// // //               <ProcessStep 
+// // //                 icon={<Zap className="w-8 h-8 text-black" />}
+// // //                 title="2. Component Upgrades"
+// // //                 text="We replace and upgrade key parts, like installing new NVMe SSDs and high-speed RAM."
+// // //               />
+// // //               <ProcessStep 
+// // //                 icon={<CheckCircle className="w-8 h-8 text-black" />}
+// // //                 title="3. BSI Kitemark™"
+// // //                 text="A final, rigorous certification ensures your device is safe, secure, and performs like new."
+// // //               />
+// // //             </div>
+// // //           </FadeIn>
+// // //         </div>
+// // //       </div>
+
+// // //       {/* Brand Highlights Section */}
+// // //       <div className="py-24">
+// // //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+// // //           <FadeIn>
+// // //             <h2 className="text-4xl font-bold text-center text-white mb-12">Featuring the Brands You Trust</h2>
+// // //             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+// // //               <BrandHighlight
+// // //                 brand="HP"
+// // //                 description="Reliable performance and robust security from the EliteBook series."
+// // //                 link="/laptops/hp"
+// // //               />
+// // //               <BrandHighlight
+// // //                 brand="DELL"
+// // //                 description="Innovative design meets powerful Latitude and XPS performance."
+// // //                 link="/laptops/dell"
+// // //               />
+// // //               <BrandHighlight
+// // //                 brand="LENOVO"
+// // //                 description="Legendary ThinkPad reliability and cutting-edge Yoga flexibility."
+// // //                 link="/laptops/lenovo"
+// // //               />
+// // //             </div>
+// // //           </FadeIn>
+// // //         </div>
+// // //       </div>
+
+// // //       {/* CTA Section */}
+// // //       <CallToAction 
+// // //         title="Interested in a Partnership?"
+// // //         text="We work with schools, businesses, and organizations to provide high-quality, sustainable tech solutions. Let's talk."
+// // //         buttonText="Contact Us"
+// // //         buttonLink="/contact"
+// // //       />
+// // //     </div>
+// // //   );
+// // // };
+// // import React from 'react';
+// // import { FadeIn } from '../components/common/FadeIn';
+// // import { CallToAction } from '../components/common/CallToAction';
+// // import { LaptopScrollAnimation } from '../components/laptops/LaptopScrollAnimation';
+// // import { BrandDisplay } from '../components/laptops/BrandDisplay'; // New BrandDisplay component
+// // import { CheckCircle, Zap, Cpu } from 'lucide-react';
+
+// // // New component for the "Our Process" section
+// // const ProcessStep = ({ icon, title, text }) => (
+// //   <div className="bg-gray-900/50 backdrop-blur-lg rounded-xl border border-gray-700/50 p-6 text-center transition-all duration-300 hover:scale-105 hover:border-cyan-500/50">
+// //     <div className="flex justify-center mb-4">
+// //       <div className="p-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full">
+// //         {icon}
+// //       </div>
+// //     </div>
+// //     <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
+// //     <p className="text-gray-400">{text}</p>
+// //   </div>
+// // );
+
+// // export const Laptops = () => {
+// //   return (
+// //     <div className="bg-black text-gray-200">
+// //       {/* Hero Section */}
+// //       <div className="pt-48 pb-32 relative overflow-hidden" style={{ backgroundImage: "url('https://placehold.co/1920x800/0a0a0a/1f1f1f?text=Abstract+Tech+Background&font=inter')" }}>
+// //         <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+// //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+// //           <FadeIn>
+// //             <h1 className="text-6xl md:text-8xl font-bold text-white mb-6">
+// //               The Future of
+// //               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 block">
+// //                 Refurbished Tech
+// //               </span>
+// //             </h1>
+// //             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+// //               We don't just refurbish. We re-engineer for a new life, combining sustainability with elite performance.
+// //             </p>
+// //           </FadeIn>
+// //         </div>
+// //       </div>
+
+// //       {/* Scrollytelling Component */}
+// //       <LaptopScrollAnimation />
+
+// //       {/* Our Process Section */}
+// //       <div className="py-24 bg-gray-900/50">
+// //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+// //           <FadeIn>
+// //             <h2 className="text-4xl font-bold text-center text-white mb-4">Our Unmatched Process</h2>
+// //             <p className="text-lg text-gray-400 text-center max-w-2xl mx-auto mb-16">
+// //               This is what sets our devices apart. A meticulous journey from used to renewed.
+// //             </p>
+// //             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+// //               <ProcessStep 
+// //                 icon={<Cpu className="w-8 h-8 text-black" />}
+// //                 title="1. Deep Diagnostics"
+// //                 text="Every component, from the CPU to the smallest port, is tested with enterprise-grade software."
+// //               />
+// //               <ProcessStep 
+// //                 icon={<Zap className="w-8 h-8 text-black" />}
+// //                 title="2. Component Upgrades"
+// //                 text="We replace and upgrade key parts, like installing new NVMe SSDs and high-speed RAM."
+// //               />
+// //               <ProcessStep 
+// //                 icon={<CheckCircle className="w-8 h-8 text-black" />}
+// //                 title="3. BSI Kitemark™"
+// //                 text="A final, rigorous certification ensures your device is safe, secure, and performs like new."
+// //               />
+// //             </div>
+// //           </FadeIn>
+// //         </div>
+// //       </div>
+
+// //       {/* Brand Highlights Section (Updated) */}
+// //       <div className="py-24">
+// //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+// //           <FadeIn>
+// //             <h2 className="text-4xl font-bold text-center text-white mb-12">Showcasing Premier Brands</h2>
+// //             <BrandDisplay
+// //               brandName="HP"
+// //               slogan="Engineered for Performance. Refurbished for Life."
+// //               description="Discover our range of meticulously restored HP laptops, offering robust performance, enterprise-grade security, and sleek designs. Perfect for professionals and students seeking reliability and value."
+// //               imageUrl="https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_Logo_2012.svg" // Example HP Logo
+// //               gradientFrom="#007ACC" // HP Blue
+// //               gradientTo="#004A77"
+// //               link="/laptops/hp"
+// //             />
+// //           </FadeIn>
+// //           <FadeIn delay={0.2}>
+// //             <BrandDisplay
+// //               brandName="DELL"
+// //               slogan="Innovation Sustained. Power Unleashed."
+// //               description="Experience the renowned innovation and dependable power of Dell. Our refurbished Dell laptops are upgraded to deliver exceptional speeds and responsiveness for every task."
+// //               imageUrl="https://upload.wikimedia.org/wikipedia/commons/4/46/Dell_Logo.svg" // Example Dell Logo
+// //               gradientFrom="#007A2A" // Dell Green
+// //               gradientTo="#004E1E"
+// //               link="/laptops/dell"
+// //             />
+// //           </FadeIn>
+// //           <FadeIn delay={0.4}>
+// //             <BrandDisplay
+// //               brandName="LENOVO"
+// //               slogan="Reliability Redefined. Productivity Enhanced."
+// //               description="From the legendary ThinkPad series to versatile Yoga models, our refurbished Lenovo laptops offer unparalleled durability, ergonomic design, and powerful features for seamless productivity."
+// //               imageUrl="https://upload.wikimedia.org/wikipedia/commons/e/ec/Lenovo_logo_2015.svg" // Example Lenovo Logo
+// //               gradientFrom="#CC0000" // Lenovo Red
+// //               gradientTo="#800000"
+// //               link="/laptops/lenovo"
+// //             />
+// //           </FadeIn>
+// //         </div>
+// //       </div>
+
+// //       {/* CTA Section */}
+// //       <CallToAction 
+// //         title="Ready to Elevate Your Tech?"
+// //         text="Explore our full range of certified refurbished laptops and find the perfect device that aligns with your values and performance needs."
+// //         buttonText="View All Devices"
+// //         buttonLink="/laptops"
+// //       />
+// //     </div>
+// //   );
+// // };
+
+// // src/pages/Laptop.jsx
+// import React from 'react';
+// import { MonitorCheck, Leaf, DollarSign } from 'lucide-react'; // Example icons
+
+// import { FadeIn } from '../components/common/FadeIn';
+// import { CallToAction } from '../components/common/CallToAction';
+// import BrandDisplay from '../components/laptops/BrandDisplay';
+// import LaptopImagePopAnimation from '../components/laptops/LaptopImagePopAnimation';
+// const brandData = [
+//   {
+//     name: "HP",
+//     slogan: "Innovation for Every Journey",
+//     description: "HP laptops offer reliable performance and stylish designs, perfect for both professional and personal use. Experience cutting-edge technology and robust build quality.",
+//     logo: "/path/to/hp-logo.png", // Placeholder: Replace with actual path
+//     image: "/path/to/hp-laptop-image.png" // Placeholder: Add a laptop image for the brand
+//   },
+//   {
+//     name: "Dell",
+//     slogan: "Power Your Potential",
+//     description: "Dell delivers powerful and durable machines, trusted by businesses and creators worldwide. Discover unparalleled productivity and immersive computing.",
+//     logo: "/path/to/dell-logo.png", // Placeholder: Replace with actual path
+//     image: "/path/to/dell-laptop-image.png" // Placeholder: Add a laptop image for the brand
+//   },
+//   {
+//     name: "Lenovo",
+//     slogan: "Smarter Technology for All",
+//     description: "Lenovo combines sleek design with robust functionality, providing versatile laptops for diverse needs. Engineered for efficiency and user comfort.",
+//     logo: "/path/to/lenovo-logo.png", // Placeholder: Replace with actual path
+//     image: "/path/to/lenovo-laptop-image.png" // Placeholder: Add a laptop image for the brand
+//   },
+//   // Add more brands as needed
+// ];
+
+// const Laptop = () => {
+//   return (
+//     <div className="text-gray-900 bg-gray-50">
+//       {/* Hero Section */}
+//       <section className="relative h-[60vh] md:h-[75vh] flex items-center justify-center text-center overflow-hidden bg-gradient-to-br from-blue-700 to-indigo-800 text-white p-6">
+//         <div className="absolute inset-0 z-0 opacity-20">
+//           {/* Background pattern or subtle animation can go here */}
+//           <div className="bg-pattern-dots absolute inset-0"></div>
+//         </div>
+//         <div className="relative z-10 max-w-4xl mx-auto">
+//           <FadeIn>
+//             <h1 className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
+//               Discover Your Perfect Refurbished Laptop
+//             </h1>
+//           </FadeIn>
+//           <FadeIn delay={0.2}>
+//             <p className="text-lg md:text-xl mb-8 opacity-90">
+//               High-performance, eco-friendly, and EonCircular Certified quality you can trust.
+//             </p>
+//           </FadeIn>
+//           <FadeIn delay={0.4}>
+//             <a
+//               href="/laptops/shop" // Link to actual shop page
+//               className="inline-block bg-white text-blue-800 hover:bg-blue-100 px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg"
+//             >
+//               Explore Our Collection
+//             </a>
+//           </FadeIn>
+//         </div>
+//       </section>
+
+//       {/* EonCircular Certified Standard Section */}
+//       <section className="py-16 md:py-24 bg-white">
+//         <div className="container mx-auto px-6 max-w-6xl">
+//           <FadeIn>
+//             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-800">
+//               The EonCircular Certified Standard
+//             </h2>
+//           </FadeIn>
+//           <div className="grid md:grid-cols-3 gap-10">
+//             <FadeIn delay={0.1}>
+//               <div className="text-center p-8 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+//                 <MonitorCheck className="w-12 h-12 text-green-600 mx-auto mb-4" />
+//                 <h3 className="text-xl font-semibold mb-3">Rigorous Quality Checks</h3>
+//                 <p className="text-gray-700">
+//                   Every laptop undergoes a comprehensive 30-point inspection and restoration process to ensure peak performance.
+//                 </p>
+//               </div>
+//             </FadeIn>
+//             <FadeIn delay={0.2}>
+//               <div className="text-center p-8 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+//                 <Leaf className="w-12 h-12 text-teal-600 mx-auto mb-4" />
+//                 <h3 className="text-xl font-semibold mb-3">Sustainable Choice</h3>
+//                 <p className="text-gray-700">
+//                   Choose refurbished and significantly reduce electronic waste, contributing to a healthier planet.
+//                 </p>
+//               </div>
+//             </FadeIn>
+//             <FadeIn delay={0.3}>
+//               <div className="text-center p-8 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+//                 <DollarSign className="w-12 h-12 text-yellow-600 mx-auto mb-4" />
+//                 <h3 className="text-xl font-semibold mb-3">Unbeatable Value</h3>
+//                 <p className="text-gray-700">
+//                   Get premium features and performance at a fraction of the cost of new, without compromise.
+//                 </p>
+//               </div>
+//             </FadeIn>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* NEW: Dynamic Laptop Showcase with Image Pop Animation */}
+//       <section className="py-16 md:py-24 bg-gray-100 overflow-hidden">
+//         <div className="container mx-auto px-6 max-w-6xl">
+//           <FadeIn>
+//             <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-blue-800">
+//               See Our Quality in Action
+//             </h2>
+//           </FadeIn>
+//           {/* This is where the new animation component will live */}
+//           <LaptopImagePopAnimation />
+//         </div>
+//       </section>
+
+//       {/* Featured Brands Section */}
+//       <section className="py-16 md:py-24 bg-white">
+//         <div className="container mx-auto px-6 max-w-6xl">
+//           <FadeIn>
+//             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-800">
+//               Explore Top Brands
+//             </h2>
+//           </FadeIn>
+//           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+//             {brandData.map((brand, index) => (
+//               <FadeIn key={index} delay={index * 0.1}>
+//                 <BrandDisplay
+//                   name={brand.name}
+//                   slogan={brand.slogan}
+//                   description={brand.description}
+//                   logo={brand.logo}
+//                   image={brand.image} // Pass the new image prop
+//                 />
+//               </FadeIn>
+//             ))}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Call to Action Section (Existing component) */}
+//       <section className="py-16 md:py-24 bg-blue-800 text-white">
+//         <CallToAction
+//           title="Ready to Upgrade Your Tech?"
+//           description="Find the perfect refurbished laptop that fits your needs and budget, backed by our EonCircular guarantee."
+//           buttonText="Shop All Laptops"
+//           buttonLink="/laptops/shop" // Ensure this links to your actual shop
+//         />
+//       </section>
+//     </div>
+//   );
+// };
+
+// export default Laptop;
+
+// src/pages/Laptop.jsx
+// import React from 'react';
+// import { motion } from 'framer-motion';
+// import { Link } from 'react-router-dom';
+// import { FadeIn } from '../common/FadeIn';
+
+// export const BrandDisplay = ({ brandName, slogan, imageUrl, gradientFrom, gradientTo, description, link }) => {
+//   return (
+//     <motion.div
+//       className="relative flex flex-col md:flex-row items-center justify-between p-8 md:p-12 lg:p-16 rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 ease-out"
+//       style={{
+//         background: `linear-gradient(135deg, ${gradientFrom} 0%, ${gradientTo} 100%)`,
+//         minHeight: '400px', // Ensure consistent height
+//       }}
+//       whileHover={{ scale: 1.02, boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}
+//       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+//     >
+//       {/* Background Image/Pattern */}
+//       <div 
+//         className="absolute inset-0 opacity-20" 
+//         style={{ 
+//           backgroundImage: `url(${imageUrl})`, 
+//           backgroundSize: 'cover', 
+//           backgroundPosition: 'center',
+//           filter: 'grayscale(100%) blur(5px)',
+//           mixBlendMode: 'luminosity'
+//         }}
+//       />
+      
+//       {/* Content */}
+//       <div className="relative z-10 text-center md:text-left text-white max-w-md md:mr-10 mb-8 md:mb-0">
+//         <FadeIn y={-20} delay={0.2}>
+//           <h2 className="text-6xl lg:text-8xl font-black mb-4 uppercase leading-none">
+//             {brandName}
+//           </h2>
+//         </FadeIn>
+//         <FadeIn y={-20} delay={0.4}>
+//           <p className="text-xl md:text-2xl font-light mb-6">
+//             {slogan}
+//           </p>
+//         </FadeIn>
+//         <FadeIn y={-20} delay={0.6}>
+//           <p className="text-md text-gray-200 mb-8">
+//             {description}
+//           </p>
+//         </FadeIn>
+//         <FadeIn y={-20} delay={0.8}>
+//           <Link 
+//             to={link} 
+//             className="inline-block bg-white text-gray-900 px-8 py-4 rounded-full text-lg font-bold shadow-lg 
+//                        hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
+//           >
+//             Explore {brandName} Laptops
+//           </Link>
+//         </FadeIn>
+//       </div>
+
+//       {/* Placeholder laptop image if needed, or rely solely on text and background */}
+//       {/* <div className="relative z-10 flex-shrink-0">
+//         <img src={imageUrl} alt={`${brandName} Laptop`} className="w-96 h-auto object-contain" />
+//       </div> */}
+//     </motion.div>
+//   );
+// };
+
+// src/components/BrandDisplay.jsx (Example modification)
+// import React, { useRef } from 'react';
+// import { useScrollProgress } from '../../hooks/useScrollProgress.js';
+// import { Laptop } from 'lucide-react';
+
+// // This component defines the text that fades in and out
+// const ScrollFeature = ({ children, progress, start, end }) => {
+//   // Calculate opacity based on scroll progress
+//   let opacity = 0;
+//   const range = end - start;
+//   const progressInRange = (progress - start) / range;
+
+//   if (progressInRange < 0) {
+//     opacity = 0;
+//   } else if (progressInRange < 0.25) { // Fade in
+//     opacity = progressInRange * 4;
+//   } else if (progressInRange < 0.75) { // Hold
+//     opacity = 1;
+//   } else if (progressInRange < 1) { // Fade out
+//     opacity = (1 - progressInRange) * 4;
+//   }
+
+//   opacity = Math.max(0, Math.min(1, opacity));
+
+//   return (
+//     <div className="text-left max-w-md" style={{ opacity }}>
+//       {children}
+//     </div>
+//   );
+// };
+
+// export const LaptopScrollAnimation = () => {
+//   // This ref is for the *entire scrollable section* (which is 5x viewport height)
+//   const scrollRef = useRef(null);
+//   // Get the progress (0-1) of scrolling through that section
+//   const progress = useScrollProgress(scrollRef);
+
+//   // --- Animation Calculations ---
+  
+//   // 1. Laptop Scale: Starts small, grows to full size, then shrinks again
+//   let scale;
+//   if (progress < 0.2) {
+//     scale = 0.8 + progress * 5 * 0.2; // Grows from 0.8 to 1.0
+//   } else if (progress > 0.8) {
+//     scale = 1.0 - (progress - 0.8) * 5 * 0.2; // Shrinks from 1.0 to 0.8
+//   } else {
+//     scale = 1.0;
+//   }
+
+//   // 2. Laptop Rotation: Rotates slightly
+//   const rotateY = -15 + progress * 30; // Rotates from -15deg to +15deg
+
+//   // 3. Laptop "Opening" (simulated with rotateX)
+//   // Starts at 60deg (closed), opens to 0deg (flat)
+//   let rotateX;
+//   if (progress < 0.2) {
+//     rotateX = 60 - (progress / 0.2) * 60; // Opens from 60deg to 0deg
+//   } else {
+//     rotateX = 0; // Stays open
+//   }
+
+//   // 4. Background Glow Opacity
+//   const glowOpacity = progress < 0.5 ? progress * 2 : 1 - (progress - 0.5) * 2;
+
+
+//   return (
+//     // This parent container defines the scrollable area.
+//     // 500vh means it's 5 times the height of the screen.
+//     <div ref={scrollRef} className="relative h-[500vh] bg-black">
+      
+//       {/* This is the "pinned" element that stays on screen */}
+//       <div className="sticky top-0 h-screen w-full overflow-hidden">
+        
+//         {/* Animated Visuals (Laptop) */}
+//         <div className="absolute inset-0 flex items-center justify-center" style={{ perspective: '1000px' }}>
+          
+//           {/* Background Glow */}
+//           <div 
+//             className="absolute w-[60vw] h-[60vw] max-w-3xl max-h-3xl bg-cyan-500/30 rounded-full blur-[100px]"
+//             style={{ opacity: glowOpacity, transform: `scale(${1 + progress})` }}
+//           />
+
+//           {/* The Laptop Icon */}
+//           <div 
+//             style={{
+//               transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`,
+//               transformStyle: 'preserve-3d',
+//               transition: 'transform 0.1s linear',
+//             }}
+//           >
+//             {/* Using a placeholder. Replace with a 3D model or image */}
+//             <Laptop className="w-64 h-64 md:w-96 md:h-96 text-gray-300" />
+//             {/* This would be the "screen" part of the laptop opening */}
+//             <div 
+//               className="absolute top-[11%] left-[16%] w-[68%] h-[68%] bg-black transition-opacity duration-300"
+//               style={{ opacity: progress > 0.15 ? 1 : 0 }} // Screen turns on after "opening"
+//             >
+//               <div className="flex items-center justify-center h-full">
+//                 <p className="text-cyan-400 text-xl font-bold">EonCircular OS</p>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Text Content */}
+//         <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 md:left-[10%] md:translate-x-0 w-full px-8 md:w-auto text-white">
+//           <div className="relative h-48 flex items-center">
+            
+//             {/* Step 1 */}
+//             <div className="absolute w-full">
+//               <ScrollFeature progress={progress} start={0.05} end={0.30}>
+//                 <h3 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4">
+//                   Built to Last.
+//                 </h3>
+//                 <p className="text-lg text-gray-300">
+//                   Every device undergoes a rigorous, multi-point inspection to ensure it meets our highest standards.
+//                 </p>
+//               </ScrollFeature>
+//             </div>
+
+//             {/* Step 2 */}
+//             <div className="absolute w-full">
+//               <ScrollFeature progress={progress} start={0.30} end={0.55}>
+//                 <h3 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4">
+//                   Kitemark™ Certified.
+//                 </h3>
+//                 <p className="text-lg text-gray-300">
+//                   We are globally recognized for quality and safety, giving you peace of mind with every purchase.
+//                 </p>
+//               </ScrollFeature>
+//             </div>
+            
+//             {/* Step 3 */}
+//             <div className="absolute w-full">
+//               <ScrollFeature progress={progress} start={0.55} end={0.80}>
+//                 <h3 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4">
+//                   Powerful Performance.
+//                 </h3>
+//                 <p className="text-lg text-gray-300">
+//                   Featuring modern components, our laptops are ready for work, study, and creativity.
+//                 </p>
+//               </ScrollFeature>
+//             </div>
+
+//             {/* Step 4 */}
+//             <div className="absolute w-full">
+//               <ScrollFeature progress={progress} start={0.80} end={1.0}>
+//                 <h3 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4">
+//                   Ready for You.
+//                 </h3>
+//                 <p className="text-lg text-gray-30Services">
+//                   Experience the EonCircular difference. Sustainable, powerful, and affordable.
+//                 </p>
+//               </ScrollFeature>
+//             </div>
+
+//           </div>
+//         </div>
+
+//       </div>
+//     </div>
+//   );
+// };
+
+// //  {/* <Link
+// //               to="/auth"
+// //               onClick={() => setIsMobileMenuOpen(false)}
+// //               className="block w-full text-left text-gray-300 hover:text-white px-4 py-2 rounded-md text-sm font-medium"
+// //             >
+// //               Login
+// //             </Link> */}
+// //             {/* <Link
+// //               to="/auth"
+// //               onClick={() => setIsMobileMenuOpen(false)}
+// //               className="block w-full text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:from-blue-500 hover:to-purple-500 transition-all"
+// //             >
+// //               Sign Up
+// //             </Link> */}
+
+// // import React, { useState, useEffect } from 'react';
+// // import { Link, useLocation } from 'react-router-dom';
+// // import { EonCircularLogo } from '../common/Logo';
+// // import { Menu, X } from 'lucide-react';
+
+// // export const Header = () => {
+// //   const [isScrolled, setIsScrolled] = useState(false);
+// //   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+// //   // Get current page location
+// //   const location = useLocation();
+// //   const currentPagePath = location.pathname;
+
+// //   const navItems = [
+// //     { name: 'Home', path: '/' },
+// //     { name: 'About Us', path: '/about' },
+// //     { name: 'Our Laptops', path: '/laptops' },
+// //     { name: 'Sustainability', path: '/sustainability' },
+// //     { name: 'Education', path: '/education' },
+// //     { name: 'Contact Us', path: '/contact' },
+// //   ];
+
+// //   useEffect(() => {
+// //     const handleScroll = () => {
+// //       setIsScrolled(window.scrollY > 10);
+// //     };
+// //     window.addEventListener('scroll', handleScroll);
+// //     return () => window.removeEventListener('scroll', handleScroll);
+// //   }, []);
+
+// //   const NavLink = ({ item }) => (
+// //     <Link
+// //       to={item.path}
+// //       onClick={() => setIsMobileMenuOpen(false)}
+// //       className={`relative px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
+// //         isMobileMenuOpen ? 'block w-full text-left' : ''
+// //       } ${
+// //         currentPagePath === item.path
+// //           ? 'text-white'
+// //           : 'text-gray-400 hover:text-white'
+// //       } group`}
+// //     >
+// //       {item.name}
+// //       <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 ease-out ${
+// //         currentPagePath === item.path ? 'w-1/2' : 'w-0 group-hover:w-1/2'
+// //       }`}></span>
+// //     </Link>
+// //   );
+
+// //   return (
+// //     <header
+// //       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+// //         isScrolled || isMobileMenuOpen ? 'bg-black bg-opacity-80 backdrop-blur-lg shadow-lg' : 'bg-transparent'
+// //       }`}
+// //     >
+// //       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+// //         <div className="flex items-center justify-between h-20">
+// //           {/* Logo */}
+// //           <Link 
+// //             to="/"
+// //             className="flex-shrink-0 flex items-center cursor-pointer group"
+// //             onClick={() => setIsMobileMenuOpen(false)}
+// //           >
+// //             <EonCircularLogo className="w-10 h-10 transition-transform duration-500 ease-out group-hover:rotate-180" />
+// //             <span className="text-white text-3xl font-bold ml-3 tracking-wider">EonCircular</span>
+// //           </Link>
+
+// //           {/* Desktop Nav */}
+// //           <div className="hidden md:flex items-center space-x-2">
+// //             {navItems.map((item) => (
+// //               <NavLink key={item.name} item={item} />
+// //             ))}
+// //           </div>
+
+// //           {/* Auth Buttons (Desktop) */}
+// //           <div className="hidden md:flex items-center space-x-3">
+// //             {/* <Link 
+// //               to="/auth"
+// //               className="text-gray-300 hover:text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+// //             >
+// //               Login
+// //             </Link> */}
+// //             {/* <Link 
+// //               to="/auth"
+// //               className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-medium hover:from-blue-500 hover:to-purple-500 transition-all transform hover:scale-105 shadow-lg shadow-blue-500/20"
+// //             >
+// //               Sign Up
+// //             </Link> */}
+// //              <Link
+// //               to="/auth"
+// //               onClick={() => setIsMobileMenuOpen(false)}
+// //               className="block w-full text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:from-blue-500 hover:to-purple-500 transition-all"
+// //             >
+// //               Login / Sign Up
+// //             </Link>
+// //           </div>
+
+// //           {/* Mobile Menu Button */}
+// //           <div className="md:hidden flex items-center">
+// //             <button
+// //               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+// //               className="text-gray-300 hover:text-white p-2 rounded-md"
+// //             >
+// //               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+// //             </button>
+// //           </div>
+// //         </div>
+// //       </nav>
+
+// //       {/* Mobile Menu */}
+// //       {isMobileMenuOpen && (
+// //         <div className="md:hidden bg-black bg-opacity-90 backdrop-blur-lg px-2 pt-2 pb-3 space-y-1 sm:px-3">
+// //           {navItems.map((item) => (
+// //             <NavLink key={item.name} item={item} />
+// //           ))}
+// //           <div className="border-t border-gray-700 pt-4 pb-2 space-y-2">
+           
+// //              <Link
+// //               to="/auth"
+// //               onClick={() => setIsMobileMenuOpen(false)}
+// //               className="block w-full text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:from-blue-500 hover:to-purple-500 transition-all"
+// //             >
+// //               Login / Sign Up
+// //             </Link>
+// //           </div>
+// //         </div>
+// //       )}
+// //     </header>
+// //   );
+// // };
+
+
+// import React, { useState, useEffect } from 'react';
+// import { Link, useLocation } from 'react-router-dom';
+// import { Menu, X, Recycle } from 'lucide-react'; // Added Recycle for logo
+// import { EonCircularLogo } from '../common/Logo';
+// // Placeholder logo component to make the file self-contained
+// // You can replace this with your actual Logo import
+// // const EonCircularLogo = ({ className = "" }) => (
+// //   <div className={`p-2 bg-gradient-to-br from-green-400 to-blue-500 rounded-full text-white ${className}`}>
+// //     <Recycle size={24} />
+// //   </div>
+// // );
+
+// export const Header = () => {
+//   const [isScrolled, setIsScrolled] = useState(false);
+//   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+//   // Get current page location
+//   const location = useLocation();
+//   const currentPagePath = location.pathname;
+
+//   const navItems = [
+//     { name: 'Home', path: '/' },
+//     { name: 'About Us', path: '/about' },
+//     { name: 'Our Laptops', path: '/laptops' },
+//     { name: 'Sustainability', path: '/sustainability' },
+//     { name: 'Education', path: '/education' },
+//     { name: 'Contact Us', path: '/contact' },
+//   ];
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       setIsScrolled(window.scrollY > 10);
+//     };
+//     window.addEventListener('scroll', handleScroll);
+//     return () => window.removeEventListener('scroll', handleScroll);
+//   }, []);
+
+//   const NavLink = ({ item }) => (
+//     <Link
+//       to={item.path}
+//       onClick={() => setIsMobileMenuOpen(false)}
+//       className={`relative px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
+//         isMobileMenuOpen ? 'block w-full text-left' : ''
+//       } ${
+//         currentPagePath === item.path
+//           ? 'text-white'
+//           : 'text-gray-400 hover:text-white'
+//       } group`}
+//     >
+//       {item.name}
+//       {/* UPDATED: Underline color changed to green/blue gradient */}
+//       <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-green-400 to-blue-500 transition-all duration-300 ease-out ${
+//         currentPagePath === item.path ? 'w-1/2' : 'w-0 group-hover:w-1/2'
+//       }`}></span>
+//     </Link>
+//   );
+
+//   return (
+//     <header
+//       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+//         isScrolled || isMobileMenuOpen ? 'bg-black bg-opacity-80 backdrop-blur-lg shadow-lg' : 'bg-transparent'
+//       }`}
+//     >
+//       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//         <div className="flex items-center justify-between h-20">
+//           {/* Logo */}
+//           <Link 
+//             to="/"
+//             className="flex-shrink-0 flex items-center cursor-pointer group"
+//             onClick={() => setIsMobileMenuOpen(false)}
+//           >
+//             {/* Using placeholder logo */}
+//             <EonCircularLogo className="w-10 h-10 transition-transform duration-500 ease-out group-hover:rotate-180" />
+//             <span className="text-white text-3xl font-bold ml-3 tracking-wider">EonCircular</span>
+//           </Link>
+
+//           {/* Desktop Nav */}
+//           <div className="hidden md:flex items-center space-x-2">
+//             {navItems.map((item) => (
+//               <NavLink key={item.name} item={item} />
+//             ))}
+//           </div>
+
+//           {/* Auth Buttons (Desktop) */}
+//           <div className="hidden md:flex items-center space-x-3">
+//              {/* UPDATED: Button color changed to green/blue gradient */}
+//              <Link
+//               to="/auth"
+//               onClick={() => setIsMobileMenuOpen(false)}
+//               className="block w-full text-center bg-gradient-to-r from-green-500 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:from-green-400 hover:to-blue-500 transition-all transform hover:scale-105 shadow-lg shadow-green-500/20"
+//             >
+//               Login / Sign Up
+//             </Link>
+//           </div>
+
+//           {/* Mobile Menu Button */}
+//           <div className="md:hidden flex items-center">
+//             <button
+//               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+//               className="text-gray-300 hover:text-white p-2 rounded-md"
+//             >
+//               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+//             </button>
+//           </div>
+//         </div>
+//       </nav>
+
+//       {/* Mobile Menu */}
+//       {isMobileMenuOpen && (
+//         <div className="md:hidden bg-black bg-opacity-90 backdrop-blur-lg px-2 pt-2 pb-3 space-y-1 sm:px-3">
+//           {navItems.map((item) => (
+//             <NavLink key={item.name} item={item} />
+//           ))}
+//           <div className="border-t border-gray-700 pt-4 pb-2 space-y-2">
+           
+//              {/* UPDATED: Button color changed to green/blue gradient */}
+//              <Link
+//               to="/auth"
+//               onClick={() => setIsMobileMenuOpen(false)}
+//               className="block w-full text-center bg-gradient-to-r from-green-500 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:from-green-400 hover:to-blue-500 transition-all"
+//             >
+//               Login / Sign Up
+//             </Link>
+//           </div>
+//         </div>
+//       )}
+//     </header>
+//   );
+// };
+
+
+// // // import React from 'react';
+// // // import { useNavigate } from 'react-router-dom';
+// // // import { FadeIn } from '../components/common/FadeIn';
+// // // import { CountUp } from '../components/common/CountUp';
+// // // import { TestimonialCarousel } from '../components/home/TestimonialCarousel';
+// // // import { 
+// // //   Recycle, 
+// // //   Cpu, 
+// // //   Users,
+// // //   ShieldCheck,
+// // //   Layers,
+// // //   Zap,
+// // //   Award,
+// // //   CheckCircle,
+// // //   TrendingUp,
+// // //   PlayCircle,
+// // //   ArrowRight
+// // // } from 'lucide-react';
+
+// // // export const Home = () => {
+// // //   const navigate = useNavigate();
+  
+// // //   const sustainabilityItems = [
+// // //     { name: 'CO2 emissions', icon: Recycle, img: 'https://placehold.co/600x400/003973/ffffff?text=CO2&font=inter' },
+// // //     { name: 'Water Usage', icon: Layers, img: 'https://placehold.co/600x400/005f9e/ffffff?text=Water&font=inter' },
+// // //     { name: 'Rare Minerals', icon: Cpu, img: 'https://placehold.co/600x400/008ac5/ffffff?text=Minerals&font=inter' },
+// // //     { name: 'E-waste', icon: Zap, img: 'https://placehold.co/600x400/39b5e0/ffffff?text=E-waste&font=inter' },
+// // //     { name: 'Device Re-use', icon: ShieldCheck, img: 'https://placehold.co/600x400/8cdeea/000000?text=Re-use&font=inter' },
+// // //   ];
+  
+// // //   const qualityItems = [
+// // //     { icon: Award, title: "BSI Kitemark Certified", desc: "The gold standard for quality and safety in refurbished products." },
+// // //     { icon: CheckCircle, title: "300-Point Inspection", desc: "Every device undergoes a rigorous check to ensure 'like-new' performance." },
+// // //     { icon: TrendingUp, title: "A-Grade Cosmetics", desc: "No grades, just the best. We only sell devices in pristine condition." },
+// // //   ];
+  
+// // //   const brands = ['HP', 'Dell', 'Lenovo', 'Apple', 'Microsoft', 'Acer', 'Asus'];
+
+// // //   return (
+// // //     <div className="bg-black text-white overflow-x-hidden">
+// // //       {/* --- Hero Section --- */}
+// // //       <section className="relative h-screen flex items-center overflow-hidden">
+// // //         {/* Background Video */}
+// // //         <video
+// // //           autoPlay
+// // //           loop
+// // //           muted
+// // //           playsInline
+// // //           className="absolute z-0 w-auto min-w-full min-h-full max-w-none object-cover"
+// // //           poster="https://placehold.co/1920x1080/000000/111111?text=Loading+Video...&font=inter"
+// // //         >
+// // //           <source src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-close-up-132-large.mp4" type="video/mp4" />
+// // //           Your browser does not support the video tag.
+// // //         </video>
+        
+// // //         {/* Gradient Overlay */}
+// // //         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent z-10"></div>
+        
+// // //         {/* Content */}
+// // //         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+// // //           <FadeIn direction="right">
+// // //             <div className="max-w-xl">
+// // //               <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-white drop-shadow-lg">
+// // //                 The Future of Tech
+// // //                 <br />
+// // //                 is <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Circular.</span>
+// // //               </h1>
+// // //               <p className="mt-6 text-xl md:text-2xl font-light text-gray-300 max-w-lg">
+// // //                 Experience world-class, carbon-neutral refurbished laptops.
+// // //                 Unmatched quality, unbeatable sustainability.
+// // //               </p>
+// // //               <div className="mt-10 flex flex-col sm:flex-row gap-4">
+// // //                 <button
+// // //                   onClick={() => navigate('/laptops')}
+// // //                   className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:from-blue-500 hover:to-purple-500 transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30"
+// // //                 >
+// // //                   Browse Laptops
+// // //                 </button>
+// // //                 <button
+// // //                   onClick={() => navigate('/sustainability')}
+// // //                   className="bg-transparent border-2 border-gray-500 text-gray-300 px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-800 hover:border-gray-700 transition-all"
+// // //                 >
+// // //                   Our Mission
+// // //                 </button>
+// // //               </div>
+// // //             </div>
+// // //           </FadeIn>
+// // //         </div>
+// // //       </section>
+      
+// // //       {/* --- Animated Stats Section (NEW) --- */}
+// // //       <section className="py-24 bg-gray-900">
+// // //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+// // //           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+// // //             <FadeIn delay={0}>
+// // //               <div className="p-6">
+// // //                 <Recycle size={48} className="mx-auto text-green-400 mb-4" />
+// // //                 <h3 className="text-5xl md:text-6xl"><CountUp end={1200} suffix="+" /></h3>
+// // //                 <p className="text-xl text-gray-400 mt-2">Tons of CO2 Saved</p>
+// // //               </div>
+// // //             </FadeIn>
+// // //             <FadeIn delay={200}>
+// // //               <div className="p-6">
+// // //                 <Cpu size={48} className="mx-auto text-cyan-400 mb-4" />
+// // //                 <h3 className="text-5xl md:text-6xl"><CountUp end={50000} suffix="+" /></h3>
+// // //                 <p className="text-xl text-gray-400 mt-2">Devices Given New Life</p>
+// // //               </div>
+// // //             </FadeIn>
+// // //             <FadeIn delay={400}>
+// // //               <div className="p-6">
+// // //                 <Users size={48} className="mx-auto text-purple-400 mb-4" />
+// // //                 <h3 className="text-5xl md:text-6xl"><CountUp end={1500} suffix="+" /></h3>
+// // //                 <p className="text-xl text-gray-400 mt-2">Happy Partners & Clients</p>
+// // //               </div>
+// // //             </FadeIn>
+// // //           </div>
+// // //         </div>
+// // //       </section>
+
+// // //       {/* --- Commitment to Quality Section (Redesigned) --- */}
+// // //       <section className="py-24 bg-black">
+// // //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+// // //           <FadeIn>
+// // //             <h2 className="text-4xl md:text-5xl font-light leading-tight">
+// // //               Our <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Commitment to Quality</span>
+// // //             </h2>
+// // //             <p className="text-xl text-gray-400 max-w-2xl mx-auto mt-4">
+// // //               We don't just refurbish. We remanufacture to a standard that is
+// // //               <span className="text-white"> better than new.</span>
+// // //             </p>
+// // //           </FadeIn>
+// // //           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+// // //             {qualityItems.map((item, index) => (
+// // //               <FadeIn key={item.title} delay={index * 150}>
+// // //                 <div className="p-8 bg-gray-900 rounded-xl shadow-2xl border border-gray-800 hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2">
+// // //                   <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30">
+// // //                     <item.icon size={32} className="text-white" />
+// // //                   </div>
+// // //                   <h3 className="text-2xl font-semibold text-white mt-4">{item.title}</h3>
+// // //                   <p className="text-gray-400 mt-2">{item.desc}</p>
+// // //                 </div>
+// // //               </FadeIn>
+// // //             ))}
+// // //           </div>
+// // //         </div>
+// // //       </section>
+      
+// // //       {/* --- Brands Marquee Section (NEW) --- */}
+// // //       <section className="py-16 bg-black border-y border-gray-800">
+// // //         <div className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+// // //           <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
+// // //             {brands.map(brand => <li key={brand} className="text-3xl font-bold text-gray-600">{brand}</li>)}
+// // //           </ul>
+// // //           <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
+// // //             {brands.map(brand => <li key={brand} className="text-3xl font-bold text-gray-600">{brand}</li>)}
+// // //           </ul>
+// // //         </div>
+// // //       </section>
+
+// // //       {/* --- Sustainability Section (Restyled) --- */}
+// // //       <section className="py-24 bg-gray-900" style={{ backgroundImage: "url('https://placehold.co/1920x1080/0a0a0a/1f1f1f?text=Subtle+Circuit+BG&font=inter')" }}>
+// // //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+// // //           <FadeIn>
+// // //             <h2 className="text-4xl md:text-6xl font-light text-center">
+// // //               The IT industry needs to be
+// // //             </h2>
+// // //             <h3 className="text-5xl md:text-7xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 mt-2">
+// // //               Greater with Less.
+// // //             </h3>
+// // //           </FadeIn>
+          
+// // //           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-1 mt-20 rounded-xl overflow-hidden shadow-2xl">
+// // //             {sustainabilityItems.map((item, index) => (
+// // //               <FadeIn key={item.name} delay={index * 100}>
+// // //                 <div className="group relative h-80 overflow-hidden cursor-pointer">
+// // //                   <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+// // //                   <div className="absolute inset-0 bg-black bg-opacity-60 group-hover:bg-opacity-70 transition-opacity duration-300"></div>
+// // //                   <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+// // //                     <div className="text-cyan-300 transform scale-100 group-hover:scale-125 transition-transform duration-300">
+// // //                       <item.icon size={48} />
+// // //                     </div>
+// // //                     <h4 className="text-2xl font-bold text-white mt-4">{item.name}</h4>
+// // //                   </div>
+// // //                 </div>
+// // //               </FadeIn>
+// // //             ))}
+// // //           </div>
+          
+// // //           <FadeIn delay={500}>
+// // //             <p className="text-center text-xl md:text-2xl text-gray-300 mt-16 max-w-4xl mx-auto">
+// // //               By choosing refurbished, you are helping to reduce <span className="text-white font-medium">CO2 production</span>, <span className="text-white font-medium">water usage</span> and the <span className="text-white font-medium">mining of rare earth minerals</span>.
+// // //             </p>
+// // //           </FadeIn>
+// // //         </div>
+// // //       </section>
+
+// // //       {/* --- "Our Process" Video Section (NEW) --- */}
+// // //       <section className="py-24 bg-black">
+// // //         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+// // //           <FadeIn>
+// // //             <h2 className="text-4xl md:text-5xl font-light mb-4">
+// // //               See <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Our Process</span> in Action
+// // //             </h2>
+// // //             <p className="text-xl text-gray-400 max-w-2xl mx-auto mt-4 mb-12">
+// // //               From cosmetic grading to component-level diagnostics, see what makes
+// // //               an EonCircular laptop different.
+// // //             </p>
+// // //             <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl group cursor-pointer border-2 border-gray-800">
+// // //               <img 
+// // //                 src="https://placehold.co/1280x720/1a1a1a/333333?text=Our+Refurbishing+Process&font=inter" 
+// // //                 alt="Our Process Video Thumbnail" 
+// // //                 className="w-full h-full object-cover"
+// // //               />
+// // //               <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-20 transition-all duration-300"></div>
+// // //               <div className="absolute inset-0 flex items-center justify-center">
+// // //                 <PlayCircle size={100} className="text-white text-opacity-80 group-hover:text-opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-lg" />
+// // //               </div>
+// // //             </div>
+// // //           </FadeIn>
+// // //         </div>
+// // //       </section>
+
+// // //       {/* --- Testimonials Section (NEW) --- */}
+// // //       <section className="py-24" style={{ backgroundImage: "url('https://placehold.co/1920x1080/1a1a1a/2b2b2b?text=Dark+Texture&font=inter')" }}>
+// // //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+// // //           <FadeIn>
+// // //             <h2 className="text-4xl md:text-5xl font-light text-gray-200 mb-16">
+// // //               Trusted by <span className="font-semibold text-white">Leaders Worldwide</span>
+// // //             </h2>
+// // //             <TestimonialCarousel />
+// // //           </FadeIn>
+// // //         </div>
+// // //       </section>
+      
+// // //       {/* --- Deliverables Section (Restyled) --- */}
+// // //       <section className="py-24 bg-black">
+// // //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+// // //           <FadeIn>
+// // //             <h2 className="text-5xl md:text-7xl font-bold text-center text-white mb-20">
+// // //               What We Deliver
+// // //             </h2>
+// // //           </FadeIn>
+// // //           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+// // //             {['Quality', 'Consistency', 'Availability', 'Affordability'].map((item, index) => (
+// // //               <FadeIn key={item} delay={index * 150}>
+// // //                 <div className="relative p-8 h-64 flex flex-col justify-end rounded-xl overflow-hidden shadow-lg bg-gray-900 border border-gray-800 group">
+// // //                   <div className="absolute -top-1 -right-1 w-24 h-24 bg-gradient-to-br from-blue-600 to-purple-600 opacity-20 blur-3xl group-hover:opacity-40 transition-opacity duration-300"></div>
+// // //                   <img 
+// // //                     src={`https://placehold.co/400x300/${['1a237e', '283593', '303f9f', '3949ab'][index]}/ffffff?text=${item}&font=inter`} 
+// // //                     alt={item}
+// // //                     className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity duration-300" 
+// // //                   />
+// // //                   <div className="relative">
+// // //                     <h3 className="text-4xl font-bold text-white z-10">{item}</h3>
+// // //                     <p className="text-blue-400 mt-2 font-medium group-hover:translate-x-1 transition-transform duration-300 z-10">
+// // //                       Learn More <ArrowRight size={16} className="inline-block ml-1" />
+// // //                     </p>
+// // //                   </div>
+// // //                 </div>
+// // //               </FadeIn>
+// // //             ))}
+// // //           </div>
+// // //         </div>
+// // //       </section>
+// // //     </div>
+// // //   );
+// // // };
+
+
+// // import React, { useState, useEffect } from 'react';
+// // import { useNavigate } from 'react-router-dom';
+// // import { motion } from 'framer-motion';
+// // import { useInView } from 'react-intersection-observer';
+// // import { FadeIn } from '../components/common/FadeIn';
+// // import { CountUp } from '../components/common/CountUp';
+// // import { TestimonialCarousel } from '../components/home/TestimonialCarousel';
+// // import { 
+// //   ArrowRight,
+// //   Award,
+// //   BarChart2,
+// //   CheckCircle,
+// //   CheckSquare,
+// //   DatabaseZap,
+// //   HardDrive,
+// //   HeartHandshake,
+// //   Recycle,
+// //   ShieldCheck,
+// //   ShoppingCart,
+// //   Star,
+// //   Trash2,
+// //   Wrench,
+// //   Zap
+// // } from 'lucide-react';
+
+// // // COMPONENT: FadeIn
+// // // We are moving this component code directly into Home.jsx to fix the import error.
+// // // const FadeIn = ({ children, delay = 0, duration = 0.8, x = 0, y = 20, once = true, ...props }) => {
+// // //   const { ref, inView } = useInView({
+// // //     triggerOnce: once, // Only trigger animation once when it comes into view
+// // //     threshold: 0.1, // Trigger when 10% of the component is visible
+// // //   });
+
+// // //   return (
+// // //     <motion.div
+// // //       ref={ref}
+// // //       initial={{ opacity: 0, x, y }}
+// // //       animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : x, y: inView ? 0 : y }}
+// // //       transition={{ duration, delay }}
+// // //       {...props}
+// // //     >
+// // //       {children}
+// // //     </motion.div>
+// // //   );
+// // // };
+
+// // // // COMPONENT: CountUp
+// // // // We are moving this component code directly into Home.jsx to fix the import error
+// // // // and replacing the custom 'useOnScreen' hook with 'useInView'.
+// // // const CountUp = ({ end, duration = 2000, suffix = "", prefix = "" }) => {
+// // //   const [count, setCount] = useState(0);
+// // //   // Use useInView (which we already import for FadeIn) instead of the missing useOnScreen hook
+// // //   const { ref, inView: isVisible } = useInView({ threshold: 0.5, triggerOnce: true });
+
+// // //   useEffect(() => {
+// // //     if (isVisible) {
+// // //       let start = 0;
+// // //       const endValue = end;
+// // //       const startTime = Date.now();
+
+// // //       const easeOutQuad = (t) => t * (2 - t);
+
+// // //       const frame = () => {
+// // //         const now = Date.now();
+// // //         const progress = Math.min((now - startTime) / duration, 1);
+// // //         const easedProgress = easeOutQuad(progress);
+        
+// // //         setCount(Math.floor(easedProgress * endValue));
+
+// // //         if (progress < 1) {
+// // //           requestAnimationFrame(frame);
+// // //         }
+// // //       };
+// // //       requestAnimationFrame(frame);
+// // //     }
+// // //   }, [isVisible, end, duration]);
+
+// // //   return (
+// // //     <span ref={ref} className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+// // //       {prefix}{count.toLocaleString()}{suffix}
+// // //     </span>
+// // //   );
+// // // };
+
+// // // COMPONENT: TestimonialCarousel
+// // // // We are moving this component code directly into Home.jsx to fix the import error.
+// // // const TestimonialCarousel = () => {
+// // //   const testimonials = [
+// // //     {
+// // //       quote: "The quality of the refurbished laptop I received was outstanding. It looked and felt brand new. Their commitment to sustainability is what won me over.",
+// // //       name: "Sarah J.",
+// // //       title: "Eco-Conscious Developer"
+// // //     },
+// // //     {
+// // //       quote: "EonCircular's service is top-notch. They helped our school district secure hundreds of high-quality laptops at an affordable price. A seamless process from start to finish.",
+// // //       name: "Michael T.",
+// // //       title: "IT Director, Public Schools"
+// // //     },
+// // //     {
+// // //       quote: "I was skeptical about 'refurbished' at first, but the Carbon-Neutral laptop I bought exceeded all my expectations. Plus, I feel good about the purchase.",
+// // //       name: "Emily R.",
+// // //       title: "Freelance Designer"
+// // //     }
+// // //   ];
+  
+// // //   const [currentIndex, setCurrentIndex] = useState(0);
+
+// // //   useEffect(() => {
+// // //     const timer = setInterval(() => {
+// // //       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+// // //     }, 5000); // Change slide every 5 seconds
+    
+// // //     return () => clearInterval(timer);
+// // //   }, [testimonials.length]);
+
+// // //   return (
+// // //     <div className="relative w-full max-w-3xl mx-auto h-64 overflow-hidden">
+// // //       {testimonials.map((item, index) => (
+// // //         <div
+// // //           key={index}
+// // //           className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+// // //             index === currentIndex ? 'opacity-100' : 'opacity-0'
+// // //           }`}
+// // //         >
+// // //           <div className="flex flex-col items-center justify-center h-full text-center">
+// // //             <p className="text-xl md:text-2xl font-light text-gray-200 italic">"{item.quote}"</p>
+// // //             <p className="text-lg font-semibold text-white mt-6">{item.name}</p>
+// // //             <p className="text-sm text-cyan-400">{item.title}</p>
+// // //           </div>
+// // //         </div>
+// // //       ))}
+// // //       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex space-x-2">
+// // //         {testimonials.map((_, index) => (
+// // //           <button
+// // //             key={index}
+// // //             onClick={() => setCurrentIndex(index)}
+// // //             className={`w-2 h-2 rounded-full transition-all duration-300 ${
+// // //               index === currentIndex ? 'bg-cyan-400 w-4' : 'bg-gray-700'
+// // //             }`}
+// // //           ></button>
+// // //         ))}
+// // //       </div>
+// // //     </div>
+// // //   );
+// // // };
+
+
+// // // Reusable Container component for consistent spacing
+// // const Container = ({ children, className = '' }) => (
+// //   <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${className}`}>
+// //     {children}
+// //   </div>
+// // );
+
+// // // New Hero Section (from Screenshot 1)
+// // const HeroSection = () => {
+// //   const navigate = useNavigate();
+// //   return (
+// //     <div className="relative h-screen min-h-[700px] flex items-center justify-center text-center text-white overflow-hidden">
+// //       {/* Background Graphic Placeholder */}
+// //       <div className="absolute inset-0 z-0">
+// //         <img 
+// //           src="https://placehold.co/1920x1080/000000/4a00e0?text=+" 
+// //           alt="Abstract background" 
+// //           className="absolute inset-0 w-full h-full object-cover opacity-30" 
+// //         />
+// //         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+// //         {/* Colorful gradient blobs */}
+// //         <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full blur-[150px] opacity-30 animate-pulse"></div>
+// //         <div className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full blur-[150px] opacity-30 animate-pulse animation-delay-3000"></div>
+// //       </div>
+      
+// //       <div className="relative z-10 flex flex-col items-center">
+// //         <FadeIn delay={0.2} y={-30}>
+// //           <img 
+// //             src="https://placehold.co/600x400/111111/ffffff?text=Refurbished+Laptop&font=inter" 
+// //             alt="Refurbished Laptop" 
+// //             className="w-full max-w-lg md:max-w-2xl rounded-lg shadow-2xl mb-8"
+// //           />
+// //         </FadeIn>
+// //         <FadeIn>
+// //           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6">
+// //             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-500 to-cyan-400">
+// //               Revive. Renew. Reimagine.
+// //             </span>
+// //           </h1>
+// //           <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-10">
+// //             Quality Refurbished Laptops. Good for your pocket. Great for our planet.
+// //           </p>
+// //           <button
+// //             onClick={() => navigate('/shop')}
+// //             className="group relative inline-flex items-center justify-center px-10 py-4 text-lg font-bold text-white bg-gradient-to-r from-purple-600 to-pink-500 rounded-full transition-all duration-300 ease-in-out overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105"
+// //           >
+// //             <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-pink-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+// //             <span className="relative z-10 flex items-center">
+// //               Shop Now <ShoppingCart className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+// //             </span>
+// //           </button>
+// //         </FadeIn>
+// //       </div>
+// //     </div>
+// //   );
+// // };
+
+// // // New "Why Choose Us" Section (from Screenshot 3)
+// // const WhyChooseUsSection = () => {
+// //   const items = [
+// //     {
+// //       icon: Award,
+// //       title: "Certified Quality",
+// //       text: "Every device is backed by our BSI Kitemark™, ensuring reliability and performance you can trust.",
+// //       logo: "https://placehold.co/150x50/333333/ffffff?text=BSI+Kitemark&font=inter"
+// //     },
+// //     {
+// //       icon: Recycle,
+// //       title: "Sustainable Impact",
+// //       text: "We are proudly Carbon Neutral. Your purchase actively reduces e-waste and supports a circular economy.",
+// //       logo: "https://placehold.co/150x50/333333/ffffff?text=Carbon+Neutral&font=inter"
+// //     },
+// //     {
+// //       icon: Star,
+// //       title: "Customer Trust",
+// //       text: "Rated 'Excellent' on Trustpilot. Join thousands of happy customers who chose smarter, greener tech.",
+// //       logo: "https://placehold.co/150x50/333333/ffffff?text=Trustpilot+★★★★★&font=inter"
+// //     }
+// //   ];
+
+// //   return (
+// //     <section className="py-20 bg-gray-950 text-white">
+// //       <Container>
+// //         <FadeIn className="text-center mb-16">
+// //           <h2 className="text-4xl md:text-5xl font-extrabold mb-4">Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">EonCircular?</span></h2>
+// //           <p className="text-lg text-gray-400 max-w-2xl mx-auto">We're not just a retailer. We're your partner in a sustainable tech future.</p>
+// //         </FadeIn>
+// //         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+// //           {items.map((item, index) => (
+// //             <FadeIn key={item.title} delay={index * 0.2}>
+// //               <div className="relative bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-lg h-full flex flex-col transition-all duration-300 hover:shadow-cyan-500/10 hover:-translate-y-1 hover:border-cyan-400">
+// //                 <div className="absolute top-0 right-0 -mt-4 -mr-4 w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white shadow-lg">
+// //                   <item.icon className="w-8 h-8" />
+// //                 </div>
+// //                 <h3 className="text-2xl font-bold mb-4 mt-10">{item.title}</h3>
+// //                 <p className="text-gray-400 flex-grow mb-6">{item.text}</p>
+// //                 <img src={item.logo} alt={`${item.title} logo`} className="h-10 w-auto object-contain self-start grayscale opacity-50" />
+// //               </div>
+// //             </FadeIn>
+// //           ))}
+// //         </div>
+// //       </Container>
+// //     </section>
+// //   );
+// // };
+
+// // // New "Our Recycling Process" Section (from Screenshot 2)
+// // const RecyclingProcessSection = () => {
+// //   const steps = [
+// //     {
+// //       icon: Trash2,
+// //       title: "Collection & Sorting",
+// //       text: "We source devices responsibly and categorize them for their next life.",
+// //       color: "pink"
+// //     },
+// //     {
+// //       icon: DatabaseZap,
+// //       title: "Secure Data Erasure",
+// //       text: "Using government-approved software, we guarantee 100% data destruction.",
+// //       color: "purple"
+// //     },
+// //     {
+// //       icon: Wrench,
+// //       title: "Expert Refurbishment",
+// //       text: "Our certified technicians repair, test, and upgrade components to A-Grade standard.",
+// //       color: "green"
+// //     },
+// //     {
+// //       icon: CheckSquare,
+// //       title: "Quality Assurance",
+// //       text: "A final 300+ point inspection ensures every device meets our high expectations.",
+// //       color: "cyan"
+// //     }
+// //   ];
+  
+// //   const colors = {
+// //     pink: "text-pink-400 border-pink-400 shadow-pink-500/20",
+// //     purple: "text-purple-400 border-purple-400 shadow-purple-500/20",
+// //     green: "text-green-400 border-green-400 shadow-green-500/20",
+// //     cyan: "text-cyan-400 border-cyan-400 shadow-cyan-500/20",
+// //   };
+
+// //   return (
+// //     <section className="py-20 bg-black text-white">
+// //       <Container>
+// //         <FadeIn className="text-center mb-16">
+// //           <h2 className="text-4xl md:text-5xl font-extrabold mb-4">Our Meticulous <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Recycling Process</span></h2>
+// //           <p className="text-lg text-gray-400 max-w-2xl mx-auto">From old device to 'like-new' in 4 transparent steps.</p>
+// //         </FadeIn>
+        
+// //         <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+// //           {/* Connecting line for desktop */}
+// //           <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 left-0 w-full h-px bg-gray-700"></div>
+// //           <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 left-0 w-full h-px bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 opacity-50"></div>
+
+// //           {steps.map((step, index) => (
+// //             <FadeIn key={step.title} delay={index * 0.2}>
+// //               <div className={`relative bg-gray-900 p-6 rounded-xl border-t-4 ${colors[step.color]} shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 z-10`}>
+// //                 <div className={`mb-4 inline-flex items-center justify-center w-14 h-14 rounded-full bg-gray-800 ${colors[step.color]}`}>
+// //                   <step.icon className="w-7 h-7" />
+// //                 </div>
+// //                 <h3 className="text-xl font-bold mb-3">{step.title}</h3>
+// //                 <p className="text-gray-400 text-sm">{step.text}</p>
+// //               </div>
+// //             </FadeIn>
+// //           ))}
+// //         </div>
+// //       </Container>
+// //     </section>
+// //   );
+// // };
+
+// // // New "Products" Section (from Screenshot 8)
+// // const ProductsSection = () => {
+// //   const navigate = useNavigate();
+// //   const products = [
+// //     {
+// //       img: "https://placehold.co/600x400/1a1a1a/ffffff?text=Dell+Latitude+5490&font=inter",
+// //       name: "Dell Latitude 5490",
+// //       specs: "Intel Core i5, 16GB RAM, 256GB SSD",
+// //       price: "$499.00"
+// //     },
+// //     {
+// //       img: "https://placehold.co/600x400/1a1a1a/ffffff?text=HP+EliteBook+840+G5&font=inter",
+// //       name: "HP EliteBook 840 G5",
+// //       specs: "Intel Core i7, 16GB RAM, 512GB SSD",
+// //       price: "$599.00"
+// //     },
+// //     {
+// //       img: "https://placehold.co/600x400/1a1a1a/ffffff?text=MacBook+Pro+13-inch&font=inter",
+// //       name: "MacBook Pro 13-inch (2019)",
+// //       specs: "Intel Core i5, 8GB RAM, 256GB SSD",
+// //       price: "$699.00"
+// //     }
+// //   ];
+
+// //   return (
+// //     <section className="py-20 bg-gray-950 text-white">
+// //       <Container>
+// //         <FadeIn className="text-center mb-16">
+// //           <h2 className="text-4xl md:text-5xl font-extrabold mb-4">Explore Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Products</span></h2>
+// //           <p className="text-lg text-gray-400 max-w-2xl mx-auto">A-Grade quality. Unbeatable prices. 12-Month Warranty.</p>
+// //         </FadeIn>
+// //         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+// //           {products.map((product, index) => (
+// //             <FadeIn key={product.name} delay={index * 0.2}>
+// //               <div className="group bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-lg transition-all duration-300 hover:shadow-purple-500/10 hover:border-purple-400">
+// //                 <div className="overflow-hidden">
+// //                   <img src={product.img} alt={product.name} className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+// //                 </div>
+// //                 <div className="p-6">
+// //                   <h3 className="text-2xl font-bold mb-2">{product.name}</h3>
+// //                   <p className="text-gray-400 mb-4">{product.specs}</p>
+// //                   <div className="flex justify-between items-center">
+// //                     <span className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">{product.price}</span>
+// //                     <button 
+// //                       onClick={() => navigate('/product/1')}
+// //                       className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg border border-gray-700 transition-all duration-300 hover:bg-white hover:text-black"
+// //                     >
+// //                       View <ArrowRight className="w-4 h-4 ml-1" />
+// //                     </button>
+// //                   </div>
+// //                 </div>
+// //               </div>
+// //             </FadeIn>
+// //           ))}
+// //         </div>
+// //       </Container>
+// //     </section>
+// //   );
+// // };
+
+// // // New "Impact" Section (from Screenshots 4, 5 and old CountUp)
+// // const ImpactSection = () => {
+// //   const impactFeatures = [
+// //     { icon: CheckSquare, text: "300+ Point Check" },
+// //     { icon: ShieldCheck, text: "12-Month Warranty" },
+// //     { icon: HeartHandshake, text: "A-Grade Cosmetics" },
+// //     { icon: HardDrive, text: "100% Data Wiped" }
+// //   ];
+
+// //   return (
+// //     <section className="py-24 bg-black text-white overflow-hidden">
+// //       <Container>
+// //         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+// //           {/* Left Side: Stats & Map */}
+// //           <FadeIn x={-50}>
+// //             <h2 className="text-4xl md:text-5xl font-extrabold mb-8">
+// //               Explore Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500">Global Impact</span>
+// //             </h2>
+// //             <p className="text-lg text-gray-400 mb-12">
+// //               Every device we refurbish contributes to a more sustainable world. See our collective impact grow in real-time.
+// //             </p>
+// //             {/* Impact Stats with CountUp */}
+// //             <div className="grid grid-cols-2 gap-x-8 gap-y-10 mb-12">
+// //               <div className="text-center md:text-left">
+// //                 <div className="text-5xl lg:text-6xl font-extrabold">
+// //                   <CountUp end={8500} suffix="+" />
+// //                 </div>
+// //                 <p className="text-lg text-gray-400">Devices Given New Life</p>
+// //               </div>
+// //               <div className="text-center md:text-left">
+// //                 <div className="text-5xl lg:text-6xl font-extrabold">
+// //                   <CountUp end={1200} suffix="t" />
+// //                 </div>
+// //                 <p className="text-lg text-gray-400">Tons of CO2 Saved</p>
+// //               </div>
+// //               <div className="text-center md:text-left">
+// //                 <div className="text-5xl lg:text-6xl font-extrabold">
+// //                   <CountUp end={450} suffix="t" />
+// //                 </div>
+// //                 <p className="text-lg text-gray-400">E-Waste Diverted</p>
+// //               </div>
+// //               <div className="text-center md:text-left">
+// //                 <div className="text-5xl lg:text-6xl font-extrabold">
+// //                   <CountUp end={98} suffix="%" />
+// //                 </div>
+// //                 <p className="text-lg text-gray-400">Customer Satisfaction</p>
+// //               </div>
+// //             </div>
+// //           </FadeIn>
+          
+// //           {/* Right Side: Feature List & Graphic */}
+// //           <FadeIn x={50} className="relative">
+// //             {/* Placeholder for 3D Map Graphic */}
+// //             <img 
+// //               src="https://placehold.co/600x600/111111/4a00e0?text=Global+Impact+Map&font=inter" 
+// //               alt="Global impact map" 
+// //               className="rounded-2xl shadow-2xl opacity-30" 
+// //             />
+            
+// //             {/* Feature List Overlay */}
+// //             <div className="absolute inset-0 flex items-center justify-center">
+// //               <div className="bg-gray-900/80 backdrop-blur-md p-10 rounded-2xl border border-gray-700 w-full max-w-md">
+// //                 <h3 className="text-2xl font-bold mb-6 text-center">Our Quality Guarantee</h3>
+// //                 <ul className="space-y-5">
+// //                   {impactFeatures.map((item, index) => (
+// //                     <FadeIn key={item.text} delay={index * 0.2}>
+// //                       <li className="flex items-center text-lg">
+// //                         <item.icon className="w-6 h-6 mr-4 text-green-400 flex-shrink-0" />
+// //                         <span>{item.text}</span>
+// //                       </li>
+// //                     </FadeIn>
+// //                   ))}
+// //                 </ul>
+// //               </div>
+// //             </div>
+// //           </FadeIn>
+// //         </div>
+// //       </Container>
+// //     </section>
+// //   );
+// // };
+
+// // // Re-used Brands Marquee Section (from Screenshot 6)
+// // const BrandsMarquee = () => {
+// //   const brands = ['hp', 'Dell', 'Apple', 'Lenovo', 'Microsoft', 'Samsung', 'Acer', 'Asus'];
+// //   // Duplicate for seamless loop
+// //   const marqueeBrands = [...brands, ...brands]; 
+
+// //   return (
+// //     <div className="py-16 bg-gray-950 overflow-hidden">
+// //       <FadeIn>
+// //         <div className="relative w-full">
+// //           <div className="flex animate-infinite-scroll group-hover:pause-animation">
+// //             {marqueeBrands.map((brand, index) => (
+// //               <div key={index} className="flex-shrink-0 w-64 h-20 flex items-center justify-center mx-8">
+// //                 <img 
+// //                   src={`https://placehold.co/150x50/333333/999999?text=${brand}&font=inter`}
+// //                   alt={brand}
+// //                   className="h-10 w-auto object-contain grayscale opacity-50 transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+// //                 />
+// //               </div>
+// //             ))}
+// //           </div>
+// //         </div>
+// //       </FadeIn>
+// //     </div>
+// //   );
+// // };
+
+// // // Re-used Testimonials Section (from Screenshot 7)
+// // const TestimonialSection = () => (
+// //   <section className="py-24 bg-black text-white">
+// //     <Container>
+// //       <FadeIn className="text-center mb-16">
+// //         <h2 className="text-4xl md:text-5xl font-extrabold mb-4">What Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Customers Say</span></h2>
+// //       </FadeIn>
+// //       <FadeIn>
+// //         <TestimonialCarousel />
+// //       </FadeIn>
+// //     </Container>
+// //   </section>
+// // );
+
+// // // New CTA Section (from Screenshot 9)
+// // const CtaSection = () => {
+// //   const navigate = useNavigate();
+// //   return (
+// //     <section className="py-24 bg-gray-950 text-white">
+// //       <Container className="text-center">
+// //         <FadeIn>
+// //           <h2 className="text-4xl md:text-5xl font-extrabold mb-6">Have Questions?</h2>
+// //           <p className="text-lg text-gray-400 max-w-xl mx-auto mb-10">
+// //             Our team is ready to help you find the perfect device or answer any questions about our process.
+// //           </p>
+// //           <button
+// //             onClick={() => navigate('/contact')}
+// //             className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-black bg-gradient-to-r from-green-400 to-blue-500 rounded-full transition-all duration-300 ease-in-out overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105"
+// //           >
+// //             <span className="relative z-10 flex items-center">
+// //               Contact Us <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+// //             </span>
+// //           </button>
+// //         </FadeIn>
+// //       </Container>
+// //     </section>
+// //   );
+// // };
+
+// // // Main Home Component
+// // export const Home = () => {
+// //   return (
+// //     <div className="bg-black">
+// //       <HeroSection />
+// //       <WhyChooseUsSection />
+// //       <RecyclingProcessSection />
+// //       <ProductsSection />
+// //       <ImpactSection />
+// //       <BrandsMarquee />
+// //       <TestimonialSection />
+// //       <CtaSection />
+// //     </div>
+// //   );
+// // };
+
+// import React, { useState, useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import { motion } from 'framer-motion';
+// import { useInView } from 'react-intersection-observer';
+// import { 
+//   ArrowRight,
+//   Award,
+//   Box, // New icon
+//   CheckSquare,
+//   DatabaseZap,
+//   HardDrive,
+//   HeartHandshake,
+//   Recycle,
+//   ShieldCheck,
+//   ShoppingCart,
+//   Smile, // New icon
+//   Star,
+//   Trash2,
+//   Wrench
+// } from 'lucide-react';
+// import { FadeIn } from '../components/common/FadeIn';
+// import { CountUp } from '../components/common/CountUp';
+// import { TestimonialCarousel } from '../components/home/TestimonialCarousel';
+// // COMPONENT: FadeIn
+// // // We are moving this component code directly into Home.jsx to fix the import error.
+// // const FadeIn = ({ children, delay = 0, duration = 0.8, x = 0, y = 20, once = true, ...props }) => {
+// //   const { ref, inView } = useInView({
+// //     triggerOnce: once, // Only trigger animation once when it comes into view
+// //     threshold: 0.1, // Trigger when 10% of the component is visible
+// //   });
+
+// //   return (
+// //     <motion.div
+// //       ref={ref}
+// //       initial={{ opacity: 0, x, y }}
+// //       animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : x, y: inView ? 0 : y }}
+// //       transition={{ duration, delay }}
+// //       {...props}
+// //     >
+// //       {children}
+// //     </motion.div>
+// //   );
+// // };
+
+// // // COMPONENT: CountUp
+// // // We are moving this component code directly into Home.jsx to fix the import error
+// // // and replacing the custom 'useOnScreen' hook with 'useInView'.
+// // const CountUp = ({ end, duration = 2000, suffix = "", prefix = "" }) => {
+// //   const [count, setCount] = useState(0);
+// //   // Use useInView (which we already import for FadeIn) instead of the missing useOnScreen hook
+// //   const { ref, inView: isVisible } = useInView({ threshold: 0.5, triggerOnce: true });
+
+// //   useEffect(() => {
+// //     if (isVisible) {
+// //       let start = 0;
+// //       const endValue = end;
+// //       const startTime = Date.now();
+
+// //       const easeOutQuad = (t) => t * (2 - t);
+
+// //       const frame = () => {
+// //         const now = Date.now();
+// //         const progress = Math.min((now - startTime) / duration, 1);
+// //         const easedProgress = easeOutQuad(progress);
+        
+// //         setCount(Math.floor(easedProgress * endValue));
+
+// //         if (progress < 1) {
+// //           requestAnimationFrame(frame);
+// //         }
+// //       };
+// //       requestAnimationFrame(frame);
+// //     }
+// //   }, [isVisible, end, duration]);
+
+// //   return (
+// //     <span ref={ref} className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+// //       {prefix}{count.toLocaleString()}{suffix}
+// //     </span>
+// //   );
+// // };
+
+// // // COMPONENT: TestimonialCarousel
+// // // We are moving this component code directly into Home.jsx to fix the import error.
+// // // Updated for new light theme
+// // const TestimonialCarousel = () => {
+// //   const testimonials = [
+// //     {
+// //       quote: "The quality of the refurbished laptop I received was outstanding. It looked and felt brand new. Their commitment to sustainability is what won me over.",
+// //       name: "Sarah J.",
+// //       title: "Eco-Conscious Developer"
+// //     },
+// //     {
+// //       quote: "EonCircular's service is top-notch. They helped our school district secure hundreds of high-quality laptops at an affordable price. A seamless process from start to finish.",
+// //       name: "Michael T.",
+// //       title: "IT Director, Public Schools"
+// //     },
+// //     {
+// //       quote: "I was skeptical about 'refurbished' at first, but the Carbon-Neutral laptop I bought exceeded all my expectations. Plus, I feel good about the purchase.",
+// //       name: "Emily R.",
+// //       title: "Freelance Designer"
+// //     }
+// //   ];
+  
+// //   const [currentIndex, setCurrentIndex] = useState(0);
+
+// //   useEffect(() => {
+// //     const timer = setInterval(() => {
+// //       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+// //     }, 5000); // Change slide every 5 seconds
+    
+// //     return () => clearInterval(timer);
+// //   }, [testimonials.length]);
+
+// //   return (
+// //     <div className="relative w-full max-w-3xl mx-auto h-64 overflow-hidden">
+// //       {testimonials.map((item, index) => (
+// //         <div
+// //           key={index}
+// //           className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+// //             index === currentIndex ? 'opacity-100' : 'opacity-0'
+// //           }`}
+// //         >
+// //           <div className="flex flex-col items-center justify-center h-full text-center">
+// //             <p className="text-xl md:text-2xl font-light text-gray-700 italic">"{item.quote}"</p>
+// //             <p className="text-lg font-semibold text-gray-900 mt-6">{item.name}</p>
+// //             <p className="text-sm text-green-600 font-medium">{item.title}</p>
+// //           </div>
+// //         </div>
+// //       ))}
+// //       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex space-x-2">
+// //         {testimonials.map((_, index) => (
+// //           <button
+// //             key={index}
+// //             onClick={() => setCurrentIndex(index)}
+// //             className={`w-2 h-2 rounded-full transition-all duration-300 ${
+// //               index === currentIndex ? 'bg-green-500 w-4' : 'bg-gray-300'
+// //             }`}
+// //           ></button>
+// //         ))}
+// //       </div>
+// //     </div>
+// //   );
+// // };
+
+
+// // Reusable Container component for consistent spacing
+// const Container = ({ children, className = '' }) => (
+//   <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${className}`}>
+//     {children}
+//   </div>
+// );
+
+// // New Hero Section (from Screenshot 1)
+// const HeroSection = () => {
+//   const navigate = useNavigate();
+//   return (
+//     <div className="relative h-screen min-h-[700px] flex items-center justify-center text-center text-white overflow-hidden">
+//       {/* Background Graphic Placeholder */}
+//       <div className="absolute inset-0 z-0">
+//         <img 
+//           src="https://placehold.co/1920x1080/000000/4a00e0?text=+" 
+//           alt="Abstract background" 
+//           className="absolute inset-0 w-full h-full object-cover opacity-30" 
+//         />
+//         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+//         {/* Colorful gradient blobs */}
+//         <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full blur-[150px] opacity-30 animate-pulse"></div>
+//         <div className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full blur-[150px] opacity-30 animate-pulse animation-delay-3000"></div>
+//       </div>
+      
+//       <div className="relative z-10 flex flex-col items-center">
+//         <FadeIn delay={0.2} y={-30}>
+//           <img 
+//             src="https://placehold.co/600x400/111111/ffffff?text=Refurbished+Laptop&font=inter" 
+//             alt="Refurbished Laptop" 
+//             className="w-full max-w-lg md:max-w-2xl rounded-lg shadow-2xl mb-8"
+//           />
+//         </FadeIn>
+//         <FadeIn>
+//           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6">
+//             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-500 to-cyan-400">
+//               Revive. Renew. Reimagine.
+//             </span>
+//           </h1>
+//           <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-10">
+//             Quality Refurbished Laptops. Good for your pocket. Great for our planet.
+//           </p>
+//           <button
+//             onClick={() => navigate('/shop')}
+//             className="group relative inline-flex items-center justify-center px-10 py-4 text-lg font-bold text-white bg-gradient-to-r from-purple-600 to-pink-500 rounded-full transition-all duration-300 ease-in-out overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105"
+//           >
+//             <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-pink-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+//             <span className="relative z-10 flex items-center">
+//               Shop Now <ShoppingCart className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+//             </span>
+//           </button>
+//         </FadeIn>
+//       </div>
+//     </div>
+//   );
+// };
+
+// // New "Why Choose Us" Section (from Screenshot 3)
+// // Kept dark for contrast
+// const WhyChooseUsSection = () => {
+//   const items = [
+//     {
+//       icon: Award,
+//       title: "Certified Quality",
+//       text: "Every device is backed by our BSI Kitemark™, ensuring reliability and performance you can trust.",
+//       logo: "https://placehold.co/150x50/333333/ffffff?text=BSI+Kitemark&font=inter"
+//     },
+//     {
+//       icon: Recycle,
+//       title: "Sustainable Impact",
+//       text: "We are proudly Carbon Neutral. Your purchase actively reduces e-waste and supports a circular economy.",
+//       logo: "https://placehold.co/150x50/333333/ffffff?text=Carbon+Neutral&font=inter"
+//     },
+//     {
+//       icon: Star,
+//       title: "Customer Trust",
+//       text: "Rated 'Excellent' on Trustpilot. Join thousands of happy customers who chose smarter, greener tech.",
+//       logo: "https://placehold.co/150x50/333333/ffffff?text=Trustpilot+★★★★★&font=inter"
+//     }
+//   ];
+
+//   return (
+//     <section className="py-20 bg-gray-950 text-white">
+//       <Container>
+//         <FadeIn className="text-center mb-16">
+//           <h2 className="text-4xl md:text-5xl font-extrabold mb-4">Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">EonCircular?</span></h2>
+//           <p className="text-lg text-gray-400 max-w-2xl mx-auto">We're not just a retailer. We're your partner in a sustainable tech future.</p>
+//         </FadeIn>
+//         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+//           {items.map((item, index) => (
+//             <FadeIn key={item.title} delay={index * 0.2}>
+//               <div className="relative bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-lg h-full flex flex-col transition-all duration-300 hover:shadow-cyan-500/10 hover:-translate-y-1 hover:border-cyan-400 hover:scale-105">
+//                 <div className="absolute top-0 right-0 -mt-4 -mr-4 w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white shadow-lg">
+//                   <item.icon className="w-8 h-8" />
+//                 </div>
+//                 <h3 className="text-2xl font-bold mb-4 mt-10">{item.title}</h3>
+//                 <p className="text-gray-400 flex-grow mb-6">{item.text}</p>
+//                 <img src={item.logo} alt={`${item.title} logo`} className="h-10 w-auto object-contain self-start grayscale opacity-50" />
+//               </div>
+//             </FadeIn>
+//           ))}
+//         </div>
+//       </Container>
+//     </section>
+//   );
+// };
+
+// // New "Our Recycling Process" Section (from Screenshot 2)
+// // *** UPDATED TO NEW "WHITE GREEN" THEME ***
+// const RecyclingProcessSection = () => {
+//   const steps = [
+//     {
+//       icon: Trash2,
+//       title: "Collection & Sorting",
+//       text: "We source devices responsibly and categorize them for their next life.",
+//       color: "pink"
+//     },
+//     {
+//       icon: DatabaseZap,
+//       title: "Secure Data Erasure",
+//       text: "Using government-approved software, we guarantee 100% data destruction.",
+//       color: "purple"
+//     },
+//     {
+//       icon: Wrench,
+//       title: "Expert Refurbishment",
+//       text: "Our certified technicians repair, test, and upgrade components to A-Grade standard.",
+//       color: "green"
+//     },
+//     {
+//       icon: CheckSquare,
+//       title: "Quality Assurance",
+//       text: "A final 300+ point inspection ensures every device meets our high expectations.",
+//       color: "cyan"
+//     }
+//   ];
+  
+//   const colors = {
+//     pink: "text-pink-400 border-pink-400 shadow-pink-500/20",
+//     purple: "text-purple-400 border-purple-400 shadow-purple-500/20",
+//     green: "text-green-400 border-green-400 shadow-green-500/20",
+//     cyan: "text-cyan-400 border-cyan-400 shadow-cyan-500/20",
+//   };
+
+//   return (
+//     <section className="py-20 bg-gray-50 text-gray-900">
+//       <Container>
+//         <FadeIn className="text-center mb-16">
+//           <h2 className="text-4xl md:text-5xl font-extrabold mb-4">Our Meticulous <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-cyan-600">Recycling Process</span></h2>
+//           <p className="text-lg text-gray-600 max-w-2xl mx-auto">From old device to 'like-new' in 4 transparent steps.</p>
+//         </FadeIn>
+        
+//         <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+//           <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 left-0 w-full h-px bg-gray-300"></div>
+//           <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 left-0 w-full h-px bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 opacity-70"></div>
+
+//           {steps.map((step, index) => (
+//             <FadeIn key={step.title} delay={index * 0.2}>
+//               <div className={`relative bg-white p-6 rounded-xl border-t-4 ${colors[step.color]} shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 z-10`}>
+//                 <div className={`mb-4 inline-flex items-center justify-center w-14 h-14 rounded-full bg-gray-100 ${colors[step.color]}`}>
+//                   <step.icon className="w-7 h-7" />
+//                 </div>
+//                 <h3 className="text-xl font-bold mb-3">{step.title}</h3>
+//                 <p className="text-gray-600 text-sm">{step.text}</p>
+//               </div>
+//             </FadeIn>
+//           ))}
+//         </div>
+//       </Container>
+//     </section>
+//   );
+// };
+
+// // *** NEW "HOW IT WORKS" SECTION (from Screenshot 10) ***
+// // *** ADDED WITH "WHITE GREEN" THEME ***
+// const HowItWorksSection = () => {
+//   const steps = [
+//     {
+//       icon: ShoppingCart,
+//       title: "1. You Shop",
+//       text: "Browse our A-Grade certified laptops and find the perfect match for your needs and budget."
+//     },
+//     {
+//       icon: Box,
+//       title: "2. We Ship",
+//       text: "We securely pack your device in eco-friendly materials and ship it with a 12-month warranty."
+//     },
+//     {
+//       icon: Smile,
+//       title: "3. You Enjoy",
+//       text: "Unbox your 'like-new' device and enjoy top performance, knowing you've made a smart, sustainable choice."
+//     }
+//   ];
+
+//   return (
+//     <section className="py-20 bg-white text-gray-900">
+//       <Container>
+//         <FadeIn className="text-center mb-16">
+//           <h2 className="text-4xl md:text-5xl font-extrabold mb-4">How It <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-500">Works</span></h2>
+//           <p className="text-lg text-gray-600 max-w-2xl mx-auto">A simple, transparent, and rewarding experience.</p>
+//         </FadeIn>
+//         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+//           {steps.map((step, index) => (
+//             <FadeIn key={step.title} delay={index * 0.2}>
+//               <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200 shadow-lg h-full flex flex-col items-center text-center transition-all duration-300 hover:shadow-green-500/10 hover:-translate-y-1 hover:border-green-300 hover:scale-105">
+//                 <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-400 to-blue-500 rounded-full text-white shadow-lg mb-6">
+//                   <step.icon className="w-10 h-10" />
+//                 </div>
+//                 <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
+//                 <p className="text-gray-600 flex-grow">{step.text}</p>
+//               </div>
+//             </FadeIn>
+//           ))}
+//         </div>
+//       </Container>
+//     </section>
+//   );
+// };
+
+
+// // New "Products" Section (from Screenshot 8)
+// // *** UPDATED TO NEW "WHITE GREEN" THEME ***
+// const ProductsSection = () => {
+//   const navigate = useNavigate();
+//   const products = [
+//     {
+//       img: "https://placehold.co/600x400/1a1a1a/ffffff?text=Dell+Latitude+5490&font=inter",
+//       name: "Dell Latitude 5490",
+//       specs: "Intel Core i5, 16GB RAM, 256GB SSD",
+//       price: "$499.00"
+//     },
+//     {
+//       img: "https://placehold.co/600x400/1a1a1a/ffffff?text=HP+EliteBook+840+G5&font=inter",
+//       name: "HP EliteBook 840 G5",
+//       specs: "Intel Core i7, 16GB RAM, 512GB SSD",
+//       price: "$599.00"
+//     },
+//     {
+//       img: "https://placehold.co/600x400/1a1a1a/ffffff?text=MacBook+Pro+13-inch&font=inter",
+//       name: "MacBook Pro 13-inch (2019)",
+//       specs: "Intel Core i5, 8GB RAM, 256GB SSD",
+//       price: "$699.00"
+//     }
+//   ];
+
+//   return (
+//     <section className="py-20 bg-white text-gray-900">
+//       <Container>
+//         <FadeIn className="text-center mb-16">
+//           <h2 className="text-4xl md:text-5xl font-extrabold mb-4">Explore Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-600">Products</span></h2>
+//           <p className="text-lg text-gray-600 max-w-2xl mx-auto">A-Grade quality. Unbeatable prices. 12-Month Warranty.</p>
+//         </FadeIn>
+//         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+//           {products.map((product, index) => (
+//             <FadeIn key={product.name} delay={index * 0.2}>
+//               <div className="group bg-white rounded-xl overflow-hidden border border-gray-200 shadow-lg transition-all duration-300 hover:shadow-lg hover:scale-105 hover:shadow-purple-500/10 hover:border-purple-300">
+//                 <div className="overflow-hidden">
+//                   <img src={product.img} alt={product.name} className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" />
+//                 </div>
+//                 <div className="p-6">
+//                   <h3 className="text-2xl font-bold mb-2">{product.name}</h3>
+//                   <p className="text-gray-600 mb-4">{product.specs}</p>
+//                   <div className="flex justify-between items-center">
+//                     <span className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-600">{product.price}</span>
+//                     <button 
+//                       onClick={() => navigate('/product/1')}
+//                       className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg border border-gray-900 transition-all duration-300 hover:bg-green-500 hover:border-green-500 hover:text-white"
+//                     >
+//                       View <ArrowRight className="w-4 h-4 ml-1" />
+//                     </button>
+//                   </div>
+//                 </div>
+//               </div>
+//             </FadeIn>
+//           ))}
+//         </div>
+//       </Container>
+//     </section>
+//   );
+// };
+
+// // New "Impact" Section (from Screenshots 4, 5 and old CountUp)
+// // Kept dark for visual impact of the map
+// const ImpactSection = () => {
+//   const impactFeatures = [
+//     { icon: CheckSquare, text: "300+ Point Check" },
+//     { icon: ShieldCheck, text: "12-Month Warranty" },
+//     { icon: HeartHandshake, text: "A-Grade Cosmetics" },
+//     { icon: HardDrive, text: "100% Data Wiped" }
+//   ];
+
+//   return (
+//     <section className="py-24 bg-black text-white overflow-hidden">
+//       <Container>
+//         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+//           {/* Left Side: Stats & Map */}
+//           <FadeIn x={-50}>
+//             <h2 className="text-4xl md:text-5xl font-extrabold mb-8">
+//               Explore Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500">Global Impact</span>
+//             </h2>
+//             <p className="text-lg text-gray-400 mb-12">
+//               Every device we refurbish contributes to a more sustainable world. See our collective impact grow in real-time.
+//             </p>
+//             {/* Impact Stats with CountUp */}
+//             <div className="grid grid-cols-2 gap-x-8 gap-y-10 mb-12">
+//               <div className="text-center md:text-left">
+//                 <div className="text-5xl lg:text-6xl font-extrabold">
+//                   <CountUp end={8500} suffix="+" />
+//                 </div>
+//                 <p className="text-lg text-gray-400">Devices Given New Life</p>
+//               </div>
+//               <div className="text-center md:text-left">
+//                 <div className="text-5xl lg:text-6xl font-extrabold">
+//                   <CountUp end={1200} suffix="t" />
+//                 </div>
+//                 <p className="text-lg text-gray-400">Tons of CO2 Saved</p>
+//               </div>
+//               <div className="text-center md:text-left">
+//                 <div className="text-5xl lg:text-6xl font-extrabold">
+//                   <CountUp end={450} suffix="t" />
+//                 </div>
+//                 <p className="text-lg text-gray-400">E-Waste Diverted</p>
+//               </div>
+//               <div className="text-center md:text-left">
+//                 <div className="text-5xl lg:text-6xl font-extrabold">
+//                   <CountUp end={98} suffix="%" />
+//                 </div>
+//                 <p className="text-lg text-gray-400">Customer Satisfaction</p>
+//               </div>
+//             </div>
+//           </FadeIn>
+          
+//           {/* Right Side: Feature List & Graphic */}
+//           <FadeIn x={50} className="relative">
+//             {/* Placeholder for 3D Map Graphic */}
+//             <img 
+//               src="https://placehold.co/600x600/111111/4a00e0?text=Global+Impact+Map&font=inter" 
+//               alt="Global impact map" 
+//               className="rounded-2xl shadow-2xl opacity-30" 
+//             />
+            
+//             {/* Feature List Overlay */}
+//             <div className="absolute inset-0 flex items-center justify-center">
+//               <div className="bg-gray-900/80 backdrop-blur-md p-10 rounded-2xl border border-gray-700 w-full max-w-md">
+//                 <h3 className="text-2xl font-bold mb-6 text-center">Our Quality Guarantee</h3>
+//                 <ul className="space-y-5">
+//                   {impactFeatures.map((item, index) => (
+//                     <FadeIn key={item.text} delay={index * 0.2}>
+//                       <li className="flex items-center text-lg">
+//                         <item.icon className="w-6 h-6 mr-4 text-green-400 flex-shrink-0" />
+//                         <span>{item.text}</span>
+//                       </li>
+//                     </FadeIn>
+//                   ))}
+//                 </ul>
+//               </div>
+//             </div>
+//           </FadeIn>
+//         </div>
+//       </Container>
+//     </section>
+//   );
+// };
+
+// // Re-used Brands Marquee Section (from Screenshot 6)
+// // Kept dark for contrast
+// const BrandsMarquee = () => {
+//   const brands = ['hp', 'Dell', 'Apple', 'Lenovo', 'Microsoft', 'Samsung', 'Acer', 'Asus'];
+//   // Duplicate for seamless loop
+//   const marqueeBrands = [...brands, ...brands]; 
+
+//   return (
+//     <div className="py-16 bg-gray-950 overflow-hidden">
+//       <FadeIn>
+//         <div className="relative w-full">
+//           <div className="flex animate-infinite-scroll group-hover:pause-animation">
+//             {marqueeBrands.map((brand, index) => (
+//               <div key={index} className="flex-shrink-0 w-64 h-20 flex items-center justify-center mx-8">
+//                 <img 
+//                   src={`https://placehold.co/150x50/333333/999999?text=${brand}&font=inter`}
+//                   alt={brand}
+//                   className="h-10 w-auto object-contain grayscale opacity-50 transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+//                 />
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       </FadeIn>
+//     </div>
+//   );
+// };
+
+// // Re-used Testimonials Section (from Screenshot 7)
+// // *** UPDATED TO NEW "WHITE GREEN" THEME ***
+// const TestimonialSection = () => (
+//   <section className="py-24 bg-gray-50 text-gray-900">
+//     <Container>
+//       <FadeIn className="text-center mb-16">
+//         <h2 className="text-4xl md:text-5xl font-extrabold mb-4">What Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">Customers Say</span></h2>
+//       </FadeIn>
+//       <FadeIn>
+//         <TestimonialCarousel />
+//       </FadeIn>
+//     </Container>
+//   </section>
+// );
+
+// // New CTA Section (from Screenshot 9)
+// // Kept dark for contrast
+// const CtaSection = () => {
+//   const navigate = useNavigate();
+//   return (
+//     <section className="py-24 bg-gray-950 text-white">
+//       <Container className="text-center">
+//         <FadeIn>
+//           <h2 className="text-4xl md:text-5xl font-extrabold mb-6">Have Questions?</h2>
+//           <p className="text-lg text-gray-400 max-w-xl mx-auto mb-10">
+//             Our team is ready to help you find the perfect device or answer any questions about our process.
+//           </p>
+//           <button
+//             onClick={() => navigate('/contact')}
+//             className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-black bg-gradient-to-r from-green-400 to-blue-500 rounded-full transition-all duration-300 ease-in-out overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105"
+//           >
+//             <span className="relative z-10 flex items-center">
+//               Contact Us <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+//             </span>
+//           </button>
+//         </FadeIn>
+//       </Container>
+//     </section>
+//   );
+// };
+
+// // Main Home Component
+// export const Home = () => {
+//   return (
+//     <div className="bg-white">
+//       <HeroSection />
+//       <WhyChooseUsSection />
+//       <RecyclingProcessSection />
+//       <HowItWorksSection /> {/* <-- NEW SECTION ADDED */}
+//       <ProductsSection />
+//       <ImpactSection />
+//       <BrandsMarquee />
+//       <TestimonialSection />
+//       <CtaSection />
+//     </div>
+//   );
+// };
+   {/* Mega Menu */}
+                  {/* <AnimatePresence>
+                    {isServicesOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.3, ease: 'easeOut' }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 w-screen max-w-4xl"
+                      >
+                        <div className="mt-4 bg-black bg-opacity-90 backdrop-blur-lg rounded-lg shadow-2xl p-8 text-white border border-gray-700">
+                          <h3 className="text-2xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">Our Services</h3>
+                          <p className="text-gray-300 mb-8">Comprehensive solutions for your technology lifecycle.</p>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {item.children.map(service => (
+                              <Link
+                                key={service.name}
+                                to={service.path}
+                                onClick={closeAllMenus}
+                                className="group block p-4 rounded-lg hover:bg-gray-800 transition-all duration-300"
+                              >
+                                <div className="flex items-center mb-2">
+                                  <service.icon size={20} className="text-green-400 mr-3 flex-shrink-0" />
+                                  <span className="font-semibold text-white">{service.name}</span>
+                                </div>
+                                <p className="text-sm text-gray-400 group-hover:text-gray-200">{service.description}</p>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence> */}
+                  // // import React, { useState, useRef } from 'react';
+                  // // import { motion, AnimatePresence } from 'framer-motion';
+                  // // import { Link } from 'react-router-dom';
+                  // // import { 
+                  // //   Mail, 
+                  // //   Phone, 
+                  // //   MapPin,
+                  // //   Send,
+                  // //   Loader2,
+                  // //   CheckCircle,
+                  // //   AlertTriangle,
+                  // //   ChevronDown,
+                  // //   ArrowRight,User,
+                  // // } from 'lucide-react';
+                  // // import { FadeIn } from '../components/common/FadeIn';
+                  
+                  // // // --- Animated Form Input ---
+                  // // const FormInput = ({ id, label, icon: Icon, ...props }) => {
+                  // //   const [isFocused, setIsFocused] = useState(false);
+                    
+                  // //   return (
+                  // //     <div className="relative">
+                  // //       <label 
+                  // //         htmlFor={id} 
+                  // //         className="absolute -top-3 left-4 bg-gray-900 px-1 text-sm text-cyan-400"
+                  // //       >
+                  // //         {label}
+                  // //       </label>
+                  // //       <div className="relative flex items-center">
+                  // //         <Icon className="absolute left-4 w-5 h-5 text-gray-500" />
+                  // //         <motion.input
+                  // //           id={id}
+                  // //           className="w-full bg-gray-900 border border-gray-700 rounded-lg py-3 pr-4 pl-12 text-white placeholder-gray-600 outline-none transition-all duration-300"
+                  // //           style={{
+                  // //             boxShadow: isFocused ? '0 0 15px rgba(6, 182, 212, 0.3)' : 'none',
+                  // //             borderColor: isFocused ? 'rgb(56 189 248)' : 'rgb(55 65 81)', // cyan-400, gray-700
+                  // //           }}
+                  // //           onFocus={() => setIsFocused(true)}
+                  // //           onBlur={() => setIsFocused(false)}
+                  // //           {...props}
+                  // //         />
+                  // //       </div>
+                  // //     </div>
+                  // //   );
+                  // // };
+                  
+                  // // // --- Animated Text Area ---
+                  // // const FormTextarea = ({ id, label, ...props }) => {
+                  // //   const [isFocused, setIsFocused] = useState(false);
+                    
+                  // //   return (
+                  // //     <div className="relative">
+                  // //       <label 
+                  // //         htmlFor={id} 
+                  // //         className="absolute -top-3 left-4 bg-gray-900 px-1 text-sm text-cyan-400"
+                  // //       >
+                  // //         {label}
+                  // //       </label>
+                  // //       <motion.textarea
+                  // //         id={id}
+                  // //         rows="5"
+                  // //         className="w-full bg-gray-900 border border-gray-700 rounded-lg py-3 px-4 text-white placeholder-gray-600 outline-none resize-none transition-all duration-300"
+                  // //         style={{
+                  // //           boxShadow: isFocused ? '0 0 15px rgba(6, 182, 212, 0.3)' : 'none',
+                  // //           borderColor: isFocused ? 'rgb(56 189 248)' : 'rgb(55 65 81)',
+                  // //         }}
+                  // //         onFocus={() => setIsFocused(true)}
+                  // //         onBlur={() => setIsFocused(false)}
+                  // //         {...props}
+                  // //       />
+                  // //     </div>
+                  // //   );
+                  // // };
+                  
+                  // // // --- Contact Form Component ---
+                  // // const ContactForm = () => {
+                  // //   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+                  // //   const [status, setStatus] = useState('idle'); // idle | loading | success | error
+                  
+                  // //   const handleChange = (e) => {
+                  // //     const { id, value } = e.target;
+                  // //     setFormData(prev => ({ ...prev, [id]: value }));
+                  // //   };
+                  
+                  // //   const handleSubmit = (e) => {
+                  // //     e.preventDefault();
+                  // //     setStatus('loading');
+                      
+                  // //     // --- Mock Form Submission ---
+                  // //     // In a real app, you'd send `formData` to a backend or email service here.
+                  // //     console.log("Form Data Submitted:", formData);
+                      
+                  // //     setTimeout(() => {
+                  // //       // Simulate success
+                  // //       setStatus('success');
+                  // //       setFormData({ name: '', email: '', subject: '', message: '' });
+                  
+                  // //       // Reset form after a few seconds
+                  // //       setTimeout(() => setStatus('idle'), 4000);
+                  
+                  // //       // To test error state:
+                  // //       // setStatus('error');
+                  // //       // setTimeout(() => setStatus('idle'), 4000);
+                  
+                  // //     }, 2000);
+                  // //   };
+                  
+                  // //   return (
+                  // //     <form onSubmit={handleSubmit} className="space-y-6">
+                  // //       <FormInput 
+                  // //         id="name" 
+                  // //         label="Your Name" 
+                  // //         icon={User} 
+                  // //         type="text" 
+                  // //         placeholder="John Doe"
+                  // //         value={formData.name}
+                  // //         onChange={handleChange}
+                  // //         required 
+                  // //       />
+                  // //       <FormInput 
+                  // //         id="email" 
+                  // //         label="Your Email" 
+                  // //         icon={Mail} 
+                  // //         type="email" 
+                  // //         placeholder="john.doe@example.com"
+                  // //         value={formData.email}
+                  // //         onChange={handleChange}
+                  // //         required 
+                  // //       />
+                  // //       <FormInput 
+                  // //         id="subject" 
+                  // //         label="Subject" 
+                  // //         icon={ArrowRight} // Using ArrowRight as a stand-in for 'Subject'
+                  // //         type="text" 
+                  // //         placeholder="e.g., Bulk Buy Enquiry"
+                  // //         value={formData.subject}
+                  // //         onChange={handleChange}
+                  // //         required 
+                  // //       />
+                  // //       <FormTextarea 
+                  // //         id="message" 
+                  // //         label="Your Message" 
+                  // //         placeholder="How can we help you today?"
+                  // //         value={formData.message}
+                  // //         onChange={handleChange}
+                  // //         required 
+                  // //       />
+                        
+                  // //       {/* Submit Button with Animated States */}
+                  // //       <div>
+                  // //         <motion.button
+                  // //           type="submit"
+                  // //           disabled={status === 'loading' || status === 'success'}
+                  // //           className={`relative w-full text-lg font-bold py-4 px-8 rounded-lg text-white transition-all duration-300 overflow-hidden ${
+                  // //             status === 'idle' ? 'bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500' :
+                  // //             status === 'loading' ? 'bg-gray-700' :
+                  // //             status === 'success' ? 'bg-green-600' :
+                  // //             'bg-red-600'
+                  // //           }`}
+                  // //           whileTap={status === 'idle' ? { scale: 0.95 } : {}}
+                  // //         >
+                  // //           <AnimatePresence mode="wait">
+                  // //             {status === 'idle' && (
+                  // //               <motion.span
+                  // //                 key="idle"
+                  // //                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                  // //                 className="flex items-center justify-center"
+                  // //               >
+                  // //                 Send Message <Send className="w-5 h-5 ml-3" />
+                  // //               </motion.span>
+                  // //             )}
+                  // //             {status === 'loading' && (
+                  // //               <motion.span
+                  // //                 key="loading"
+                  // //                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                  // //                 className="flex items-center justify-center"
+                  // //               >
+                  // //                 Sending... <Loader2 className="w-5 h-5 ml-3 animate-spin" />
+                  // //               </motion.span>
+                  // //             )}
+                  // //             {status === 'success' && (
+                  // //               <motion.span
+                  // //                 key="success"
+                  // //                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                  // //                 className="flex items-center justify-center"
+                  // //               >
+                  // //                 Message Sent! <CheckCircle className="w-5 h-5 ml-3" />
+                  // //               </motion.span>
+                  // //             )}
+                  // //             {status === 'error' && (
+                  // //               <motion.span
+                  // //                 key="error"
+                  // //                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                  // //                 className="flex items-center justify-center"
+                  // //               >
+                  // //                 An Error Occurred <AlertTriangle className="w-5 h-5 ml-3" />
+                  // //               </motion.span>
+                  // //             )}
+                  // //           </AnimatePresence>
+                  // //         </motion.button>
+                  // //       </div>
+                  // //     </form>
+                  // //   );
+                  // // };
+                  
+                  // // // --- Contact Info Card ---
+                  // // const InfoCard = ({ icon: Icon, title, children, delay }) => (
+                  // //   <FadeIn delay={delay}>
+                  // //     <motion.div
+                  // //       whileHover={{ y: -5, borderColor: 'rgb(56 189 248)' }} // cyan-400
+                  // //       className="bg-gray-900 p-8 rounded-2xl border border-gray-800"
+                  // //     >
+                  // //       <Icon className="w-12 h-12 text-cyan-400 mb-6" />
+                  // //       <h3 className="text-3xl font-bold text-white mb-4">{title}</h3>
+                  // //       <div className="text-gray-300 space-y-2 text-lg">
+                  // //         {children}
+                  // //       </div>
+                  // //     </motion.div>
+                  // //   </FadeIn>
+                  // // );
+                  
+                  // // // --- FAQ Accordion (Re-used from Education) ---
+                  // // const AccordionItem = ({ index, title, children, isOpen, onToggle }) => (
+                  // //   <div className="border-b border-gray-800">
+                  // //     <button
+                  // //       onClick={() => onToggle(index)}
+                  // //       className="flex justify-between items-center w-full py-6 text-left"
+                  // //     >
+                  // //       <span className="text-xl font-semibold text-white">{title}</span>
+                  // //       <motion.div
+                  // //         animate={{ rotate: isOpen ? 180 : 0 }}
+                  // //         transition={{ duration: 0.3 }}
+                  // //       >
+                  // //         <ChevronDown className="w-6 h-6 text-cyan-400" />
+                  // //       </motion.div>
+                  // //     </button>
+                  // //     <AnimatePresence>
+                  // //       {isOpen && (
+                  // //         <motion.section
+                  // //           key="content"
+                  // //           initial="collapsed"
+                  // //           animate="open"
+                  // //           exit="collapsed"
+                  // //           variants={{
+                  // //             open: { opacity: 1, height: 'auto', marginTop: '0px', marginBottom: '24px' },
+                  // //             collapsed: { opacity: 0, height: 0, marginTop: '0px', marginBottom: '0px' }
+                  // //           }}
+                  // //           transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+                  // //         >
+                  // //           <div className="text-gray-300 pb-6">{children}</div>
+                  // //         </motion.section>
+                  // //       )}
+                  // //     </AnimatePresence>
+                  // //   </div>
+                  // // );
+                  
+                  // // const FAQSection = () => {
+                  // //   const [openIndex, setOpenIndex] = useState(null);
+                  // //   const faqs = [
+                  // //     { q: "What is the typical response time?", a: "Our team aims to respond to all enquiries within 24 business hours. For urgent matters, please call us directly." },
+                  // //     { q: "Do you offer technical support?", a: "Yes, we provide technical support for all devices under warranty. If you have an issue, please email support@eoncircular.co.uk or call our support line." },
+                  // //     { q: "Can I visit your facility in Portsmouth?", a: "Our facility is a secure processing center and not open to the general public. However, we are happy to arrange site visits for potential business and education partners. Please contact us to schedule." },
+                  // //     { q: "Do you have international offices?", a: "Our main headquarters is in the UK, but we operate and ship globally. Please get in touch with our sales team to discuss international orders." },
+                  // //   ];
+                  
+                  // //   const handleToggle = (index) => {
+                  // //     setOpenIndex(openIndex === index ? null : index);
+                  // //   };
+                  
+                  // //   return (
+                  // //     <div className="w-full">
+                  // //       {faqs.map((faq, index) => (
+                  // //         <AccordionItem
+                  // //           key={index}
+                  // //           index={index}
+                  // //           title={faq.q}
+                  // //           isOpen={openIndex === index}
+                  // //           onToggle={handleToggle}
+                  // //         >
+                  // //           {faq.a}
+                  // //         </AccordionItem>
+                  // //       ))}
+                  // //     </div>
+                  // //   );
+                  // // };
+                  
+                  
+                  // // // --- Main Contact Page Component ---
+                  // // export const Contact = () => {
+                  // //   return (
+                  // //     <div className="bg-black text-white overflow-x-hidden">
+                        
+                  // //       {/* --- 1. Hero Section --- */}
+                  // //       <section className="relative h-[70vh] flex items-center justify-center text-center overflow-hidden">
+                  // //         {/* Animated Background */}
+                  // //         <div className="absolute inset-0 z-0">
+                  // //           <img 
+                  // //             src="https://placehold.co/1920x1080/000000/1a1a1a?text=Contact+Background&font=inter" 
+                  // //             alt="Contact background"
+                  // //             className="w-full h-full object-cover opacity-20"
+                  // //           />
+                  // //           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                  // //           {/* Animated Dots */}
+                  // //           <style>{`
+                  // //             @keyframes float {
+                  // //               0% { transform: translateY(0px); opacity: 0.5; }
+                  // //               50% { transform: translateY(-20px); opacity: 0.8; }
+                  // //               100% { transform: translateY(0px); opacity: 0.5; }
+                  // //             }
+                  // //             .floating-dot { animation: float 6s ease-in-out infinite; }
+                  // //           `}</style>
+                  // //           <Mail className="floating-dot absolute w-16 h-16 text-cyan-500/10" style={{ left: '10%', top: '20%', animationDelay: '0s' }} />
+                  // //           <Phone className="floating-dot absolute w-12 h-12 text-cyan-500/10" style={{ left: '80%', top: '30%', animationDelay: '2s' }} />
+                  // //           <MapPin className="floating-dot absolute w-20 h-20 text-cyan-500/10" style={{ left: '30%', top: '70%', animationDelay: '4s' }} />
+                  // //         </div>
+                          
+                  // //         {/* Content */}
+                  // //         <div className="relative z-10 max-w-4xl mx-auto px-6">
+                  // //           <FadeIn>
+                  // //             <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter mb-6">
+                  // //               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-500">
+                  // //                 Contact Us
+                  // //               </span>
+                  // //             </h1>
+                  // //           </FadeIn>
+                  // //           <FadeIn delay={0.2}>
+                  // //             <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                  // //               Have a question? We'd love to hear from you. Get in touch with our
+                  // //               specialist team for sales, support, or partnership enquiries.
+                  // //             </p>
+                  // //           </FadeIn>
+                  // //         </div>
+                  // //       </section>
+                  
+                  // //       {/* --- 2. Main Content: Info + Form --- */}
+                  // //       <section className="py-24 bg-gray-900">
+                  // //         <div className="container mx-auto px-6 max-w-7xl">
+                  // //           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                              
+                  // //             {/* Left Column: Contact Info */}
+                  // //             <div className="space-y-8">
+                  // //               <FadeIn>
+                  // //                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  // //                   Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Touch</span>
+                  // //                 </h2>
+                  // //               </FadeIn>
+                  // //               <InfoCard icon={MapPin} title="Our Headquarters" delay={0.1}>
+                  // //                 <p>Unit E, Railway Triangle, Walton Road</p>
+                  // //                 <p>Portsmouth, PO6 1TY</p>
+                  // //                 <p>United Kingdom</p>
+                  // //               </InfoCard>
+                  // //               <InfoCard icon={Mail} title="Email Us" delay={0.2}>
+                  // //                 <p>
+                  // //                   <a href="mailto:info@eoncircular.co.uk" className="hover:text-cyan-400 transition-colors">
+                  // //                     info@eoncircular.co.uk
+                  // //                   </a>
+                  // //                 </p>
+                  // //                 <p className="text-sm text-gray-400">For general and sales enquiries</p>
+                  // //               </InfoCard>
+                  // //               <InfoCard icon={Phone} title="Call Us" delay={0.3}>
+                  // //                 <p>
+                  // //                   <a href="tel:+442392530290" className="hover:text-cyan-400 transition-colors">
+                  // //                     +44 (0)2392 530290
+                  // //                   </a>
+                  // //                 </p>
+                  // //                 <p className="text-sm text-gray-400">Mon - Fri, 9:00 AM - 5:00 PM (GMT)</p>
+                  // //               </InfoCard>
+                  // //             </div>
+                              
+                  // //             {/* Right Column: Contact Form */}
+                  // //             <FadeIn delay={0.2}>
+                  // //               <div className="bg-gray-900 p-8 md:p-12 rounded-2xl border border-gray-800">
+                  // //                 <ContactForm />
+                  // //               </div>
+                  // //             </FadeIn>
+                              
+                  // //           </div>
+                  // //         </div>
+                  // //       </section>
+                  
+                  // //       {/* --- 3. FAQ Section --- */}
+                  // //       <section className="py-24 bg-black">
+                  // //         <div className="container mx-auto px-6 max-w-3xl">
+                  // //           <FadeIn>
+                  // //             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+                  // //               Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Questions</span>
+                  // //             </h2>
+                  // //           </FadeIn>
+                  // //           <FadeIn>
+                  // //             <FAQSection />
+                  // //           </FadeIn>
+                  // //         </div>
+                  // //       </section>
+                  
+                  // //       {/* --- 4. Map Section --- */}
+                  // //       <section className="py-24 bg-gray-900">
+                  // //         <div className="container mx-auto px-6 max-w-6xl text-center">
+                  // //           <FadeIn>
+                  // //             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+                  // //               Visit Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Headquarters</span>
+                  // //             </h2>
+                  // //           </FadeIn>
+                  // //           <FadeIn delay={0.2}>
+                  // //             <div className="relative h-[400px] md:h-[500px] w-full rounded-2xl overflow-hidden border-2 border-gray-800 shadow-2xl">
+                  // //               <iframe
+                  // //                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2516.402633095944!2d-1.076826184252554!3d50.86221407953443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48745d3112b323b7%3A0x6a5de6321d586a1!2sRailway%20Triangle%2C%20Walton%20Rd%2C%20Portsmouth%20PO6%201TY%2C%20UK!5e0!3m2!1sen!2sus!4v1678888888888!5m2!1sen!2sus"
+                  // //                 width="100%"
+                  // //                 height="100%"
+                  // //                 style={{ border: 0 }}
+                  // //                 allowFullScreen=""
+                  // //                 loading="lazy"
+                  // //                 referrerPolicy="no-referrer-when-downgrade"
+                  // //                 // This filter inverts the map colors for a dark mode theme
+                  // //                 className="filter grayscale invert contrast-90"
+                  // //               ></iframe>
+                  // //             </div>
+                  // //           </FadeIn>
+                  // //         </div>
+                  // //       </section>
+                        
+                  // //     </div>
+                  // //   );
+                  // // };
+                  
+                  // // // Make sure to replace this export with your file's default export if needed
+                  
+                  // import React, { useState, useRef } from 'react';
+                  // import { motion, AnimatePresence } from 'framer-motion';
+                  // import { Link } from 'react-router-dom';
+                  // import { 
+                  //   Mail, 
+                  //   Phone, 
+                  //   MapPin,
+                  //   Send,
+                  //   Loader2,
+                  //   CheckCircle,
+                  //   AlertTriangle,
+                  //   ChevronDown,
+                  //   ArrowRight,
+                  //   User,
+                  //   Briefcase
+                  // } from 'lucide-react';
+                  // import { FadeIn } from '../components/common/FadeIn';
+                  
+                  // // --- Animated Form Input ---
+                  // const FormInput = ({ id, label, icon: Icon, ...props }) => {
+                  //   const [isFocused, setIsFocused] = useState(false);
+                    
+                  //   return (
+                  //     <div className="relative">
+                  //       <label 
+                  //         htmlFor={id} 
+                  //         className="absolute -top-3 left-4 bg-gray-900 px-1 text-sm text-cyan-400"
+                  //       >
+                  //         {label}
+                  //       </label>
+                  //       <div className="relative flex items-center">
+                  //         <Icon className="absolute left-4 w-5 h-5 text-gray-500" />
+                  //         <motion.input
+                  //           id={id}
+                  //           className="w-full bg-gray-900 border border-gray-700 rounded-lg py-3 pr-4 pl-12 text-white placeholder-gray-600 outline-none transition-all duration-300"
+                  //           style={{
+                  //             boxShadow: isFocused ? '0 0 15px rgba(6, 182, 212, 0.3)' : 'none',
+                  //             borderColor: isFocused ? 'rgb(56 189 248)' : 'rgb(55 65 81)', // cyan-400, gray-700
+                  //           }}
+                  //           onFocus={() => setIsFocused(true)}
+                  //           onBlur={() => setIsFocused(false)}
+                  //           {...props}
+                  //         />
+                  //       </div>
+                  //     </div>
+                  //   );
+                  // };
+                  
+                  // // --- Animated Text Area ---
+                  // const FormTextarea = ({ id, label, ...props }) => {
+                  //   const [isFocused, setIsFocused] = useState(false);
+                    
+                  //   return (
+                  //     <div className="relative">
+                  //       <label 
+                  //         htmlFor={id} 
+                  //         className="absolute -top-3 left-4 bg-gray-900 px-1 text-sm text-cyan-400"
+                  //       >
+                  //         {label}
+                  //       </label>
+                  //       <motion.textarea
+                  //         id={id}
+                  //         rows="5"
+                  //         className="w-full bg-gray-900 border border-gray-700 rounded-lg py-3 px-4 text-white placeholder-gray-600 outline-none resize-none transition-all duration-300"
+                  //         style={{
+                  //           boxShadow: isFocused ? '0 0 15px rgba(6, 182, 212, 0.3)' : 'none',
+                  //           borderColor: isFocused ? 'rgb(56 189 248)' : 'rgb(55 65 81)',
+                  //         }}
+                  //         onFocus={() => setIsFocused(true)}
+                  //         onBlur={() => setIsFocused(false)}
+                  //         {...props}
+                  //       />
+                  //     </div>
+                  //   );
+                  // };
+                  
+                  // // --- Animated Select Input ---
+                  // const FormSelect = ({ id, label, icon: Icon, children, ...props }) => {
+                  //   const [isFocused, setIsFocused] = useState(false);
+                    
+                  //   return (
+                  //     <div className="relative">
+                  //       <label 
+                  //         htmlFor={id} 
+                  //         className="absolute -top-3 left-4 bg-gray-900 px-1 text-sm text-cyan-400"
+                  //       >
+                  //         {label}
+                  //       </label>
+                  //       <div className="relative flex items-center">
+                  //         <Icon className="absolute left-4 w-5 h-5 text-gray-500" />
+                  //         <motion.select
+                  //           id={id}
+                  //           className="w-full bg-gray-900 border border-gray-700 rounded-lg py-3 pr-12 pl-12 text-white placeholder-gray-600 outline-none transition-all duration-300 appearance-none" // `appearance-none` hides default arrow
+                  //           style={{
+                  //             boxShadow: isFocused ? '0 0 15px rgba(6, 182, 212, 0.3)' : 'none',
+                  //             borderColor: isFocused ? 'rgb(56 189 248)' : 'rgb(55 65 81)',
+                  //           }}
+                  //           onFocus={() => setIsFocused(true)}
+                  //           onBlur={() => setIsFocused(false)}
+                  //           {...props}
+                  //         >
+                  //           {children}
+                  //         </motion.select>
+                  //         <ChevronDown className="absolute right-4 w-5 h-5 text-gray-500 pointer-events-none" />
+                  //       </div>
+                  //     </div>
+                  //   );
+                  // };
+                  
+                  
+                  // // --- Contact Form Component ---
+                  // const ContactForm = () => {
+                  //   const [formData, setFormData] = useState({ 
+                  //     firstName: '', 
+                  //     lastName: '', 
+                  //     email: '', 
+                  //     phone: '', 
+                  //     company: '', 
+                  //     jobTitle: '', 
+                  //     interest: '', 
+                  //     message: '' 
+                  //   });
+                  //   const [status, setStatus] = useState('idle'); // idle | loading | success | error
+                  
+                  //   const handleChange = (e) => {
+                  //     const { id, value } = e.target;
+                  //     setFormData(prev => ({ ...prev, [id]: value }));
+                  //   };
+                  
+                  //   const handleSubmit = (e) => {
+                  //     e.preventDefault();
+                  //     setStatus('loading');
+                      
+                  //     // --- Mock Form Submission ---
+                  //     // In a real app, you'd send `formData` to a backend or email service here.
+                  //     console.log("Form Data Submitted:", formData);
+                      
+                  //     setTimeout(() => {
+                  //       // Simulate success
+                  //       setStatus('success');
+                  //       setFormData({ 
+                  //         firstName: '', 
+                  //         lastName: '', 
+                  //         email: '', 
+                  //         phone: '', 
+                  //         company: '', 
+                  //         jobTitle: '', 
+                  //         interest: '', 
+                  //         message: '' 
+                  //       });
+                  
+                  //       // Reset form after a few seconds
+                  //       setTimeout(() => setStatus('idle'), 4000);
+                  
+                  //       // To test error state:
+                  //       // setStatus('error');
+                  //       // setTimeout(() => setStatus('idle'), 4000);
+                  
+                  //     }, 2000);
+                  //   };
+                  
+                  //   return (
+                  //     <form onSubmit={handleSubmit} className="space-y-7">
+                  //       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  //         <FormInput 
+                  //           id="firstName" 
+                  //           label="First Name" 
+                  //           icon={User} 
+                  //           type="text" 
+                  //           placeholder="John"
+                  //           value={formData.firstName}
+                  //           onChange={handleChange}
+                  //           required 
+                  //         />
+                  //         <FormInput 
+                  //           id="lastName" 
+                  //           label="Last Name" 
+                  //           icon={User} 
+                  //           type="text" 
+                  //           placeholder="Doe"
+                  //           value={formData.lastName}
+                  //           onChange={handleChange}
+                  //           required 
+                  //         />
+                  //         <FormInput 
+                  //           id="email" 
+                  //           label="Your Email" 
+                  //           icon={Mail} 
+                  //           type="email" 
+                  //           placeholder="john.doe@example.com"
+                  //           value={formData.email}
+                  //           onChange={handleChange}
+                  //           required 
+                  //         />
+                  //         <FormInput 
+                  //           id="phone" 
+                  //           label="Phone Number" 
+                  //           icon={Phone} 
+                  //           type="tel" 
+                  //           placeholder="+1 (555) 123-4567"
+                  //           value={formData.phone}
+                  //           onChange={handleChange}
+                  //           // Not required
+                  //         />
+                  //         <FormInput 
+                  //           id="company" 
+                  //           label="Company Name" 
+                  //           icon={Briefcase} 
+                  //           type="text" 
+                  //           placeholder="Eon Industries"
+                  //           value={formData.company}
+                  //           onChange={handleChange}
+                  //         />
+                  //         <FormInput 
+                  //           id="jobTitle" 
+                  //           label="Job Title" 
+                  //           icon={Briefcase} 
+                  //           type="text" 
+                  //           placeholder="IT Manager"
+                  //           value={formData.jobTitle}
+                  //           onChange={handleChange}
+                  //         />
+                  //       </div>
+                  //       <FormSelect 
+                  //         id="interest"
+                  //         label="I'm interested in..."
+                  //         icon={ArrowRight}
+                  //         value={formData.interest}
+                  //         onChange={handleChange}
+                  //         required
+                  //       >
+                  //         <option value="" disabled>Please select an option</option>
+                  //         <option value="business">Laptops for Business</option>
+                  //         <option value="education">Laptops for Education</option>
+                  //         <option value="personal">Personal Use</option>
+                  //         <option value="support">Technical Support</option>
+                  //         <option value="other">Other Enquiry</option>
+                  //       </FormSelect>
+                  //       <FormTextarea 
+                  //         id="message" 
+                  //         label="Your Message" 
+                  //         placeholder="How can we help you today?"
+                  //         value={formData.message}
+                  //         onChange={handleChange}
+                  //         required 
+                  //       />
+                        
+                  //       {/* Submit Button with Animated States */}
+                  //       <div>
+                  //         <motion.button
+                  //           type="submit"
+                  //           disabled={status === 'loading' || status === 'success'}
+                  //           className={`relative w-full text-lg font-bold py-4 px-8 rounded-lg text-white transition-all duration-300 overflow-hidden ${
+                  //             status === 'idle' ? 'bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500' :
+                  //             status === 'loading' ? 'bg-gray-700' :
+                  //             status === 'success' ? 'bg-green-600' :
+                  //             'bg-red-600'
+                  //           }`}
+                  //           whileTap={status === 'idle' ? { scale: 0.95 } : {}}
+                  //         >
+                  //           <AnimatePresence mode="wait">
+                  //             {status === 'idle' && (
+                  //               <motion.span
+                  //                 key="idle"
+                  //                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                  //                 className="flex items-center justify-center"
+                  //               >
+                  //                 Send Message <Send className="w-5 h-5 ml-3" />
+                  //               </motion.span>
+                  //             )}
+                  //             {status === 'loading' && (
+                  //               <motion.span
+                  //                 key="loading"
+                  //                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                  //                 className="flex items-center justify-center"
+                  //               >
+                  //                 Sending... <Loader2 className="w-5 h-5 ml-3 animate-spin" />
+                  //               </motion.span>
+                  //             )}
+                  //             {status === 'success' && (
+                  //               <motion.span
+                  //                 key="success"
+                  //                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                  //                 className="flex items-center justify-center"
+                  //               >
+                  //                 Message Sent! <CheckCircle className="w-5 h-5 ml-3" />
+                  //               </motion.span>
+                  //             )}
+                  //             {status === 'error' && (
+                  //               <motion.span
+                  //                 key="error"
+                  //                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                  //                 className="flex items-center justify-center"
+                  //               >
+                  //                 An Error Occurred <AlertTriangle className="w-5 h-5 ml-3" />
+                  //               </motion.span>
+                  //             )}
+                  //           </AnimatePresence>
+                  //         </motion.button>
+                  //       </div>
+                  //     </form>
+                  //   );
+                  // };
+                  
+                  // // --- Contact Info Card ---
+                  // const InfoCard = ({ icon: Icon, title, children, delay }) => (
+                  //   <FadeIn delay={delay}>
+                  //     <motion.div
+                  //       whileHover={{ y: -5, borderColor: 'rgb(56 189 248)' }} // cyan-400
+                  //       className="bg-gray-900 p-8 rounded-2xl border border-gray-800"
+                  //     >
+                  //       <Icon className="w-12 h-12 text-cyan-400 mb-6" />
+                  //       <h3 className="text-3xl font-bold text-white mb-4">{title}</h3>
+                  //       <div className="text-gray-300 space-y-2 text-lg">
+                  //         {children}
+                  //       </div>
+                  //     </motion.div>
+                  //   </FadeIn>
+                  // );
+                  
+                  // // --- FAQ Accordion (Re-used from Education) ---
+                  // const AccordionItem = ({ index, title, children, isOpen, onToggle }) => (
+                  //   <div className="border-b border-gray-800">
+                  //     <button
+                  //       onClick={() => onToggle(index)}
+                  //       className="flex justify-between items-center w-full py-6 text-left"
+                  //     >
+                  //       <span className="text-xl font-semibold text-white">{title}</span>
+                  //       <motion.div
+                  //         animate={{ rotate: isOpen ? 180 : 0 }}
+                  //         transition={{ duration: 0.3 }}
+                  //       >
+                  //         <ChevronDown className="w-6 h-6 text-cyan-400" />
+                  //       </motion.div>
+                  //     </button>
+                  //     <AnimatePresence>
+                  //       {isOpen && (
+                  //         <motion.section
+                  //           key="content"
+                  //           initial="collapsed"
+                  //           animate="open"
+                  //           exit="collapsed"
+                  //           variants={{
+                  //             open: { opacity: 1, height: 'auto', marginTop: '0px', marginBottom: '24px' },
+                  //             collapsed: { opacity: 0, height: 0, marginTop: '0px', marginBottom: '0px' }
+                  //           }}
+                  //           transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+                  //         >
+                  //           <div className="text-gray-300 pb-6">{children}</div>
+                  //         </motion.section>
+                  //       )}
+                  //     </AnimatePresence>
+                  //   </div>
+                  // );
+                  
+                  // const FAQSection = () => {
+                  //   const [openIndex, setOpenIndex] = useState(null);
+                  //   const faqs = [
+                  //     { q: "What is the typical response time?", a: "Our team aims to respond to all enquiries within 24 business hours. For urgent matters, please call us directly." },
+                  //     { q: "Do you offer technical support?", a: "Yes, we provide technical support for all devices under warranty. If you have an issue, please email support@eoncircular.co.uk or call our support line." },
+                  //     { q: "Can I visit your facility in Portsmouth?", a: "Our facility is a secure processing center and not open to the general public. However, we are happy to arrange site visits for potential business and education partners. Please contact us to schedule." },
+                  //     { q: "Do you have international offices?", a: "Our main headquarters is in the UK, but we operate and ship globally. Please get in touch with our sales team to discuss international orders." },
+                  //   ];
+                  
+                  //   const handleToggle = (index) => {
+                  //     setOpenIndex(openIndex === index ? null : index);
+                  //   };
+                  
+                  //   return (
+                  //     <div className="w-full">
+                  //       {faqs.map((faq, index) => (
+                  //         <AccordionItem
+                  //           key={index}
+                  //           index={index}
+                  //           title={faq.q}
+                  //           isOpen={openIndex === index}
+                  //           onToggle={handleToggle}
+                  //         >
+                  //           {faq.a}
+                  //         </AccordionItem>
+                  //       ))}
+                  //     </div>
+                  //   );
+                  // };
+                  
+                  
+                  // // --- Main Contact Page Component ---
+                  // export const Contact = () => {
+                  //   return (
+                  //     <div className="bg-black text-white overflow-x-hidden">
+                        
+                  //       {/* --- 1. Hero Section --- */}
+                  //       <section className="relative h-[70vh] flex items-center justify-center text-center overflow-hidden">
+                  //         {/* Animated Background */}
+                  //         <div className="absolute inset-0 z-0">
+                  //           <img 
+                  //             src="https://placehold.co/1920x1080/000000/1a1a1a?text=Contact+Background&font=inter" 
+                  //             alt="Contact background"
+                  //             className="w-full h-full object-cover opacity-20"
+                  //           />
+                  //           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                  //           {/* Animated Dots */}
+                  //           <style>{`
+                  //             @keyframes float {
+                  //               0% { transform: translateY(0px); opacity: 0.5; }
+                  //               50% { transform: translateY(-20px); opacity: 0.8; }
+                  //               100% { transform: translateY(0px); opacity: 0.5; }
+                  //             }
+                  //             .floating-dot { animation: float 6s ease-in-out infinite; }
+                  //           `}</style>
+                  //           <Mail className="floating-dot absolute w-16 h-16 text-cyan-500/10" style={{ left: '10%', top: '20%', animationDelay: '0s' }} />
+                  //           <Phone className="floating-dot absolute w-12 h-12 text-cyan-500/10" style={{ left: '80%', top: '30%', animationDelay: '2s' }} />
+                  //           <MapPin className="floating-dot absolute w-20 h-20 text-cyan-500/10" style={{ left: '30%', top: '70%', animationDelay: '4s' }} />
+                  //         </div>
+                          
+                  //         {/* Content */}
+                  //         <div className="relative z-10 max-w-4xl mx-auto px-6">
+                  //           <FadeIn>
+                  //             <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter mb-6">
+                  //               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-500">
+                  //                 Contact Us
+                  //               </span>
+                  //             </h1>
+                  //           </FadeIn>
+                  //           <FadeIn delay={0.2}>
+                  //             <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                  //               Have a question? We'd love to hear from you. Get in touch with our
+                  //               specialist team for sales, support, or partnership enquiries.
+                  //             </p>
+                  //           </FadeIn>
+                  //         </div>
+                  //       </section>
+                  
+                  //       {/* --- 2. Main Content: Info + Form --- */}
+                  //       <section className="py-24 bg-gray-900">
+                  //         <div className="container mx-auto px-6 max-w-7xl">
+                  //           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                              
+                  //             {/* Left Column: Contact Info */}
+                  //             <div className="space-y-8">
+                  //               <FadeIn>
+                  //                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  //                   Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Touch</span>
+                  //                 </h2>
+                  //               </FadeIn>
+                  //               <InfoCard icon={MapPin} title="Our Headquarters" delay={0.1}>
+                  //                 <p>Unit E, Railway Triangle, Walton Road</p>
+                  //                 <p>Portsmouth, PO6 1TY</p>
+                  //                 <p>United Kingdom</p>
+                  //               </InfoCard>
+                  //               <InfoCard icon={Mail} title="Email Us" delay={0.2}>
+                  //                 <p>
+                  //                   <a href="mailto:info@eoncircular.co.uk" className="hover:text-cyan-400 transition-colors">
+                  //                     info@eoncircular.co.uk
+                  //                   </a>
+                  //                 </p>
+                  //                 <p className="text-sm text-gray-400">For general and sales enquiries</p>
+                  //               </InfoCard>
+                  //               <InfoCard icon={Phone} title="Call Us" delay={0.3}>
+                  //                 <p>
+                  //                   <a href="tel:+442392530290" className="hover:text-cyan-400 transition-colors">
+                  //                     +44 (0)2392 530290
+                  //                   </a>
+                  //                 </p>
+                  //                 <p className="text-sm text-gray-400">Mon - Fri, 9:00 AM - 5:00 PM (GMT)</p>
+                  //               </InfoCard>
+                  //             </div>
+                              
+                  //             {/* Right Column: Contact Form */}
+                  //             <FadeIn delay={0.2}>
+                  //               <div className="bg-gray-900 p-8 md:p-12 rounded-2xl border border-gray-800">
+                  //                 <ContactForm />
+                  //               </div>
+                  //             </FadeIn>
+                              
+                  //           </div>
+                  //         </div>
+                  //       </section>
+                  
+                  //       {/* --- 3. FAQ Section --- */}
+                  //       <section className="py-24 bg-black">
+                  //         <div className="container mx-auto px-6 max-w-3xl">
+                  //           <FadeIn>
+                  //             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+                  //               Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Questions</span>
+                  //             </h2>
+                  //           </FadeIn>
+                  //           <FadeIn>
+                  //             <FAQSection />
+                  //           </FadeIn>
+                  //         </div>
+                  //       </section>
+                  
+                  //       {/* --- 4. Map Section --- */}
+                  //       <section className="py-24 bg-gray-900">
+                  //         <div className="container mx-auto px-6 max-w-6xl text-center">
+                  //           <FadeIn>
+                  //             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+                  //               Visit Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Headquarters</span>
+                  //             </h2>
+                  //           </FadeIn>
+                  //           <FadeIn delay={0.2}>
+                  //             <div className="relative h-[400px] md:h-[500px] w-full rounded-2xl overflow-hidden border-2 border-gray-800 shadow-2xl">
+                  //               <iframe
+                  //                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2516.402633095944!2d-1.076826184252554!3d50.86221407953443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48745d3112b323b7%3A0x6a5de6321d586a1!2sRailway%20Triangle%2C%20Walton%20Rd%2C%20Portsmouth%20PO6%201TY%2C%20UK!5e0!3m2!1sen!2sus!4v1678888888888!5m2!1sen!2sus"
+                  //                 width="100%"
+                  //                 height="100%"
+                  //                 style={{ border: 0 }}
+                  //                 allowFullScreen=""
+                  //                 loading="lazy"
+                  //                 referrerPolicy="no-referrer-when-downgrade"
+                  //                 // This filter inverts the map colors for a dark mode theme
+                  //                 className="filter grayscale invert contrast-90"
+                  //               ></iframe>
+                  //             </div>
+                  //           </FadeIn>
+                  //         </div>
+                  //       </section>
+                        
+                  //     </div>
+                  //   );
+                  // };
+                  
+                  // // Make sure to replace this export with your file's default export if needed
+                  

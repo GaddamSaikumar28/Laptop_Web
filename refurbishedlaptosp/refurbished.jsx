@@ -160,9 +160,9 @@ const useOnScreen = (options) => {
 // --- COMPONENTS ---
 
 /**
- * New EonCircular Logo Component
+ * New ECycleGreen Logo Component
  */
-const EonCircularLogo = ({ className = "w-10 h-10" }) => (
+const ECycleGreenLogo = ({ className = "w-10 h-10" }) => (
   <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M50 10C27.9086 10 10 27.9086 10 50C10 72.0914 27.9086 90 50 90" stroke="url(#gradLogo1)" strokeWidth="12" strokeLinecap="round"/>
     <path d="M50 90C72.0914 90 90 72.0914 90 50C90 27.9086 72.0914 10 50 10" stroke="url(#gradLogo2)" strokeWidth="12" strokeLinecap="round" strokeDasharray="0.1 20"/>
@@ -254,8 +254,8 @@ const CountUp = ({ end, duration = 2000, suffix = "", prefix = "" }) => {
 const LoadingScreen = () => (
   <div className="fixed inset-0 bg-gray-900 flex items-center justify-center z-50">
     <div className="text-white flex flex-col items-center space-y-4">
-      <EonCircularLogo className="w-16 h-16 animate-spin" />
-      <span className="text-2xl font-medium tracking-wider text-gray-300">EonCircular</span>
+      <ECycleGreenLogo className="w-16 h-16 animate-spin" />
+      <span className="text-2xl font-medium tracking-wider text-gray-300">ECycleGreen</span>
     </div>
   </div>
 );
@@ -309,8 +309,8 @@ const Header = () => {
             className="flex-shrink-0 flex items-center cursor-pointer group"
             onClick={() => navigate('Home')}
           >
-            <EonCircularLogo className="w-10 h-10 transition-transform duration-500 ease-out group-hover:rotate-180" />
-            <span className="text-white text-3xl font-bold ml-3 tracking-wider">EonCircular</span>
+            <ECycleGreenLogo className="w-10 h-10 transition-transform duration-500 ease-out group-hover:rotate-180" />
+            <span className="text-white text-3xl font-bold ml-3 tracking-wider">ECycleGreen</span>
           </div>
 
           {/* Desktop Nav */}
@@ -400,8 +400,8 @@ const Footer = () => {
               className="flex items-center cursor-pointer"
               onClick={() => navigate('Home')}
             >
-              <EonCircularLogo className="w-10 h-10" />
-              <span className="text-white text-3xl font-bold ml-3 tracking-wider">EonCircular</span>
+              <ECycleGreenLogo className="w-10 h-10" />
+              <span className="text-white text-3xl font-bold ml-3 tracking-wider">ECycleGreen</span>
             </div>
             <p className="text-sm">Powering the future with sustainable technology.</p>
             <div className="flex space-x-2">
@@ -452,7 +452,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Mail size={20} className="text-blue-400" />
-                <span>info@eoncircular.co.uk</span>
+                <span>info@ECycleGreen.co.uk</span>
               </li>
             </ul>
           </div>
@@ -461,7 +461,7 @@ const Footer = () => {
         
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-gray-800 text-center text-sm">
-          <p>&copy; {currentYear} EonCircular. All Rights Reserved.</p>
+          <p>&copy; {currentYear} ECycleGreen. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
@@ -479,7 +479,7 @@ const TestimonialCarousel = () => {
       title: "Eco-Conscious Developer"
     },
     {
-      quote: "EonCircular's service is top-notch. They helped our school district secure hundreds of high-quality laptops at an affordable price. A seamless process from start to finish.",
+      quote: "ECycleGreen's service is top-notch. They helped our school district secure hundreds of high-quality laptops at an affordable price. A seamless process from start to finish.",
       name: "Michael T.",
       title: "IT Director, Public Schools"
     },
@@ -747,7 +747,7 @@ const HomePage = () => {
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto mt-4 mb-12">
               From cosmetic grading to component-level diagnostics, see what makes
-              an EonCircular laptop different.
+              an ECycleGreen laptop different.
             </p>
             <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl group cursor-pointer border-2 border-gray-800">
               <img 
@@ -853,7 +853,7 @@ const AboutUsPage = () => {
       <section className="relative h-[70vh] flex items-center justify-center text-center overflow-hidden">
         <img 
           src="https://placehold.co/1920x1080/1a1a1a/333333?text=Our+Facility&font=inter" 
-          alt="EonCircular Facility"
+          alt="ECycleGreen Facility"
           className="absolute z-0 w-full h-full object-cover"
         />
         {/* Gradient Overlay */}
@@ -1090,7 +1090,7 @@ const AuthPage = () => {
           
           <div className="relative z-10">
             <div className="flex justify-center mb-6">
-              <EonCircularLogo className="w-12 h-12" />
+              <ECycleGreenLogo className="w-12 h-12" />
             </div>
             <h1 className="text-4xl font-bold text-white mb-6 text-center">
               {isLogin ? 'Welcome Back' : 'Create Account'}

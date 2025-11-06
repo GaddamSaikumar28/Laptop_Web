@@ -37,7 +37,7 @@ export const AnimatedLaptopSVG = ({ progress, scale, rotateX, rotateY }) => {
           x="12" y="2" width="76" height="56" rx="1" fill="#0A0A0A"
           style={{ opacity: progress > 0.15 ? 1 : 0, transition: 'opacity 0.3s' }} // Screen turns on
         />
-        {/* EonCircular OS text on screen */}
+        {/* ECycleGreen OS text on screen */}
         <text
           x="50" y="30"
           fontFamily="Exo 2, sans-serif"
@@ -47,7 +47,7 @@ export const AnimatedLaptopSVG = ({ progress, scale, rotateX, rotateY }) => {
           fill="#00BFFF" // Cyan blue color
           style={{ opacity: progress > 0.2 ? 1 : 0, transition: 'opacity 0.3s 0.1s' }}
         >
-          EONCIRCULAR OS
+          ECycleGreen OS
         </text>
       </motion.g>
     </motion.svg>

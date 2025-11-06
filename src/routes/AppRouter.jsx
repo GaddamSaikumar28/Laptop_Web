@@ -30,8 +30,10 @@ import { RecyclingConsultation } from '../pages/RecyclingConsultation';
 import { HardDriveShredding } from '../pages/HardDriveShredding';
 import { AcceptedItems } from '../pages/AcceptedItems';
 import { JunkRemoval } from '../pages/JunkRemoval';
+import { AuthProvider } from '../context/AuthContext';
 export const AppRouter = () => {
   return (
+    <AuthProvider>
     <BrowserRouter>
       <Routes>
         {/* Routes with Header and Footer */}
@@ -73,5 +75,6 @@ export const AppRouter = () => {
         <Route path="*" element={<Placeholder title="404: Page Not Found" />} />
       </Routes>
     </BrowserRouter>
+    </AuthProvider>
   );
 };

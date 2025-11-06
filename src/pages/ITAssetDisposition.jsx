@@ -91,9 +91,9 @@ const ServicesSidebar = () => {
               <Phone className="w-5 h-5 opacity-80 group-hover:opacity-100" />
               <span className="group-hover:underline">+1 (234) 567-890</span>
             </a>
-            <a href="mailto:itad@eoncircular.com" className="flex items-center space-x-3 group">
+            <a href="mailto:itad@ECycleGreen.com" className="flex items-center space-x-3 group">
               <Mail className="w-5 h-5 opacity-80 group-hover:opacity-100" />
-              <span className="group-hover:underline">itad@eoncircular.com</span>
+              <span className="group-hover:underline">itad@ECycleGreen.com</span>
             </a>
           </div>
           <Link
@@ -296,7 +296,7 @@ const ITADContent = () => (
     <FadeIn>
       <article>
         <h2 className="text-3xl font-semibold text-gray-900 mb-6">Premier IT Asset Disposition Services</h2>
-        <p>EonCircular provides a single-source solution for all your IT asset disposition needs. We securely manage the entire lifecycle of your retired IT assets, from pickup and data destruction to refurbishment, remarketing, and recycling.</p>
+        <p>ECycleGreen provides a single-source solution for all your IT asset disposition needs. We securely manage the entire lifecycle of your retired IT assets, from pickup and data destruction to refurbishment, remarketing, and recycling.</p>
         <p className="mt-4">Our goal is to protect your sensitive data, ensure environmental compliance, and recover the maximum possible value from your equipment.</p>
       </article>
     </FadeIn>

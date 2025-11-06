@@ -25,7 +25,7 @@ const ParallaxImageSection = ({
   title, 
   children, 
   imageUrl, 
-  imageAlt = "EonCircular for education", 
+  imageAlt = "ECycleGreen for education", 
   reverse = false 
 }) => {
   const sectionRef = useRef(null);
@@ -386,7 +386,7 @@ export const Education = () => {
         reverse={true}
       >
         <p className="italic text-xl text-gray-200">
-          "EonCircular was a game-changer for our digital literacy program. We
+          "ECycleGreen was a game-changer for our digital literacy program. We
           deployed 500 laptops across three schools, coming in 20% under budget
           with devices that performed like new."
         </p>

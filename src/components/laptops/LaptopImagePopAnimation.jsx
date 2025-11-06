@@ -69,7 +69,7 @@ const LaptopImagePopAnimation = () => {
         ))}
       </motion.div>
         <p className="text-center text-gray-600 mt-12 text-lg">
-            Each laptop is meticulously refurbished and rigorously tested to ensure it meets our EonCircular standards.
+            Each laptop is meticulously refurbished and rigorously tested to ensure it meets our ECycleGreen standards.
         </p>
     </div>
   );

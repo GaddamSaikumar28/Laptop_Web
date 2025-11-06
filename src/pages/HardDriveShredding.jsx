@@ -92,9 +92,9 @@ const ServicesSidebar = () => {
               <Phone className="w-5 h-5 opacity-80 group-hover:opacity-100" />
               <span className="group-hover:underline">+1 (234) 567-890</span>
             </a>
-            <a href="mailto:shredding@eoncircular.com" className="flex items-center space-x-3 group">
+            <a href="mailto:shredding@ECycleGreen.com" className="flex items-center space-x-3 group">
               <Mail className="w-5 h-5 opacity-80 group-hover:opacity-100" />
-              <span className="group-hover:underline">shredding@eoncircular.com</span>
+              <span className="group-hover:underline">shredding@ECycleGreen.com</span>
             </a>
           </div>
           <Link

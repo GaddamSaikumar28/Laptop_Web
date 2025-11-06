@@ -358,7 +358,7 @@
 //   const [openIndex, setOpenIndex] = useState(null);
 //   const faqs = [
 //     { q: "What is the typical response time?", a: "Our team aims to respond to all enquiries within 24 business hours. For urgent matters, please call us directly." },
-//     { q: "Do you offer technical support?", a: "Yes, we provide technical support for all devices under warranty. If you have an issue, please email support@eoncircular.co.uk or call our support line." },
+//     { q: "Do you offer technical support?", a: "Yes, we provide technical support for all devices under warranty. If you have an issue, please email support@ECycleGreen.co.uk or call our support line." },
 //     { q: "Can I visit your facility in Portsmouth?", a: "Our facility is a secure processing center and not open to the general public. However, we are happy to arrange site visits for potential business and education partners. Please contact us to schedule." },
 //     { q:"Do you have international offices?", a: "Our main headquarters is in the UK, but we operate and ship globally. Please get in touch with our sales team to discuss international orders." },
 //   ];
@@ -451,8 +451,8 @@
 //               </InfoCard>
 //               <InfoCard icon={Mail} title="Email Us" delay={0.2}>
 //                 <p>
-//                   <a href="mailto:info@eoncircular.co.uk" className="hover:text-cyan-400 transition-colors">
-//                     info@eoncircular.co.uk
+//                   <a href="mailto:info@ECycleGreen.co.uk" className="hover:text-cyan-400 transition-colors">
+//                     info@ECycleGreen.co.uk
 //                   </a>
 //                 </p>
 //                 <p className="text-sm text-gray-400">For general and sales enquiries</p>
@@ -625,7 +625,7 @@ const FAQSection = () => {
     { q: "What is your bulk pricing for businesses?", a: "We offer significant discounts for bulk orders. Please use the form to contact our sales team with your requirements, and we'll provide a custom quote." },
     { q: "How do I make an enquiry for my school?", a: "You can either fill out the contact form with 'Education' as the subject, or visit our dedicated Education page for more specific information and case studies." },
     { q: "Where are you located?", a: "Our headquarters and main remanufacturing facility are located at 123 Circular Drive, Tech Park, London. You can see a map at the bottom of this page." },
-    { q: "What is your warranty policy?", a: "All EonCircular certified laptops come with a standard 12-month warranty, covering all hardware and performance issues." }
+    { q: "What is your warranty policy?", a: "All ECycleGreen certified laptops come with a standard 12-month warranty, covering all hardware and performance issues." }
   ];
 
   const handleClick = (index) => {
@@ -721,7 +721,7 @@ export const Contact = () => {
                 <Mail className="w-12 h-12 text-green-600 mb-6" />
                 <h3 className="text-2xl font-semibold text-gray-900 mb-3">Email Us</h3>
                 <p className="text-gray-600 mb-4">Our team will get back to you within 24 hours.</p>
-                <a href="mailto:sales@eoncircular.com" className="font-semibold text-green-600 hover:text-green-500">sales@eoncircular.com</a>
+                <a href="mailto:sales@ECycleGreen.com" className="font-semibold text-green-600 hover:text-green-500">sales@ECycleGreen.com</a>
               </div>
             </FadeIn>
             <FadeIn delay={0.1}>
@@ -763,14 +763,14 @@ export const Contact = () => {
                     <Mail className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
                     <div>
                       <h4 className="text-lg font-semibold text-gray-900">General Enquiries</h4>
-                      <p className="text-gray-600">info@eoncircular.com</p>
+                      <p className="text-gray-600">info@ECycleGreen.com</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <Briefcase className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
                     <div>
                       <h4 className="text-lg font-semibold text-gray-900">Sales & Business</h4>
-                      <p className="text-gray-600">sales@eoncircular.com</p>
+                      <p className="text-gray-600">sales@ECycleGreen.com</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">

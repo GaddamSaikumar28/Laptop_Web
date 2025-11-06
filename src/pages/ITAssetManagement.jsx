@@ -87,9 +87,9 @@ const ServicesSidebar = () => {
               <Phone className="w-5 h-5 opacity-80 group-hover:opacity-100" />
               <span className="group-hover:underline">+1 (234) 567-890</span>
             </a>
-            <a href="mailto:itam@eoncircular.com" className="flex items-center space-x-3 group">
+            <a href="mailto:itam@ECycleGreen.com" className="flex items-center space-x-3 group">
               <Mail className="w-5 h-5 opacity-80 group-hover:opacity-100" />
-              <span className="group-hover:underline">itam@eoncircular.com</span>
+              <span className="group-hover:underline">itam@ECycleGreen.com</span>
             </a>
           </div>
           <Link
@@ -345,7 +345,7 @@ const ITAMContent = () => (
     <FadeIn>
       <article>
         <h2 className="text-3xl font-semibold text-gray-900 mb-6">Maximize the Value of Your IT Assets</h2>
-        <p>EonCircular provides a single, unified platform to manage the entire lifecycle of your IT assets. From procurement to disposal, our IT Asset Management (ITAM) services give you complete visibility and control over your hardware, software, and contracts.</p>
+        <p>ECycleGreen provides a single, unified platform to manage the entire lifecycle of your IT assets. From procurement to disposal, our IT Asset Management (ITAM) services give you complete visibility and control over your hardware, software, and contracts.</p>
         <p className="mt-4">Our goal is simple: to help you reduce costs, mitigate risk, and make smarter IT decisions.</p>
       </article>
     </FadeIn>

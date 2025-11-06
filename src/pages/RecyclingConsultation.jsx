@@ -91,9 +91,9 @@ const ServicesSidebar = () => {
               <Phone className="w-5 h-5 opacity-80 group-hover:opacity-100" />
               <span className="group-hover:underline">+1 (234) 567-890</span>
             </a>
-            <a href="mailto:consulting@eoncircular.com" className="flex items-center space-x-3 group">
+            <a href="mailto:consulting@ECycleGreen.com" className="flex items-center space-x-3 group">
               <Mail className="w-5 h-5 opacity-80 group-hover:opacity-100" />
-              <span className="group-hover:underline">consulting@eoncircular.com</span>
+              <span className="group-hover:underline">consulting@ECycleGreen.com</span>
             </a>
           </div>
           <Link
@@ -153,7 +153,7 @@ const MainContent = () => (
   <FadeIn>
     <article className="prose prose-lg max-w-none text-gray-700">
       <h2 className="text-3xl font-semibold text-gray-900 mb-6">What is Recycling Consultation?</h2>
-      <p>A recycling consultation from EonCircular is a comprehensive analysis of your organization's current e-waste streams and disposal practices. We identify inefficiencies, compliance gaps, and cost-saving opportunities. Our experts then design a tailored recycling program that aligns with your business goals and sustainability targets, ensuring you dispose of electronic waste responsibly and economically.</p>
+      <p>A recycling consultation from ECycleGreen is a comprehensive analysis of your organization's current e-waste streams and disposal practices. We identify inefficiencies, compliance gaps, and cost-saving opportunities. Our experts then design a tailored recycling program that aligns with your business goals and sustainability targets, ensuring you dispose of electronic waste responsibly and economically.</p>
     </article>
   </FadeIn>
 );
@@ -202,7 +202,7 @@ const BenefitsSection = () => (
       <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
         <div className="mt-6 lg:mt-0">
           <h2 className="text-3xl font-semibold text-gray-900 mb-6">The Benefits of Our Consultation Services</h2>
-          <p className="text-gray-700 mb-4">Partnering with EonCircular for a recycling consultation transforms your e-waste from a liability into a streamlined, managed process. We help you go beyond simple disposal to create a program that adds value to your business.</p>
+          <p className="text-gray-700 mb-4">Partnering with ECycleGreen for a recycling consultation transforms your e-waste from a liability into a streamlined, managed process. We help you go beyond simple disposal to create a program that adds value to your business.</p>
           <ul className="space-y-4">
             {[
               { text: 'Reduce disposal costs by optimizing logistics and sorting.', icon: DollarSign },
@@ -273,7 +273,7 @@ const WhyChooseUsSection = () => (
   <FadeIn>
     <h2 className="text-3xl font-semibold text-gray-900 mb-10">Why Choose Us?</h2>
     <article className="prose prose-lg max-w-none text-gray-700">
-      <p>When you choose EonCircular, you're not just hiring a vendor; you're gaining a partner. We bring years of industry expertise, a commitment to 100% compliance, and a passion for sustainability to every project. Our data-driven approach ensures your recycling program is not only eco-friendly but also economically sound.</p>
+      <p>When you choose ECycleGreen, you're not just hiring a vendor; you're gaining a partner. We bring years of industry expertise, a commitment to 100% compliance, and a passion for sustainability to every project. Our data-driven approach ensures your recycling program is not only eco-friendly but also economically sound.</p>
       
       <motion.div 
         className="overflow-hidden rounded-lg shadow-md mt-8 lg:mt-0"
@@ -281,7 +281,7 @@ const WhyChooseUsSection = () => (
       >
         <img 
           src="https://placehold.co/1000x500/f0fdf4/15803d?text=Why+Choose+Us&font=inter"
-          alt="Why Choose EonCircular"
+          alt="Why Choose ECycleGreen"
           className="rounded-lg w-full object-cover aspect-video transition-transform duration-300"
         />
       </motion.div>

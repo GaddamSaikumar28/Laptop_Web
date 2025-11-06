@@ -26,7 +26,7 @@
 //   title, 
 //   children, 
 //   imageUrl, 
-//   imageAlt = "EonCircular sustainability", 
+//   imageAlt = "ECycleGreen sustainability", 
 //   reverse = false 
 // }) => {
 //   const sectionRef = useRef(null);
@@ -194,15 +194,15 @@
 //         </div>
 //       </section>
 
-//       {/* --- 2. EonCircular Certified (from wireframe) --- */}
+//       {/* --- 2. ECycleGreen Certified (from wireframe) --- */}
 //       <ParallaxImageSection
-//         title="EonCircular Certified"
+//         title="ECycleGreen Certified"
 //         imageUrl="https://placehold.co/1000x800/1a1a1a/333333?text=Laptop+Diagram&font=inter"
 //         imageAlt="Certified Laptop Diagram"
 //         reverse={true}
 //       >
 //         <p>
-//           Being EonCircular Certified means every device has passed a rigorous 30-point
+//           Being ECycleGreen Certified means every device has passed a rigorous 30-point
 //           inspection. This isn't just a check; it's a complete remanufacturing process
 //           that guarantees performance, reliability, and quality equivalent to new.
 //         </p>
@@ -260,7 +260,7 @@
 //           remanufacturing process.
 //         </p>
 //         <p className="mt-4">
-//           Choosing EonCircular means making a direct, positive impact on the planet.
+//           Choosing ECycleGreen means making a direct, positive impact on the planet.
 //           You get premium technology with zero environmental guilt.
 //         </p>
 //       </ParallaxImageSection>
@@ -387,7 +387,7 @@ const ParallaxImageSection = ({
   title, 
   children, 
   imageUrl, 
-  imageAlt = "EonCircular sustainability", 
+  imageAlt = "ECycleGreen sustainability", 
   reverse = false 
 }) => {
   const sectionRef = useRef(null);
@@ -571,16 +571,16 @@ export const Sustainability = () => {
         </div>
       </section>
 
-      {/* --- 2. EonCircular Certified (Alternating bg-white) --- */}
+      {/* --- 2. ECycleGreen Certified (Alternating bg-white) --- */}
       <div className="bg-white">
         <ParallaxImageSection
-          title="EonCircular Certified"
+          title="ECycleGreen Certified"
           imageUrl="https://placehold.co/1000x800/e0e0e0/555555?text=Laptop+Diagram&font=inter"
           imageAlt="Certified Laptop Diagram"
           reverse={true}
         >
           <p>
-            Being EonCircular Certified means every device has passed a rigorous 30-point
+            Being ECycleGreen Certified means every device has passed a rigorous 30-point
             inspection. This isn't just a check; it's a complete remanufacturing process
             that guarantees performance, reliability, and quality equivalent to new.
           </p>
@@ -645,7 +645,7 @@ export const Sustainability = () => {
             remanufacturing process.
           </p>
           <p className="mt-4">
-            Choosing EonCircular means making a direct, positive impact on the planet.
+            Choosing ECycleGreen means making a direct, positive impact on the planet.
             You get premium technology with zero environmental guilt.
           </p>
         </ParallaxImageSection>

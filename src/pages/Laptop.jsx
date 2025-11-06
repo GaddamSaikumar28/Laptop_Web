@@ -53,7 +53,7 @@
 //           </FadeIn>
 //           <FadeIn delay={0.2}>
 //             <p className="text-lg md:text-xl mb-8 text-gray-200">
-//               High-performance, eco-friendly, and EonCircular Certified quality you can trust.
+//               High-performance, eco-friendly, and ECycleGreen Certified quality you can trust.
 //             </p>
 //           </FadeIn>
 //           <FadeIn delay={0.4}>
@@ -67,12 +67,12 @@
 //         </div>
 //       </section>
 
-//       {/* EonCircular Certified Standard Section (Dark Theme) */}
+//       {/* ECycleGreen Certified Standard Section (Dark Theme) */}
 //       <section id="explore" className="py-16 md:py-24 bg-gray-900">
 //         <div className="container mx-auto px-6 max-w-6xl">
 //           <FadeIn>
 //             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-//               The EonCircular Certified Standard
+//               The ECycleGreen Certified Standard
 //             </h2>
 //           </FadeIn>
 //           <div className="grid md:grid-cols-3 gap-10">
@@ -159,7 +159,7 @@
 //       {/* Call to Action Section (Existing component - already dark) */}
 //       <CallToAction
 //         title="Ready to Upgrade Your Tech?"
-//         text="Find the perfect refurbished laptop that fits your needs and budget, backed by our EonCircular guarantee."
+//         text="Find the perfect refurbished laptop that fits your needs and budget, backed by our ECycleGreen guarantee."
 //         buttonText="Shop All Laptops"
 //         buttonLink="/contact" // Changed to contact, as shop isn't built
 //       />
@@ -318,12 +318,12 @@ export const Laptop = () => {
         </div>
       </section>
 
-      {/* --- 2. New "Why EonCircular?" Section (New Feature) --- */}
+      {/* --- 2. New "Why ECycleGreen?" Section (New Feature) --- */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-6 max-w-7xl">
           <FadeIn>
             <h2 className="text-4xl md:text-5xl font-light text-center mb-4 text-gray-900">
-              Why <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-600">EonCircular?</span>
+              Why <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-600">ECycleGreen?</span>
             </h2>
             <p className="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-20">
               We don't just sell refurbished laptops. We remanufacture them to a
@@ -411,7 +411,7 @@ export const Laptop = () => {
         <div className="container mx-auto px-6 max-w-7xl">
           <FeatureSection
             title="Empower Your Classroom"
-            subtitle="Discover why schools and universities trust EonCircular for their technology needs."
+            subtitle="Discover why schools and universities trust ECycleGreen for their technology needs."
             imageUrl="https://placehold.co/1200x800/e0e0e0/555555?text=Students+Using+Laptops&font=inter"
             imageAlt="Students in a classroom"
             features={educationFeatures}
@@ -428,7 +428,7 @@ export const Laptop = () => {
               <div className="lg:w-3/4">
                 <GraduationCap className="w-16 h-16 text-white/70 mb-6" />
                 <blockquote className="text-2xl md:text-4xl font-light italic border-l-4 border-white/50 pl-8 py-4">
-                  "EonCircular didn't just sell us laptops; they provided a
+                  "ECycleGreen didn't just sell us laptops; they provided a
                   sustainable solution that saved our budget and empowered our
                   students."
                 </blockquote>
@@ -469,7 +469,7 @@ export const Laptop = () => {
       {/* --- 10. Final Call to Action --- */}
       <CallToAction
         title="Ready to Upgrade Your Tech?"
-        text="Find the perfect refurbished laptop that fits your needs and budget, backed by our EonCircular guarantee."
+        text="Find the perfect refurbished laptop that fits your needs and budget, backed by our ECycleGreen guarantee."
         buttonText="Shop All Laptops"
         buttonLink="/contact"
       />

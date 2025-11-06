@@ -115,7 +115,7 @@ export const Certifications = () => {
             <div className="lg:col-span-3">
               
               <ContentSection id="quality-policy" title="Our Quality Policy">
-                <p>A2C Services Ltd, parent company to EonCircular, is committed to leading the IT remanufacturing industry through a culture of quality and continuous improvement. Our primary goal is to meet or exceed customer expectations by delivering products and services of the highest standard, reliability, and value.</p>
+                <p>A2C Services Ltd, parent company to ECycleGreen, is committed to leading the IT remanufacturing industry through a culture of quality and continuous improvement. Our primary goal is to meet or exceed customer expectations by delivering products and services of the highest standard, reliability, and value.</p>
                 <p>We achieve this through:</p>
                 <ul>
                   <li><strong>Customer Focus:</strong> Understanding and fulfilling the needs of our customers, ensuring every refurbished and remanufactured laptop meets rigorous performance and aesthetic standards.</li>

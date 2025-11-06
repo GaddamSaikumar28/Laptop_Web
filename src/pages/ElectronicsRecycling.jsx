@@ -42,7 +42,7 @@
       
 // // //       <FadeIn>
 // // //         <p className="lead text-xl text-gray-800">
-// // //           At EonCircular, we provide comprehensive, certified electronics recycling solutions for businesses of all sizes. 
+// // //           At ECycleGreen, we provide comprehensive, certified electronics recycling solutions for businesses of all sizes. 
 // // //           We ensure your e-waste is processed responsibly, securely, and in full compliance with all environmental regulations.
 // // //         </p>
 // // //         <p>
@@ -145,9 +145,9 @@
 // // //               <Phone className="w-5 h-5 opacity-80 group-hover:opacity-100" />
 // // //               <span className="group-hover:underline">+1 (234) 567-890</span>
 // // //             </a>
-// // //             <a href="mailto:recycling@eoncircular.com" className="flex items-center space-x-3 group">
+// // //             <a href="mailto:recycling@ECycleGreen.com" className="flex items-center space-x-3 group">
 // // //               <Mail className="w-5 h-5 opacity-80 group-hover:opacity-100" />
-// // //               <span className="group-hover:underline">recycling@eoncircular.com</span>
+// // //               <span className="group-hover:underline">recycling@ECycleGreen.com</span>
 // // //             </a>
 // // //           </div>
 // // //           <Link
@@ -295,7 +295,7 @@
 // //       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 // //         <FadeIn>
 // //           <h2 className="text-3xl font-bold text-gray-900 text-center mb-4">
-// //             How EonCircular Works
+// //             How ECycleGreen Works
 // //           </h2>
 // //           <p className="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
 // //             Our process is simple, secure, and transparent, designed to give you peace of mind.
@@ -355,7 +355,7 @@
 // //           <FadeIn delay={0.2} className="mt-10 lg:mt-0">
 // //             <img 
 // //               src="https://placehold.co/600x450/e0f2fe/0c4a6e?text=Our+Certified+Facility&font=inter" 
-// //               alt="EonCircular Certified Facility"
+// //               alt="ECycleGreen Certified Facility"
 // //               className="rounded-lg shadow-xl w-full object-cover"
 // //             />
 // //           </FadeIn>
@@ -486,9 +486,9 @@
 // //               <Phone className="w-5 h-5 opacity-80 group-hover:opacity-100" />
 // //               <span className="group-hover:underline">+1 (234) 567-890</span>
 // //             </a>
-// //             <a href="mailto:recycling@eoncircular.com" className="flex items-center space-x-3 group">
+// //             <a href="mailto:recycling@ECycleGreen.com" className="flex items-center space-x-3 group">
 // //               <Mail className="w-5 h-5 opacity-80 group-hover:opacity-100" />
-// //               <span className="group-hover:underline">recycling@eoncircular.com</span>
+// //               <span className="group-hover:underline">recycling@ECycleGreen.com</span>
 // //             </a>
 // //           </div>
 // //           <Link
@@ -608,7 +608,7 @@
 //       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 //         <FadeIn>
 //           <h2 className="text-3xl font-bold text-gray-900 text-center mb-4">
-//             How EonCircular Works
+//             How ECycleGreen Works
 //           </h2>
 //           <p className="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
 //             Our process is simple, secure, and transparent, designed to give you peace of mind.
@@ -668,7 +668,7 @@
 //           <FadeIn delay={0.2} className="mt-10 lg:mt-0">
 //             <img 
 //               src="https://placehold.co/600x450/e0f2fe/0c4a6e?text=Our+Certified+Facility&font=inter" 
-//               alt="EonCircular Certified Facility"
+//               alt="ECycleGreen Certified Facility"
 //               className="rounded-lg shadow-xl w-full object-cover"
 //             />
 //           </FadeIn>
@@ -799,9 +799,9 @@
 //               <Phone className="w-5 h-5 opacity-80 group-hover:opacity-100" />
 //               <span className="group-hover:underline">+1 (234) 567-890</span>
 //             </a>
-//             <a href="mailto:recycling@eoncircular.com" className="flex items-center space-x-3 group">
+//             <a href="mailto:recycling@ECycleGreen.com" className="flex items-center space-x-3 group">
 //               <Mail className="w-5 h-5 opacity-80 group-hover:opacity-100" />
-//               <span className="group-hover:underline">recycling@eoncircular.com</span>
+//               <span className="group-hover:underline">recycling@ECycleGreen.com</span>
 //             </a>
 //           </div>
 //           <Link
@@ -978,7 +978,7 @@ const HowItWorks = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-4">
-            How EonCircular Works
+            How ECycleGreen Works
           </h2>
           <p className="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
             Our process is simple, secure, and transparent, designed to give you peace of mind.
@@ -1040,7 +1040,7 @@ const WhyChooseUs = () => {
           <FadeIn delay={0.2} className="mt-10 lg:mt-0">
             <img 
               src="https://placehold.co/600x450/e0f2fe/0c4a6e?text=Our+Certified+Facility&font=inter" 
-              alt="EonCircular Certified Facility"
+              alt="ECycleGreen Certified Facility"
               // --- ADDED HOVER ANIMATION ---
               className="rounded-lg shadow-xl w-full object-cover transition-transform duration-300 hover:scale-105"
             />
@@ -1173,9 +1173,9 @@ const ServicesSidebar = () => {
               <Phone className="w-5 h-5 opacity-80 group-hover:opacity-100" />
               <span className="group-hover:underline">+1 (234) 567-890</span>
             </a>
-            <a href="mailto:recycling@eoncircular.com" className="flex items-center space-x-3 group">
+            <a href="mailto:recycling@ECycleGreen.com" className="flex items-center space-x-3 group">
               <Mail className="w-5 h-5 opacity-80 group-hover:opacity-100" />
-              <span className="group-hover:underline">recycling@eoncircular.com</span>
+              <span className="group-hover:underline">recycling@ECycleGreen.com</span>
             </a>
           </div>
           <Link

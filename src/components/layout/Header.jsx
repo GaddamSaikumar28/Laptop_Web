@@ -16,7 +16,7 @@
 
 // // // Placeholder logo component to make the file self-contained
 // // // You can replace this with your actual Logo import
-// // const EonCircularLogo = ({ className = "" }) => (
+// // const ECycleGreenLogo = ({ className = "" }) => (
 // //   <div className={`p-2 bg-gradient-to-br from-green-400 to-blue-500 rounded-full text-white ${className}`}>
 // //     <Recycle size={24} />
 // //   </div>
@@ -110,8 +110,8 @@
 // //             onClick={closeAllMenus}
 // //           >
 // //             {/* Using placeholder logo */}
-// //             <EonCircularLogo className="w-10 h-10 transition-transform duration-500 ease-out group-hover:rotate-180" />
-// //             <span className="text-green-600 text-3xl font-bold ml-3 tracking-wider">EonCircular</span>
+// //             <ECycleGreenLogo className="w-10 h-10 transition-transform duration-500 ease-out group-hover:rotate-180" />
+// //             <span className="text-green-600 text-3xl font-bold ml-3 tracking-wider">ECycleGreen</span>
 // //           </Link>
 
 // //           {/* Desktop Nav */}
@@ -279,7 +279,7 @@
 
 // // Placeholder logo component to make the file self-contained
 // // You can replace this with your actual Logo import
-// const EonCircularLogo = ({ className = "" }) => (
+// const ECycleGreenLogo = ({ className = "" }) => (
 //   <div className={`p-2 bg-gradient-to-br from-green-400 to-blue-500 rounded-full text-white ${className}`}>
 //     <Recycle size={24} />
 //   </div>
@@ -373,8 +373,8 @@
 //             onClick={closeAllMenus}
 //           >
 //             {/* Using placeholder logo */}
-//             <EonCircularLogo className="w-10 h-10 transition-transform duration-500 ease-out group-hover:rotate-180" />
-//             <span className="text-green-600 text-3xl font-bold ml-3 tracking-wider">EonCircular</span>
+//             <ECycleGreenLogo className="w-10 h-10 transition-transform duration-500 ease-out group-hover:rotate-180" />
+//             <span className="text-green-600 text-3xl font-bold ml-3 tracking-wider">ECycleGreen</span>
 //           </Link>
 
 //           {/* Desktop Nav */}
@@ -554,10 +554,11 @@ import {
   Users,         // Added for Consultation
   Trash2,  
 } from 'lucide-react'; // Updated icons
+import { ImageLogo } from '../common/Logo';
 
 // Placeholder logo component to make the file self-contained
 // You can replace this with your actual Logo import
-const EonCircularLogo = ({ className = "" }) => (
+const ECycleGreenLogo = ({ className = "" }) => (
   <div className={`p-2 bg-gradient-to-br from-green-400 to-blue-500 rounded-full text-white ${className}`}>
     <Recycle size={24} />
   </div>
@@ -592,9 +593,9 @@ export const Header = () => {
         { name: 'IT Asset Disposition', path: '/services/itad', icon: Server, description: 'Secure IT Asset Disposition.' },
         { name: 'Hard Drive Shredding', path: '/services/data-destruction', icon: ShieldCheck, description: 'Certified data wiping for peace of mind.' },
         { name: 'Electronics Recycling', path: '/services/recycling', icon: Recycle, description: 'Eco-friendly recycling of all your e-waste.' },
-        { name: 'Refurbishment', path: '/services/refurbishment', icon: Wrench, description: 'Expert device refurbishment and upgrades.' },
-        { name: 'Logistics & Pickup', path: '/services/logistics', icon: Truck, description: 'Secure logistics and pickup services.' },
-        { name: 'On-site Services', path: '/services/on-site', icon: HardHat, description: 'Services performed securely at your location.' },
+       // { name: 'Refurbishment', path: '/services/refurbishment', icon: Wrench, description: 'Expert device refurbishment and upgrades.' },
+       // { name: 'Logistics & Pickup', path: '/services/logistics', icon: Truck, description: 'Secure logistics and pickup services.' },
+       // { name: 'On-site Services', path: '/services/on-site', icon: HardHat, description: 'Services performed securely at your location.' },
         { name: 'Electronic Recycling Drop-Off Box', path: '/services/drop-off-box', icon: Box, description: 'Convenient drop-off locations for your e-waste.' },
         { name: 'Equipment Buyback', path: '/services/equipment-buyback', icon: RefreshCw, description: 'Get value back for your old IT equipment.' },
         { name: 'Equipment Decommission', path: '/services/equipment-decommission', icon: ServerOff, description: 'Safe and secure decommissioning of IT assets.' },
@@ -635,7 +636,7 @@ export const Header = () => {
     <Link
       to={item.path}
       onClick={closeAllMenus}
-      className={`relative px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
+      className={`relative px-4 py-2 rounded-md text-sm font-small transition-colors duration-300 ${
         isMobileMenuOpen ? 'block w-full text-left' : ''
       } ${
         // --- COLOR FIX ---
@@ -666,8 +667,9 @@ export const Header = () => {
             className="flex-shrink-0 flex items-center cursor-pointer group"
             onClick={closeAllMenus}
           >
-            <EonCircularLogo className="w-10 h-10 transition-transform duration-500 ease-out group-hover:rotate-180" />
-            <span className="text-green-600 text-3xl font-bold ml-3 tracking-wider">ECycle Green</span>
+            <ECycleGreenLogo className="w-10 h-10 transition-transform duration-500 ease-out group-hover:rotate-180" />
+            <span className="text-green-600 text-3xl font-bold ml-3 tracking-wider">ECycleGreen</span>
+            <ImageLogo src="/mainlogo.png" />
           </Link>
 
           {/* Desktop Nav */}

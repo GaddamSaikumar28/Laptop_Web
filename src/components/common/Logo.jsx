@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const EonCircularLogo = ({ className = "w-10 h-10" }) => (
+export const ECycleGreenLogo = ({ className = "w-10 h-10" }) => (
   <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M50 10C27.9086 10 10 27.9086 10 50C10 72.0914 27.9086 90 50 90" stroke="url(#gradLogo1)" strokeWidth="12" strokeLinecap="round"/>
     <path d="M50 90C72.0914 90 90 72.0914 90 50C90 27.9086 72.0914 10 50 10" stroke="url(#gradLogo2)" strokeWidth="12" strokeLinecap="round" strokeDasharray="0.1 20"/>
@@ -20,4 +20,8 @@ export const EonCircularLogo = ({ className = "w-10 h-10" }) => (
       </linearGradient>
     </defs>
   </svg>
+);
+
+export const ImageLogo = ({ src, alt = "Logo", className = "w-10 h-10" }) => (
+  <img src={src} alt={alt} className={className} />
 );

@@ -87,9 +87,9 @@ const ServicesSidebar = () => {
               <Phone className="w-5 h-5 opacity-80 group-hover:opacity-100" />
               <span className="group-hover:underline">+1 (234) 567-890</span>
             </a>
-            <a href="mailto:recycling@eoncircular.com" className="flex items-center space-x-3 group">
+            <a href="mailto:recycling@ECycleGreen.com" className="flex items-center space-x-3 group">
               <Mail className="w-5 h-5 opacity-80 group-hover:opacity-100" />
-              <span className="group-hover:underline">recycling@eoncircular.com</span>
+              <span className="group-hover:underline">recycling@ECycleGreen.com</span>
             </a>
           </div>
           <Link

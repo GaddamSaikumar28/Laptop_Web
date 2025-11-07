@@ -581,14 +581,6 @@ export const Header = () => {
     { 
       name: 'Services', 
       path: '/services', // Fallback path
-    //   children: [
-    //     { name: 'ITAD', path: '/services/itad', icon: Server, description: 'Secure IT Asset Disposition.' },
-    //     { name: 'Data Destruction', path: '/services/data-destruction', icon: ShieldCheck, description: 'Certified data wiping for peace of mind.' },
-    //     { name: 'Electronics Recycling', path: '/services/recycling', icon: Recycle, description: 'Eco-friendly recycling of all your e-waste.' },
-    //     { name: 'Refurbishment', path: '/services/refurbishment', icon: Wrench, description: 'Expert device refurbishment and upgrades.' },
-    //     { name: 'Logistics & Pickup', path: '/services/logistics', icon: Truck, description: 'Secure logistics and pickup services.' },
-    //     { name: 'On-site Services', path: '/services/on-site', icon: HardHat, description: 'Services performed securely at your location.' },
-    //   ]
      children: [
         { name: 'IT Asset Disposition', path: '/services/itad', icon: Server, description: 'Secure IT Asset Disposition.' },
         { name: 'Hard Drive Shredding', path: '/services/data-destruction', icon: ShieldCheck, description: 'Certified data wiping for peace of mind.' },

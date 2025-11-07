@@ -1,402 +1,174 @@
-// import React, { useRef } from 'react';
-// import { motion, useScroll, useTransform } from 'framer-motion';
-// import { Link } from 'react-router-dom';
-// import { 
-//   Recycle, 
-//   Droplet, 
-//   Cpu, 
-//   Box, 
-//   ShieldCheck, 
-//   CheckCircle, 
-//   PlayCircle,
-//   ArrowRight,
-//   Briefcase,
-//   BookOpen,
-//   Zap,
-//   Leaf
-// } from 'lucide-react';
-// import { FadeIn } from '../components/common/FadeIn';
-// import { CountUp } from '../components/common/CountUp';
-// import { CallToAction } from '../components/common/CallToAction';
 
-// // --- Reusable Parallax Image Section ---
-// // A reusable component to create the text-on-left, image-on-right (or vice-versa) layout
-// // with a parallax background image effect, as seen in your wireframes.
-// const ParallaxImageSection = ({ 
-//   title, 
-//   children, 
-//   imageUrl, 
-//   imageAlt = "ECycleGreen sustainability", 
-//   reverse = false 
-// }) => {
-//   const sectionRef = useRef(null);
-//   const { scrollYProgress } = useScroll({
-//     target: sectionRef,
-//     offset: ['start end', 'end start']
-//   });
-
-//   // Creates a parallax effect: background image moves slower than the content
-//   const y = useTransform(scrollYProgress, [0, 1], ['-20%', '20%']);
-
-//   return (
-//     <section 
-//       ref={sectionRef} 
-//       className="relative grid grid-cols-1 md:grid-cols-2 items-center gap-12 py-24 overflow-hidden"
-//     >
-//       {/* Content Column */}
-//       <div className={`relative z-10 px-6 ${reverse ? 'md:order-2' : ''}`}>
-//         <FadeIn>
-//           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-//             {title}
-//           </h2>
-//           <div className="text-lg text-gray-300 space-y-4">
-//             {children}
-//           </div>
-//         </FadeIn>
-//       </div>
-
-//       {/* Image Column */}
-//       <div className={`relative z-0 h-80 md:h-full min-h-[400px] ${reverse ? 'md:order-1' : ''}`}>
-//         <motion.div
-//           className="absolute inset-0"
-//           style={{ y }} // Apply parallax
-//         >
-//           <img
-//             src={imageUrl}
-//             alt={imageAlt}
-//             className="w-full h-full object-cover opacity-30 md:opacity-50"
-//           />
-//           {/* Fades on the edge of the image to blend into the black bg */}
-//           <div className={`absolute inset-0 bg-gradient-to-${reverse ? 'l' : 'r'} from-black via-transparent to-transparent`}></div>
-//         </motion.div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// // --- Futuristic Stat Component ---
-// // For the "Reducing Carbon Footprint" section
-// const StatBubble = ({ icon: Icon, value, unit, label, delay = 0 }) => (
-//   <FadeIn delay={delay}>
-//     <motion.div 
-//       className="flex flex-col items-center justify-center text-center p-6"
-//       whileHover={{ scale: 1.05 }}
-//     >
-//       <div className="relative w-36 h-36 md:w-48 md:h-48 flex items-center justify-center">
-//         {/* Outer pulsing glow */}
-//         <motion.div 
-//           className="absolute inset-0 rounded-full bg-cyan-500/10"
-//           animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
-//           transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-//         ></motion.div>
-//         {/* Inner solid ring */}
-//         <div className="absolute inset-2 rounded-full border-2 border-cyan-400/50"></div>
-//         {/* Content */}
-//         <div className="relative z-10 flex flex-col items-center">
-//           <Icon className="w-8 h-8 md:w-10 md:h-10 text-cyan-400 mb-2" />
-//           <div className="text-4xl md:text-5xl font-bold text-white">
-//             <CountUp end={value} />{unit}
-//           </div>
-//           <div className="text-sm md:text-md text-gray-300 mt-1">{label}</div>
-//         </div>
-//       </div>
-//     </motion.div>
-//   </FadeIn>
-// );
-
-// // --- Partner Card Component ---
-// // For the "Partner With Us" section
-// const PartnerCard = ({ icon: Icon, title, description, link }) => (
-//   <FadeIn>
-//     <motion.div
-//       whileHover={{ y: -10, boxShadow: '0 20px 30px rgba(6, 182, 212, 0.1)' }}
-//       className="h-full bg-gray-900 p-8 rounded-2xl border border-gray-800 transition-shadow duration-300"
-//     >
-//       <Icon className="w-12 h-12 text-cyan-400 mb-6" />
-//       <h3 className="text-3xl font-bold text-white mb-4">{title}</h3>
-//       <p className="text-gray-300 mb-6">{description}</p>
-//       <Link
-//         to={link}
-//         className="inline-flex items-center text-lg font-semibold text-cyan-400 hover:text-cyan-300 group"
-//       >
-//         Learn More
-//         <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-//       </Link>
-//     </motion.div>
-//   </FadeIn>
-// );
-
-
-// // --- Main Sustainability Page Component ---
-// export const Sustainability = () => {
-//   return (
-//     <div className="bg-black text-white overflow-x-hidden">
-      
-//       {/* --- 1. Hero Section --- */}
-//       <section className="relative h-[80vh] md:h-[90vh] flex items-center justify-center text-center overflow-hidden">
-//         {/* Animated Background */}
-//         <div className="absolute inset-0 z-0">
-//           <img 
-//             src="https://placehold.co/1920x1080/000000/1a1a1a?text=Circuit+Background&font=inter" 
-//             alt="Futuristic background"
-//             className="w-full h-full object-cover opacity-20"
-//           />
-//           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-//           {/* Subtle animated grid lines */}
-//           <div 
-//             className="absolute inset-0"
-//             style={{
-//               backgroundImage: `
-//                 linear-gradient(to right, rgba(0, 150, 200, 0.1) 1px, transparent 1px),
-//                 linear-gradient(to bottom, rgba(0, 150, 200, 0.1) 1px, transparent 1px)
-//               `,
-//               backgroundSize: '40px 40px',
-//               animation: 'pulseGrid 10s linear infinite'
-//             }}
-//           ></div>
-//           <style>{`
-//             @keyframes pulseGrid {
-//               0% { opacity: 0.5; }
-//               50% { opacity: 0.8; }
-//               100% { opacity: 0.5; }
-//             }
-//           `}</style>
-//         </div>
-        
-//         {/* Content */}
-//         <div className="relative z-10 max-w-4xl mx-auto px-6">
-//           <FadeIn>
-//             <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter mb-6">
-//               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-500">
-//                 SUSTAINABILITY
-//               </span>
-//             </h1>
-//           </FadeIn>
-//           <FadeIn delay={0.2}>
-//             <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto">
-//               Our commitment isn't just a statement. It's the core of our business,
-//               certified by the world's leading standards.
-//             </p>
-//           </FadeIn>
-//           <FadeIn delay={0.4}>
-//             <motion.a
-//               href="#process-video"
-//               className="inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-full text-lg font-bold shadow-lg shadow-cyan-500/20
-//                          hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
-//               whileHover={{
-//                 boxShadow: "0 0 20px rgba(56, 189, 248, 0.5)"
-//               }}
-//             >
-//               <PlayCircle className="w-6 h-6 mr-3" />
-//               Watch Our Process
-//             </motion.a>
-//           </FadeIn>
-//         </div>
-//       </section>
-
-//       {/* --- 2. ECycleGreen Certified (from wireframe) --- */}
-//       <ParallaxImageSection
-//         title="ECycleGreen Certified"
-//         imageUrl="https://placehold.co/1000x800/1a1a1a/333333?text=Laptop+Diagram&font=inter"
-//         imageAlt="Certified Laptop Diagram"
-//         reverse={true}
-//       >
-//         <p>
-//           Being ECycleGreen Certified means every device has passed a rigorous 30-point
-//           inspection. This isn't just a check; it's a complete remanufacturing process
-//           that guarantees performance, reliability, and quality equivalent to new.
-//         </p>
-//         <p className="font-semibold text-cyan-400">
-//           We don't just refurbish. We re-engineer for a second life.
-//         </p>
-//       </ParallaxImageSection>
-
-//       {/* --- 3. Stats Section (Carbon Footprint) --- */}
-//       <section className="py-24 bg-gray-900">
-//         <div className="container mx-auto px-6 max-w-6xl">
-//           <FadeIn>
-//             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-//               Reducing Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Global Footprint</span>
-//             </h2>
-//           </FadeIn>
-//           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-//             <StatBubble icon={Recycle} value={70} unit="%" label="Less CO2 Emissions" delay={0.0} />
-//             <StatBubble icon={Droplet} value={80} unit="%" label="Less Water Usage" delay={0.1} />
-//             <StatBubble icon={Cpu} value={75} unit="%" label="Less Rare Minerals" delay={0.2} />
-//             <StatBubble icon={Box} value={90} unit="%" label="Less E-Waste" delay={0.3} />
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* --- 4. BSI Kitemark Section --- */}
-//       <ParallaxImageSection
-//         title="BSI Kitemark™"
-//         imageUrl="https://placehold.co/800x800/111111/555555?text=BSI+Kitemark+Logo&font=inter"
-//         imageAlt="BSI Kitemark Certified"
-//       >
-//         <p>
-//           We are the <span className="text-white font-bold">only company in the world</span> to hold a
-//           BSI Kitemark for both refurbished and remanufactured laptops. This isn't an
-//           easy certification to achieve; it's a testament to our unwavering commitment
-//           to quality, safety, and processes you can trust.
-//         </p>
-//         <ul className="list-disc list-inside space-y-2 mt-4 text-gray-300">
-//           <li>Independently tested and verified.</li>
-//           <li>Continuous auditing of our processes.</li>
-//           <li>A global symbol of trust and quality.</li>
-//         </ul>
-//       </ParallaxImageSection>
-
-//       {/* --- 5. Carbon Neutral Section --- */}
-//       <ParallaxImageSection
-//         title="Certified Carbon Neutral"
-//         imageUrl="https://placehold.co/800x800/111111/555555?text=Carbon+Neutral+Logo&font=inter"
-//         imageAlt="Carbon Neutral Certified"
-//         reverse={true}
-//       >
-//         <p>
-//           Every laptop we sell is certified Carbon Neutral. We've meticulously
-//           measured, reduced, and offset the entire carbon footprint of our
-//           remanufacturing process.
-//         </p>
-//         <p className="mt-4">
-//           Choosing ECycleGreen means making a direct, positive impact on the planet.
-//           You get premium technology with zero environmental guilt.
-//         </p>
-//       </ParallaxImageSection>
-      
-//       {/* --- 6. Video Section --- */}
-//       <section id="process-video" className="py-24 bg-gray-900">
-//         <div className="container mx-auto px-6 max-w-5xl text-center">
-//           <FadeIn>
-//             <h2 className="text-4xl md:text-5xl font-bold mb-8">
-//               Watch Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Remanufacturing Process</span>
-//             </h2>
-//           </FadeIn>
-//           <FadeIn delay={0.2}>
-//             <motion.div 
-//               className="relative aspect-video max-w-4xl mx-auto rounded-lg shadow-2xl overflow-hidden border-2 border-gray-800"
-//               whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(56, 189, 248, 0.3)" }}
-//               transition={{ type: 'spring', stiffness: 300 }}
-//             >
-//               <img 
-//                 src="https://placehold.co/1280x720/1a1a1a/333333?text=Our+Process+Video&font=inter" 
-//                 alt="Video placeholder"
-//                 className="w-full h-full object-cover"
-//               />
-//               <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-//                 <motion.div
-//                   animate={{ scale: [1, 1.1, 1] }}
-//                   transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-//                 >
-//                   <PlayCircle className="w-20 h-20 text-white opacity-80 cursor-pointer" />
-//                 </motion.div>
-//               </div>
-//             </motion.div>
-//           </FadeIn>
-//         </div>
-//       </section>
-
-//       {/* --- 7. E-Waste & Re-use Sections (Combined) --- */}
-//       <ParallaxImageSection
-//         title="E-Waste Reduction"
-//         imageUrl="https://placehold.co/1000x800/1a1a1a/333333?text=E-Waste+Components&font=inter"
-//         imageAlt="Electronic waste"
-//       >
-//         <p>
-//           Electronic waste is the world's fastest-growing trash stream. By
-//           remanufacturing devices, we prevent thousands of tons of hazardous
-//           materials from entering landfills, protecting our soil and water.
-//         </p>
-//       </ParallaxImageSection>
-//       <ParallaxImageSection
-//         title="Device Re-Use"
-//         imageUrl="https://placehold.co/1000x800/1a1a1a/333333?text=Laptops+Ready+for+Use&font=inter"
-//         imageAlt="Refurbished laptops"
-//         reverse={true}
-//       >
-//         <p>
-//           The most sustainable laptop is the one that already exists. Our
-//           process gives high-end devices a second, third, or even fourth life,
-//           dramatically extending their usability and value, ensuring the
-//           resources used to create them are maximized.
-//         </p>
-//       </ParallaxImageSection>
-
-//       {/* --- 8. Partner With Us Section --- */}
-//       <section className="py-24 bg-black">
-//         <div className="container mx-auto px-6 max-w-6xl">
-//           <FadeIn>
-//             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-//               Partner With Us on Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Circular Journey</span>
-//             </h2>
-//           </FadeIn>
-//           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-//             <PartnerCard
-//               icon={Briefcase}
-//               title="For Business"
-//               description="Equip your workforce with BSI Kitemark certified, carbon-neutral laptops. Meet your ESG goals and reduce your IT budget without compromising on performance."
-//               link="/contact" // Update with correct link
-//             />
-//             <PartnerCard
-//               icon={BookOpen}
-//               title="For Education"
-//               description="Provide students and faculty with reliable, high-performance devices at a fraction of the cost. We offer bulk purchasing and dedicated support for educational institutions."
-//               link="/education" // Update with correct link
-//             />
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* --- 9. Final Call to Action --- */}
-//       <CallToAction 
-//         title="Join Our Circular Journey"
-//         text="Make your next technology choice a sustainable one. Explore our certified devices or contact our team to see how we can help your organization."
-//         buttonText="Explore All Laptops"
-//         buttonLink="/laptops"
-//       />
-//     </div>
-//   );
-// };
-
-
-        
-import React, { useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
-  Recycle, 
-  Droplet, 
-  Cpu, 
-  Box, 
-  ShieldCheck, 
-  CheckCircle, 
-  PlayCircle,
-  ArrowRight,
-  Briefcase,
-  BookOpen,
-  Zap,
-  Leaf
+  Recycle, Droplet, Cpu, Box, ShieldCheck, CheckCircle, 
+  PlayCircle, ArrowRight, Briefcase, BookOpen, Edit, Upload, Video, X, Check
 } from 'lucide-react';
 import { FadeIn } from '../components/common/FadeIn';
 import { CountUp } from '../components/common/CountUp';
 import { CallToAction } from '../components/common/CallToAction';
 
-// --- Reusable Parallax Image Section (Redesigned for Light Mode) ---
+// --- Admin Imports ---
+import { useAuth } from '../context/AuthContext'; // UPDATE PATH AS NEEDED
+import { sustainabilityApi } from '../api/sustainabilityApi'; // Use the new API
+import { EditableText } from '../components/common/EditableText'; // Still used for titles, etc.
+import { ListManagementModal } from '../components/common/ListManagementModal';
+import { IconPicker } from '../components/common/IconPicker';
+import { DynamicIcon } from '../components/common/DynamicIcon';
+import { v4 as uuidv4 } from 'uuid';
+
+// === HELPER ADMIN COMPONENTS (SCOPED TO THIS FILE) ===
+
+// Admin button for list modals
+const AdminEditButton = ({ onClick, text = 'Edit' }) => (
+  <button
+    onClick={onClick}
+    className="absolute top-2 right-2 z-50 bg-blue-600 text-white px-3 py-1 rounded-md text-sm font-semibold hover:bg-blue-700 transition-all flex items-center gap-1"
+  >
+    <Edit size={14} /> {text}
+  </button>
+);
+
+// Admin button for media uploads
+const EditableMediaButton = ({ isAdmin, onSave, label, accept, className = '', icon }) => {
+  const fileInputRef = useRef(null);
+  const [isUploading, setIsUploading] = useState(false);
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    setIsUploading(true);
+    try {
+      await onSave(file);
+    } catch (error) {
+      console.error('Failed to save media:', error);
+      alert('Media upload failed.');
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  if (!isAdmin) return null;
+
+  return (
+    <>
+      <input
+        type="file"
+        accept={accept}
+        ref={fileInputRef}
+        onChange={handleFileChange}
+        className="hidden"
+      />
+      <button
+        onClick={() => fileInputRef.current.click()}
+        disabled={isUploading}
+        className={`bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition-all flex items-center gap-2 ${className}`}
+      >
+        {isUploading ? 'Uploading...' : <>{icon || <Upload size={14} />} {label}</>}
+      </button>
+    </>
+  );
+};
+
+// +++ NEW COMPONENT TO FIX THE ERROR +++
+/**
+ * A special component ONLY for rendering and editing raw HTML content.
+ * This avoids the conflict with the common EditableText component.
+ */
+const EditableHTMLParagraph = ({ isAdmin, value, onSave, className = '' }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentValue, setCurrentValue] = useState(value);
+  const [isSaving, setIsSaving] = useState(false);
+
+  const handleSave = async () => {
+    if (currentValue === value) {
+      setIsEditing(false);
+      return;
+    }
+    setIsSaving(true);
+    try {
+      await onSave(currentValue); // onSave is expected to be handleTextSave('section', 'field')
+      setIsEditing(false);
+    } catch (error) {
+      console.error('Failed to save HTML:', error);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  // --- Admin Editing View ---
+  if (isAdmin && isEditing) {
+    return (
+      <div className="relative">
+        <textarea
+          value={currentValue}
+          onChange={(e) => setCurrentValue(e.target.value)}
+          disabled={isSaving}
+          className={`w-full p-2 border border-blue-500 rounded-md min-h-[100px] text-gray-800 ${className}`}
+        />
+        <div className="flex gap-2 mt-2">
+          <button
+            onClick={handleSave}
+            disabled={isSaving}
+            className="px-3 py-1 text-sm text-white bg-green-600 rounded-md hover:bg-green-700 disabled:bg-gray-400"
+          >
+            {isSaving ? 'Saving...' : <Check size={16} />}
+          </button>
+          <button
+            onClick={() => {
+              setIsEditing(false);
+              setCurrentValue(value);
+            }}
+            disabled={isSaving}
+            className="px-3 py-1 text-sm text-white bg-red-500 rounded-md hover:bg-red-700"
+          >
+            <X size={16} />
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // --- Normal View (Admin or Public) ---
+  return (
+    <p
+      className={`relative group ${className}`}
+      dangerouslySetInnerHTML={{ __html: value }}
+    >
+      {/* This <p> tag intentionally has NO children */}
+      {isAdmin && (
+        <button
+          onClick={() => setIsEditing(true)}
+          className="absolute top-0 right-0 p-1 text-blue-600 transition-opacity bg-white bg-opacity-75 rounded-full opacity-0 group-hover:opacity-100"
+          aria-label="Edit HTML"
+        >
+          <Edit size={16} />
+        </button>
+      )}
+    </p>
+  );
+};
+
+// === END OF ADMIN HELPERS ===
+
+
+// --- Reusable Parallax Image Section (Refactored) ---
 const ParallaxImageSection = ({ 
-  title, 
+  title,
   children, 
   imageUrl, 
-  imageAlt = "ECycleGreen sustainability", 
-  reverse = false 
+  imageAlt, 
+  reverse = false,
+  isAdmin,
+  onImageSave
 }) => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start']
   });
-
-  // Creates a parallax effect
   const y = useTransform(scrollYProgress, [0, 1], ['-20%', '20%']);
 
   return (
@@ -407,11 +179,7 @@ const ParallaxImageSection = ({
       {/* Content Column */}
       <div className={`relative z-10 px-6 ${reverse ? 'md:order-2' : ''}`}>
         <FadeIn>
-          {/* Gradient updated to green/teal */}
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-600">
-            {title}
-          </h2>
-          {/* Text updated to dark gray */}
+          {title}
           <div className="text-lg text-gray-600 space-y-4">
             {children}
           </div>
@@ -422,45 +190,43 @@ const ParallaxImageSection = ({
       <div className={`relative z-0 h-80 md:h-full min-h-[400px] ${reverse ? 'md:order-1' : ''}`}>
         <motion.div
           className="absolute inset-0"
-          style={{ y }} // Apply parallax
+          style={{ y }}
         >
           <img
             src={imageUrl}
             alt={imageAlt}
-            // Increased opacity slightly for light mode
             className="w-full h-full object-cover opacity-50 md:opacity-70"
           />
-          {/* Fades on the edge of the image to blend into the WHITE bg */}
           <div className={`absolute inset-0 bg-gradient-to-${reverse ? 'l' : 'r'} from-white via-transparent to-transparent`}></div>
         </motion.div>
+        <EditableMediaButton
+          isAdmin={isAdmin}
+          onSave={onImageSave}
+          label="Change Image"
+          accept="image/*"
+          className="absolute top-4 right-4 z-20"
+        />
       </div>
     </section>
   );
 };
 
-// --- Futuristic Stat Component (Redesigned for Light Mode) ---
+// --- Stat Component ---
 const StatBubble = ({ icon: Icon, value, unit, label, delay = 0 }) => (
   <FadeIn delay={delay}>
     <motion.div 
       className="flex flex-col items-center justify-center text-center"
       whileHover={{ scale: 1.05 }}
     >
-      {/* Redesigned as a "popped" card for light mode */}
       <div className="relative w-44 h-44 md:w-56 md:h-56 flex items-center justify-center bg-white rounded-2xl shadow-xl border border-gray-100">
-        {/* Outer pulsing glow (green) */}
         <motion.div 
           className="absolute inset-0 rounded-2xl bg-green-500/10"
           animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }}
           transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
         ></motion.div>
-        {/* Inner solid ring (green) */}
         <div className="absolute inset-2 rounded-lg border-2 border-green-400/30"></div>
-        
-        {/* Content */}
         <div className="relative z-10 flex flex-col items-center">
-          {/* Icon updated to green */}
           <Icon className="w-10 h-10 md:w-12 md:h-12 text-green-600 mb-2" />
-          {/* Text updated to dark */}
           <div className="text-4xl md:text-5xl font-bold text-gray-900">
             <CountUp end={value} />{unit}
           </div>
@@ -471,21 +237,16 @@ const StatBubble = ({ icon: Icon, value, unit, label, delay = 0 }) => (
   </FadeIn>
 );
 
-// --- Partner Card Component (Redesigned for Light Mode) ---
+// --- Partner Card Component ---
 const PartnerCard = ({ icon: Icon, title, description, link }) => (
   <FadeIn>
     <motion.div
-      // Hover shadow updated to green
       whileHover={{ y: -10, boxShadow: '0 20px 30px rgba(16, 185, 129, 0.1)' }}
-      // Card updated to white
       className="h-full bg-white p-8 rounded-2xl border border-gray-200 shadow-lg transition-shadow duration-300"
     >
-      {/* Icon updated to green */}
       <Icon className="w-12 h-12 text-green-600 mb-6" />
-      {/* Text updated to dark */}
       <h3 className="text-3xl font-bold text-gray-900 mb-4">{title}</h3>
       <p className="text-gray-600 mb-6">{description}</p>
-      {/* Link updated to green */}
       <Link
         to={link}
         className="inline-flex items-center text-lg font-semibold text-green-600 hover:text-green-500 group"
@@ -500,23 +261,128 @@ const PartnerCard = ({ icon: Icon, title, description, link }) => (
 
 // --- Main Sustainability Page Component ---
 export const Sustainability = () => {
+  // const { isAdmin } = useAuth(); // UNCOMMENT THIS
+  const isAdmin = true; // For testing
+  
+  const [content, setContent] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [modal, setModal] = useState(null); // 'stats', 'bsi_kitemark', 'partners'
+
+  // --- Data Fetching ---
+  useEffect(() => {
+    const loadContent = async () => {
+      try {
+        const data = await sustainabilityApi.getContent();
+        setContent(data);
+      } catch (err) {
+        console.error('Failed to load sustainability content', err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    loadContent();
+  }, []);
+
+  // --- Data Saving ---
+  const handleSave = async (sectionName, newContent) => {
+    setContent((prev) => ({
+      ...prev,
+      [sectionName]: newContent,
+    }));
+    try {
+      await sustainabilityApi.updateSectionContent(sectionName, newContent);
+    } catch (err) {
+      console.error('Failed to save content', err);
+      alert('Error saving content.');
+    }
+  };
+
+  const handleTextSave = (sectionName, field) => async (newValue) => {
+    const newContent = {
+      ...content[sectionName],
+      [field]: newValue,
+    };
+    await handleSave(sectionName, newContent);
+  };
+
+  const handleMediaSave = (sectionName, field) => async (newFile) => {
+    if (!newFile) return;
+    const section = content[sectionName];
+    const oldStoragePath = section[`${field}_storage_path`];
+    try {
+      const { publicUrl, storagePath } = await sustainabilityApi.updateFile(newFile, oldStoragePath);
+      const newContent = {
+        ...section,
+        [`${field}_url`]: publicUrl,
+        [`${field}_storage_path`]: storagePath,
+      };
+      await handleSave(sectionName, newContent);
+    } catch (err) {
+      console.error("Failed to update media", err);
+      alert("Media update failed.");
+    }
+  };
+
+  // --- Modal Form Renderer ---
+  const renderModalForm = (item, setItem) => {
+    switch (modal) {
+      case 'stats':
+        return (
+          <>
+            <label>Icon: <IconPicker value={item.icon_name} onChange={name => setItem({...item, icon_name: name})} /></label>
+            <label>Value: <input type="number" className="w-full p-1 border rounded" value={item.value || 0} onChange={e => setItem({...item, value: parseInt(e.target.value)})} /></label>
+            <label>Unit (e.g., %): <input type="text" className="w-full p-1 border rounded" value={item.unit || ''} onChange={e => setItem({...item, unit: e.target.value})} /></label>
+            <label>Label: <input type="text" className="w-full p-1 border rounded" value={item.label || ''} onChange={e => setItem({...item, label: e.target.value})} /></label>
+          </>
+        );
+      case 'bsi_kitemark':
+        return (
+          <>
+            <label>List Item Text: <input type="text" className="w-full p-1 border rounded" value={item.text || ''} onChange={e => setItem({...item, text: e.target.value})} /></label>
+          </>
+        );
+      case 'partners':
+        return (
+          <>
+            <label>Icon: <IconPicker value={item.icon_name} onChange={name => setItem({...item, icon_name: name})} /></label>
+            <label>Title: <input type="text" className="w-full p-1 border rounded" value={item.title || ''} onChange={e => setItem({...item, title: e.target.value})} /></label>
+            <label>Description: <textarea className="w-full p-1 border rounded" value={item.description || ''} onChange={e => setItem({...item, description: e.target.value})} /></label>
+            <label>Link (e.g., /contact): <input type="text" className="w-full p-1 border rounded" value={item.link || ''} onChange={e => setItem({...item, link: e.target.value})} /></label>
+          </>
+        );
+      default: return null;
+    }
+  };
+
+  if (isLoading) {
+    return <div className="h-screen bg-white flex items-center justify-center text-gray-900">Loading...</div>;
+  }
+  
+  if (!content) {
+    return <div className="h-screen bg-white flex items-center justify-center text-gray-900">Error loading content.</div>;
+  }
+
   return (
-    // Main background changed to white
     <div className="bg-white text-gray-900 overflow-x-hidden">
       
       {/* --- 1. Hero Section --- */}
-      <section className="relative h-[80vh] md:h-[90vh] flex items-center justify-center text-center overflow-hidden bg-gray-50">
-        {/* Animated Background */}
+      <section 
+        className="relative h-[80vh] md:h-[90vh] flex items-center justify-center text-center overflow-hidden bg-gray-50"
+      >
         <div className="absolute inset-0 z-0">
-          {/* Light placeholder background */}
           <img 
-            src="https://placehold.co/1920x1080/f5f5f5/cccccc?text=Subtle+Circuit+BG&font=inter" 
+            src={content.hero.bg_image_url}
             alt="Futuristic background"
             className="w-full h-full object-cover opacity-50"
           />
+          <EditableMediaButton
+            isAdmin={isAdmin}
+            onSave={handleMediaSave('hero', 'bg_image')}
+            label="Change BG"
+            accept="image/*"
+            className="absolute top-4 right-4 z-20"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent"></div>
-          
-          {/* Subtle animated grid lines (green) */}
           <div 
             className="absolute inset-0"
             style={{
@@ -530,158 +396,241 @@ export const Sustainability = () => {
           ></div>
           <style>{`
             @keyframes pulseGrid {
-              0% { opacity: 0.5; }
-              50% { opacity: 0.8; }
-              100% { opacity: 0.5; }
+              0% { opacity: 0.5; } 50% { opacity: 0.8; } 100% { opacity: 0.5; }
             }
           `}</style>
         </div>
         
-        {/* Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-6">
           <FadeIn>
-            {/* Heading gradient updated to green/teal */}
-            <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter mb-6">
+            <EditableText
+              as="h1"
+              isAdmin={isAdmin}
+              value={content.hero.title_gradient}
+              onSave={handleTextSave('hero', 'title_gradient')}
+              className="text-6xl md:text-8xl font-extrabold tracking-tighter mb-6"
+            >
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-600">
-                SUSTAINABILITY
+                {content.hero.title_gradient}
               </span>
-            </h1>
+            </EditableText>
           </FadeIn>
           <FadeIn delay={0.2}>
-            {/* Subtitle text updated to dark gray */}
-            <p className="text-xl md:text-2xl text-gray-600 mb-10 max-w-2xl mx-auto">
-              Our commitment isn't just a statement. It's the core of our business,
-              certified by the world's leading standards.
-            </p>
+            <EditableText
+              as="p"
+              isAdmin={isAdmin}
+              value={content.hero.subtitle}
+              onSave={handleTextSave('hero', 'subtitle')}
+              className="text-xl md:text-2xl text-gray-600 mb-10 max-w-2xl mx-auto"
+              useTextarea
+            />
           </FadeIn>
           <FadeIn delay={0.4}>
-            {/* Button updated to green */}
             <motion.a
               href="#process-video"
               className="inline-flex items-center justify-center bg-green-600 text-white px-8 py-4 rounded-full text-lg font-bold shadow-lg shadow-green-500/20
                          hover:bg-green-700 transition-all duration-300 transform hover:scale-105"
-              whileHover={{
-                boxShadow: "0 0 20px rgba(16, 185, 129, 0.5)"
-              }}
+              whileHover={{ boxShadow: "0 0 20px rgba(16, 185, 129, 0.5)" }}
             >
               <PlayCircle className="w-6 h-6 mr-3" />
-              Watch Our Process
+              <EditableText
+                as="span"
+                isAdmin={isAdmin}
+                value={content.hero.button_text}
+                onSave={handleTextSave('hero', 'button_text')}
+              />
             </motion.a>
           </FadeIn>
         </div>
       </section>
 
-      {/* --- 2. ECycleGreen Certified (Alternating bg-white) --- */}
+      {/* --- 2. ECycleGreen Certified --- */}
       <div className="bg-white">
         <ParallaxImageSection
-          title="ECycleGreen Certified"
-          imageUrl="https://placehold.co/1000x800/e0e0e0/555555?text=Laptop+Diagram&font=inter"
-          imageAlt="Certified Laptop Diagram"
+          title={
+            <EditableText
+              as="h2"
+              isAdmin={isAdmin}
+              value={content.certified.title}
+              onSave={handleTextSave('certified', 'title')}
+              className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-600"
+            />
+          }
+          imageUrl={content.certified.image_url}
+          imageAlt={content.certified.image_alt}
           reverse={true}
+          isAdmin={isAdmin}
+          onImageSave={handleMediaSave('certified', 'image')}
         >
-          <p>
-            Being ECycleGreen Certified means every device has passed a rigorous 30-point
-            inspection. This isn't just a check; it's a complete remanufacturing process
-            that guarantees performance, reliability, and quality equivalent to new.
-          </p>
-          {/* Accent text updated to green */}
-          <p className="font-semibold text-green-600">
-            We don't just refurbish. We re-engineer for a second life.
-          </p>
+          <EditableText
+            as="p"
+            isAdmin={isAdmin}
+            value={content.certified.paragraph1}
+            onSave={handleTextSave('certified', 'paragraph1')}
+            useTextarea
+          /> 
+          <EditableText
+            as="p"
+            isAdmin={isAdmin}
+            value={content.certified.paragraph2_highlight}
+            onSave={handleTextSave('certified', 'paragraph2_highlight')}
+            className="font-semibold text-green-600"
+          />
         </ParallaxImageSection>
       </div>
 
-      {/* --- 3. Stats Section (Alternating bg-gray-50) --- */}
-      <section className="py-24 bg-gray-50">
+      {/* --- 3. Stats Section --- */}
+      <section className="py-24 bg-gray-50 relative">
+        {isAdmin && <AdminEditButton onClick={() => setModal('stats')} text="Edit Stats" />}
         <div className="container mx-auto px-6 max-w-6xl">
           <FadeIn>
-            {/* Heading gradient updated */}
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-20">
-              Reducing Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-600">Global Footprint</span>
-            </h2>
+            <EditableText
+              as="h2"
+              isAdmin={isAdmin}
+              value={content.stats.title_prefix}
+              onSave={handleTextSave('stats', 'title_prefix')}
+              className="text-4xl md:text-5xl font-bold text-center mb-20"
+            > 
+            
+              <EditableText
+                as="span"
+                isAdmin={isAdmin}
+                value={content.stats.title_suffix_gradient}
+                onSave={handleTextSave('stats', 'title_suffix_gradient')}
+                className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-600"
+              />
+            </EditableText>
           </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            <StatBubble icon={Recycle} value={70} unit="%" label="Less CO2 Emissions" delay={0.0} />
-            <StatBubble icon={Droplet} value={80} unit="%" label="Less Water Usage" delay={0.1} />
-            <StatBubble icon={Cpu} value={75} unit="%" label="Less Rare Minerals" delay={0.2} />
-            <StatBubble icon={Box} value={90} unit="%" label="Less E-Waste" delay={0.3} />
+            {content.stats.items.map((stat, index) => (
+              <StatBubble 
+                key={stat.id}
+                icon={DynamicIcon} 
+                value={stat.value} 
+                unit={stat.unit} 
+                label={stat.label} 
+                delay={index * 0.1} 
+              />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* --- 4. BSI Kitemark Section (Alternating bg-white) --- */}
-      <div className="bg-white">
+       {/* --- 4. BSI Kitemark Section (FIXED) --- */}
+      {/* <div className="bg-white relative">
+        {isAdmin && <AdminEditButton onClick={() => setModal('bsi_kitemark')} text="Edit List" />}
         <ParallaxImageSection
-          title="BSI Kitemark™"
-          imageUrl="https://placehold.co/800x800/e5e5e5/555555?text=BSI+Kitemark+Logo&font=inter"
-          imageAlt="BSI Kitemark Certified"
+          title={
+            <EditableText
+              as="h2"
+              isAdmin={isAdmin}
+              value={content.bsi_kitemark.title}
+              onSave={handleTextSave('bsi_kitemark', 'title')}
+              className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-600"
+            />
+          }
+          imageUrl={content.bsi_kitemark.image_url}
+          imageAlt={content.bsi_kitemark.image_alt}
+          isAdmin={isAdmin}
+          onImageSave={handleMediaSave('bsi_kitemark', 'image')}
         >
-          <p>
-            We are the <span className="text-gray-900 font-bold">only company in the world</span> to hold a
-            BSI Kitemark for both refurbished and remanufactured laptops. This isn't an
-            easy certification to achieve; it's a testament to our unwavering commitment
-            to quality, safety, and processes you can trust.
-          </p>
-          {/* List text updated */}
+        
+       
+          <EditableHTMLParagraph
+            isAdmin={isAdmin}
+            value={content.bsi_kitemark.paragraph}
+            onSave={handleTextSave('bsi_kitemark', 'paragraph')}
+            className="text-lg text-gray-600 space-y-4" // Pass base styles
+          />
+         
+          
           <ul className="list-disc list-inside space-y-2 mt-4 text-gray-600">
-            <li>Independently tested and verified.</li>
-            <li>Continuous auditing of our processes.</li>
-            <li>A global symbol of trust and quality.</li>
+            {content.bsi_kitemark.list_items.map((item) => (
+              <li key={item.id}>{item.text}</li>
+            ))}
           </ul>
         </ParallaxImageSection>
-      </div>
+      </div> */}
 
-      {/* --- 5. Carbon Neutral Section (Alternating bg-gray-50) --- */}
+      {/* --- 5. Carbon Neutral Section --- */}
       <div className="bg-gray-50">
         <ParallaxImageSection
-          title="Certified Carbon Neutral"
-          imageUrl="https://placehold.co/800x800/e5e5e5/555555?text=Carbon+Neutral+Logo&font=inter"
-          imageAlt="Carbon Neutral Certified"
+          title={
+            <EditableText
+              as="h2"
+              isAdmin={isAdmin}
+              value={content.carbon_neutral.title}
+              onSave={handleTextSave('carbon_neutral', 'title')}
+              className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-600"
+            />
+          }
+          imageUrl={content.carbon_neutral.image_url}
+          imageAlt={content.carbon_neutral.image_alt}
           reverse={true}
+          isAdmin={isAdmin}
+          onImageSave={handleMediaSave('carbon_neutral', 'image')}
         >
-          <p>
-            Every laptop we sell is certified Carbon Neutral. We've meticulously
-            measured, reduced, and offset the entire carbon footprint of our
-            remanufacturing process.
-          </p>
-          <p className="mt-4">
-            Choosing ECycleGreen means making a direct, positive impact on the planet.
-            You get premium technology with zero environmental guilt.
-          </p>
+          <EditableText
+            as="p"
+            isAdmin={isAdmin}
+            value={content.carbon_neutral.paragraph1}
+            onSave={handleTextSave('carbon_neutral', 'paragraph1')}
+            useTextarea
+          />
+          <EditableText
+            as="p"
+            isAdmin={isAdmin}
+            value={content.carbon_neutral.paragraph2}
+            onSave={handleTextSave('carbon_neutral', 'paragraph2')}
+            className="mt-4"
+            useTextarea
+          />
         </ParallaxImageSection>
       </div>
       
-      {/* --- 6. Video Section (Alternating bg-white) --- */}
+      {/* --- 6. Video Section --- */}
       <section id="process-video" className="py-24 bg-white">
         <div className="container mx-auto px-6 max-w-5xl text-center">
           <FadeIn>
-            {/* Heading gradient updated */}
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">
-              Watch Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-600">Remanufacturing Process</span>
-            </h2>
+            <EditableText
+              as="h2"
+              isAdmin={isAdmin}
+              value={content.video.title_prefix}
+              onSave={handleTextSave('video', 'title_prefix')}
+              className="text-4xl md:text-5xl font-bold mb-8"
+            >
+              {content.video.title_prefix}{' '}
+              <EditableText
+                as="span"
+                isAdmin={isAdmin}
+                value={content.video.title_suffix_gradient}
+                onSave={handleTextSave('video', 'title_suffix_gradient')}
+                className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-600"
+              />
+            </EditableText>
           </FadeIn>
           <FadeIn delay={0.2}>
-            {/* Hover shadow and border updated */}
             <motion.div 
-              className="relative aspect-video max-w-4xl mx-auto rounded-lg shadow-2xl overflow-hidden border-2 border-gray-200"
+              className="relative aspect-video max-w-4xl mx-auto rounded-lg shadow-2xl overflow-hidden border-2 border-gray-200 group"
               whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(16, 185, 129, 0.3)" }}
               transition={{ type: 'spring', stiffness: 300 }}
             >
-              {/* Light placeholder */}
-              <img 
-                src="https://placehold.co/1280x720/e0e0e0/555555?text=Our+Process+Video&font=inter" 
-                alt="Video placeholder"
-                className="w-full h-full object-cover"
+              <video
+                key={content.video.video_url}
+                src={content.video.video_url}
+                controls
+                className="w-full h-full object-cover bg-black"
+              >
+                Your browser does not support the video tag.
+              </video>
+              <EditableMediaButton
+                isAdmin={isAdmin}
+                onSave={handleMediaSave('video', 'video')}
+                label="Upload Video"
+                accept="video/*"
+                icon={<Video size={14} />}
+                className="absolute top-4 right-4 z-20 opacity-50 group-hover:opacity-100 transition-opacity"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center group">
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                  className="group-hover:scale-110 transition-transform"
-                >
-                  <PlayCircle className="w-20 h-20 text-white opacity-80 cursor-pointer" />
-                </motion.div>
-              </div>
             </motion.div>
           </FadeIn>
         </div>
@@ -690,68 +639,142 @@ export const Sustainability = () => {
       {/* --- 7. E-Waste & Re-use Sections (Combined) --- */}
       <div className="bg-gray-50">
         <ParallaxImageSection
-          title="E-Waste Reduction"
-          imageUrl="https://placehold.co/1000x800/e0e0e0/555555?text=E-Waste+Components&font=inter"
-          imageAlt="Electronic waste"
+          title={
+            <EditableText
+              as="h2"
+              isAdmin={isAdmin}
+              value={content.e_waste.title}
+              onSave={handleTextSave('e_waste', 'title')}
+              className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-600"
+            />
+          }
+          imageUrl={content.e_waste.image_url}
+          imageAlt={content.e_waste.image_alt}
+          isAdmin={isAdmin}
+          onImageSave={handleMediaSave('e_waste', 'image')}
         >
-          <p>
-            Electronic waste is the world's fastest-growing trash stream. By
-            remanufacturing devices, we prevent thousands of tons of hazardous
-            materials from entering landfills, protecting our soil and water.
-          </p>
+          <EditableText
+            as="p"
+            isAdmin={isAdmin}
+            value={content.e_waste.paragraph}
+            onSave={handleTextSave('e_waste', 'paragraph')}
+            useTextarea
+          />
         </ParallaxImageSection>
       </div>
       <div className="bg-white">
         <ParallaxImageSection
-          title="Device Re-Use"
-          imageUrl="https://placehold.co/1000x800/e0e0e0/555555?text=Laptops+Ready+for+Use&font=inter"
-          imageAlt="Refurbished laptops"
+          title={
+            <EditableText
+              as="h2"
+              isAdmin={isAdmin}
+              value={content.device_reuse.title}
+              onSave={handleTextSave('device_reuse', 'title')}
+              className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-600"
+            />
+          }
+          imageUrl={content.device_reuse.image_url}
+          imageAlt={content.device_reuse.image_alt}
           reverse={true}
+          isAdmin={isAdmin}
+          onImageSave={handleMediaSave('device_reuse', 'image')}
         >
-          <p>
-            The most sustainable laptop is the one that already exists. Our
-            process gives high-end devices a second, third, or even fourth life,
-            dramatically extending their usability and value, ensuring the
-            resources used to create them are maximized.
-          </p>
+          <EditableText
+            as="p"
+            isAdmin={isAdmin}
+            value={content.device_reuse.paragraph}
+            onSave={handleTextSave('device_reuse', 'paragraph')}
+            useTextarea
+          />
         </ParallaxImageSection>
       </div>
 
-      {/* --- 8. Partner With Us Section (Alternating bg-gray-50) --- */}
-      <section className="py-24 bg-gray-50">
+      {/* --- 8. Partner With Us Section --- */}
+      <section className="py-24 bg-gray-50 relative">
+        {isAdmin && <AdminEditButton onClick={() => setModal('partners')} text="Edit Cards" />}
         <div className="container mx-auto px-6 max-w-6xl">
           <FadeIn>
-            {/* Heading gradient updated */}
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-              Partner With Us on Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-600">Circular Journey</span>
-            </h2>
+            <EditableText
+              as="h2"
+              isAdmin={isAdmin}
+              value={content.partners.title_prefix}
+              onSave={handleTextSave('partners', 'title_prefix')}
+              className="text-4xl md:text-5xl font-bold text-center mb-16"
+            >
+              {content.partners.title_prefix}{' '}
+              <EditableText
+                as="span"
+                isAdmin={isAdmin}
+                value={content.partners.title_suffix_gradient}
+                onSave={handleTextSave('partners', 'title_suffix_gradient')}
+                className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-600"
+              />
+            </EditableText>
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <PartnerCard
-              icon={Briefcase}
-              title="For Business"
-              description="Equip your workforce with BSI Kitemark certified, carbon-neutral laptops. Meet your ESG goals and reduce your IT budget without compromising on performance."
-              link="/contact"
-            />
-            <PartnerCard
-              icon={BookOpen}
-              title="For Education"
-              description="Provide students and faculty with reliable, high-performance devices at a fraction of the cost. We offer bulk purchasing and dedicated support for educational institutions."
-              link="/education"
-            />
+            {content.partners.cards.map((card) => (
+              <PartnerCard
+                key={card.id}
+                icon={DynamicIcon} 
+                title={card.title}
+                description={card.description}
+                link={card.link}
+              />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* --- 9. Final Call to Action (On bg-white) --- */}
+      {/* --- 9. Final Call to Action --- */}
       <div className="bg-white">
         <CallToAction 
-          title="Join Our Circular Journey"
-          text="Make your next technology choice a sustainable one. Explore our certified devices or contact our team to see how we can help your organization."
-          buttonText="Explore All Laptops"
-          buttonLink="/laptops"
+          data={content.cta}
+          isAdmin={isAdmin}
+          onTextSave={handleTextSave}
+          onImageSave={handleMediaSave('cta', 'background_image')}
         />
       </div>
+
+      {/* --- List Management Modal --- */}
+      {modal && (
+        <ListManagementModal
+          title={`Manage ${modal.replace('_', ' ')}`}
+          items={
+            modal === 'stats' ? content.stats.items :
+            modal === 'bsi_kitemark' ? content.bsi_kitemark.list_items :
+            content.partners.cards
+          }
+          itemTitleKey={
+            modal === 'bsi_kitemark' ? 'text' :
+            modal === 'stats' ? 'label' :
+            'title'
+          }
+          onClose={() => setModal(null)}
+          renderForm={renderModalForm}
+          onSave={async (newItems) => {
+            let sectionName = modal;
+            let listKey = 'items';
+            
+            if (modal === 'stats') {
+              listKey = 'items';
+            } else if (modal === 'bsi_kitemark') {
+              listKey = 'list_items';
+            } else if (modal === 'partners') {
+              listKey = 'cards';
+            }
+
+            const newContent = {
+              ...content[sectionName],
+              [listKey]: newItems
+            };
+            
+            await handleSave(sectionName, newContent);
+            setModal(null); // Close modal on save
+          }}
+        />
+      )}
     </div>
   );
 };
+
+export default Sustainability;

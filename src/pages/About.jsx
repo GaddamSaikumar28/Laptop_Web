@@ -1,1251 +1,1405 @@
 
-// // import React from 'react';
+// // // // import React from 'react';
+// // // // import { FadeIn } from '../components/common/FadeIn';
+// // // // import { CountUp } from '../components/common/CountUp';
+// // // // import { CallToAction } from '../components/common/CallToAction';
+// // // // import { Timeline } from '../components/about/Timeline';
+// // // // import { CoreValues } from '../components/about/CoreValues';
+// // // // import { PlayCircle } from 'lucide-react';
+
+// // // // export const About = () => {
+// // // //   return (
+// // // //     // Main container changed to white background and dark text
+// // // //     <div className="bg-white text-gray-900 overflow-x-hidden">
+      
+// // // //       {/* --- About Hero Section --- */}
+// // // //       <section className="relative h-[70vh] flex items-center justify-center text-center overflow-hidden">
+// // // //         {/* Updated placeholder for light theme */}
+// // // //         <img 
+// // // //           src="https://placehold.co/1920x1080/e0e0e0/555555?text=Our+Facility&font=inter" 
+// // // //           alt="ECycleGreen Facility"
+// // // //           className="absolute z-0 w-full h-full object-cover"
+// // // //         />
+// // // //         {/* Gradient Overlay changed from black to white */}
+// // // //         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent z-10"></div>
+// // // //         {/* Light opacity overlay */}
+// // // //         <div className="absolute inset-0 bg-white opacity-40 z-0"></div>
+        
+// // // //         {/* Content */}
+// // // //         <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+// // // //           <FadeIn>
+// // // //             {/* Text changed to dark, gradient updated to greens */}
+// // // //             <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-gray-900 drop-shadow-lg">
+// // // //               About <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-600">Us</span>
+// // // //             </h1>
+// // // //             {/* Subtitle text changed to a readable gray */}
+// // // //             <p className="mt-6 text-xl md:text-2xl font-light text-gray-600 max-w-3xl mx-auto">
+// // // //               We built the world's leading facility to provide the highest quality
+// // // //               refurbished laptops in the world.
+// // // //             </p>
+// // // //           </FadeIn>
+// // // //         </div>
+// // // //       </section>
+      
+// // // //       {/* --- Animated Timeline Section (Imported) --- */}
+// // // //       {/* Wrapped in a section for proper padding and background */}
+// // // //       <section className="py-24 bg-white">
+// // // //         <Timeline />
+// // // //       </section>
+
+// // // //       {/* --- Facility Video Section --- */}
+// // // //       {/* Background changed to light gray for separation */}
+// // // //       <section className="py-24 bg-gray-50">
+// // // //         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+// // // //           <FadeIn>
+// // // //             {/* Gradient updated to a vibrant green/teal */}
+// // // //             <h2 className="text-4xl md:text-5xl font-light mb-4">
+// // // //               Our <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">World-Class Facility</span>
+// // // //             </h2>
+// // // //             {/* Text color updated */}
+// // // //             <p className="text-xl text-gray-500 max-w-2xl mx-auto mt-4 mb-12">
+// // // //               See the technology and the people that make our quality possible.
+// // // //             </p>
+// // // //             {/* Border changed to light gray */}
+// // // //             <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl group cursor-pointer border-2 border-gray-200">
+// // // //               {/* Updated placeholder image */}
+// // // //               <img 
+// // // //                 src="https://placehold.co/1280x720/cccccc/555555?text=Our+Facility+Tour&font=inter" 
+// // // //                 alt="Our Facility Video Thumbnail" 
+// // // //                 className="w-full h-full object-cover"
+// // // //               />
+// // // //               {/* Dark overlay kept for contrast, hover opacity tweaked */}
+// // // //               <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-10 transition-all duration-300"></div>
+// // // //               <div className="absolute inset-0 flex items-center justify-center">
+// // // //                 <div className="relative">
+// // // //                   {/* Icon is white, which is perfect on the dark overlay */}
+// // // //                   <PlayCircle size={100} className="text-white text-opacity-80 group-hover:text-opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-lg" />
+// // // //                   {/* Ping animation color changed to green */}
+// // // //                   <div className="absolute inset-0 rounded-full bg-green-500 opacity-30 animate-ping -z-10 group-hover:animate-none"></div>
+// // // //                 </div>
+// // // //               </div>
+// // // //             </div>
+// // // //           </FadeIn>
+// // // //         </div>
+// // // //       </section>
+
+// // // //       {/* --- Dynamic Stats Section --- */}
+// // // //       {/* Background changed to white, placeholder BG image updated to a light theme */}
+// // // //       <section className="py-24 bg-white" style={{ backgroundImage: "url('https://placehold.co/1920x1080/f5f5f5/cccccc?text=Subtle+Circuit+BG&font=inter')" }}>
+// // // //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+// // // //           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+// // // //             <FadeIn delay={0}>
+// // // //               <div className="p-6">
+// // // //                 {/* Numbers are now vibrant gradients */}
+// // // //                 <h3 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">
+// // // //                   <CountUp end={30} suffix="+" />
+// // // //                 </h3>
+// // // //                 <p className="text-2xl text-gray-500 mt-2">Years in the Market</p>
+// // // //               </div>
+// // // //             </FadeIn>
+// // // //             <FadeIn delay={200}>
+// // // //               <div className="p-6">
+// // // //                 {/* Added more color variation as requested */}
+// // // //                 <h3 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-600">
+// // // //                   <CountUp end={10} suffix="M+" />
+// // // //                 </h3>
+// // // //                 <p className="text-2xl text-gray-500 mt-2">Used Assets Sold</p>
+// // // //               </div>
+// // // //             </FadeIn>
+// // // //             <FadeIn delay={400}>
+// // // //               <div className="p-6">
+// // // //                 {/* Added more color variation as requested */}
+// // // //                 <h3 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-lime-500 to-green-600">
+// // // //                   <CountUp end={1000} suffix="+" />
+// // // //                 </h3>
+// // // //                 <p className="text-2xl text-gray-500 mt-2">R&D Projects</p>
+// // // //               </div>
+// // // //             </FadeIn>
+// // // //           </div>
+// // // //         </div>
+// // // //       </section>
+      
+// // // //       {/* --- Core Values Section (Imported) --- */}
+// // // //       {/* Wrapped in a section with alternating light gray background */}
+// // // //       <section className="py-24 bg-gray-50">
+// // // //         <CoreValues />
+// // // //       </section>
+
+// // // //       {/* --- CTA Section --- */}
+// // // //       {/* Wrapped in a section to ensure correct background */}
+// // // //       <section className="py-24 bg-white">
+// // // //         <CallToAction 
+// // // //           title="Let's have a conversation"
+// // // //           text="Get in touch to learn how our products can provide for you."
+// // // //           buttonText="Contact Us"
+// // // //           buttonLink="/contact"
+// // // //         />
+// // // //       </section>
+// // // //     </div>
+// // // //   );
+// // // // };
+
+// // // /* src/pages/About.js */
+
+// // // import React, { useState, useEffect } from 'react';
+// // // import { FadeIn } from '../components/common/FadeIn';
+// // // import { CountUp } from '../components/common/CountUp';
+// // // import { CallToAction } from '../components/common/CallToAction';
+// // // import { Timeline } from '../components/about/Timeline';
+// // // import { CoreValues } from '../components/about/CoreValues';
+
+// // // // Import Admin/CMS tools
+// // // import { useAuth } from '../context/AuthContext'; // Assuming path
+// // // import { aboutApi } from '../api/aboutApi';
+// // // import { EditableText } from '../components/common/EditableText';
+// // // import { EditableImage } from '../components/common/EditableImage';
+// // // import { ListManagementModal } from '../components/common/ListManagementModal';
+// // // import { IconPicker } from '../components/common/IconPicker';
+// // // import { Edit, PlayCircle } from 'lucide-react';
+// // // import { v4 as uuidv4 } from 'uuid';
+
+// // // // Helper component for admin buttons
+// // // const AdminEditButton = ({ onClick, text = 'Edit' }) => (
+// // //   <button
+// // //     onClick={onClick}
+// // //     className="absolute top-2 right-2 z-50 bg-blue-600 text-white px-3 py-1 rounded-md text-sm font-semibold hover:bg-blue-700 transition-all flex items-center gap-1"
+// // //   >
+// // //     <Edit size={14} /> {text}
+// // //   </button>
+// // // );
+
+// // // export const About = () => {
+// // //   //const { isAdmin } = useAuth();
+// // //   const isAdmin = true; // For testing purposes
+// // //   const [content, setContent] = useState(null);
+// // //   const [isLoading, setIsLoading] = useState(true);
+// // //   const [modal, setModal] = useState(null); // 'timeline', 'stats', 'core_values'
+
+// // //   // --- Data Fetching ---
+// // //   useEffect(() => {
+// // //     const loadContent = async () => {
+// // //       try {
+// // //         const data = await aboutApi.getContent();
+// // //         setContent(data);
+// // //       } catch (err) {
+// // //         console.error('Failed to load page content', err);
+// // //       } finally {
+// // //         setIsLoading(false);
+// // //       }
+// // //     };
+// // //     loadContent();
+// // //   }, []);
+
+// // //   // --- Data Saving ---
+// // //   const handleSave = async (sectionName, newContent) => {
+// // //     // 1. Optimistic UI update
+// // //     setContent((prev) => ({
+// // //       ...prev,
+// // //       [sectionName]: newContent,
+// // //     }));
+
+// // //     // 2. API call
+// // //     try {
+// // //       await aboutApi.updateSectionContent(sectionName, newContent);
+// // //     } catch (err) {
+// // //       console.error('Failed to save content', err);
+// // //       alert('Error saving content. Please refresh and try again.');
+// // //       // NOTE: In a real app, you'd revert the optimistic update here
+// // //     }
+// // //   };
+
+// // //   // Helper for simple text field updates
+// // //   const handleTextSave = (sectionName, field) => async (newValue) => {
+// // //     const newContent = {
+// // //       ...content[sectionName],
+// // //       [field]: newValue,
+// // //     };
+// // //     await handleSave(sectionName, newContent);
+// // //   };
+
+// // //   // Helper for image updates
+// // //   // const handleImageSave = (sectionName, field) => async (newFile) => {
+// // //   //   const section = content[sectionName];
+// // //   //   const oldStoragePath = section[`${field}_storage_path`];
+
+// // //   //   try {
+// // //   //     const { publicUrl, storagePath } = await aboutApi.updateFile(newFile, oldStoragePath);
+      
+// // //   //     const newContent = {
+// // //   //       ...section,
+// // //   //       [`${field}_url`]: publicUrl,
+// // //   //       [`${field}_storage_path`]: storagePath,
+// // //   //     };
+// // //   //     await handleSave(sectionName, newContent);
+
+// // //   //   } catch (err) {
+// // //   //     console.error("Failed to update image", err);
+// // //   //     alert("Image update failed.");
+// // //   //   }
+// // //   // };
+
+
+// // //   const handleImageSave = (sectionName, field) => async (newFile) => {
+// // //     // --- Add this check ---
+// // //     if (!newFile) {
+// // //       console.log('No file selected.');
+// // //       return;
+// // //     }
+
+// // //     console.log(`Saving image for: ${sectionName}.${field}`); // Debug log
+    
+// // //     const section = content[sectionName];
+// // //     if (!section) {
+// // //       console.error(`Error: No content found for section '${sectionName}'`);
+// // //       return;
+// // //     }
+    
+// // //     const oldStoragePath = section[`${field}_storage_path`];
+// // //     console.log('Old storage path:', oldStoragePath); // Debug log
+
+// // //     try {
+// // //       const { publicUrl, storagePath } = await aboutApi.updateFile(newFile, oldStoragePath);
+// // //       console.log('Upload success:', { publicUrl, storagePath }); // Debug log
+      
+// // //       const newContent = {
+// // //         ...section,
+// // //         [`${field}_url`]: publicUrl,
+// // //         [`${field}_storage_path`]: storagePath,
+// // //       };
+// // //       await handleSave(sectionName, newContent);
+
+// // //     } catch (err) {
+// // //       console.error("Failed to update image", err);
+// // //       alert("Image update failed. Check the console for details.");
+// // //     }
+// // //   };
+
+// // //   // --- Modal Forms ---
+// // //   const renderModalForm = (item, setItem) => {
+// // //     switch (modal) {
+// // //       case 'timeline':
+// // //         return (
+// // //           <>
+// // //             <label>Year: <input type="number" className="w-full p-1 border" value={item.year || ''} onChange={e => setItem({...item, year: parseInt(e.target.value)})} /></label>
+// // //             <label>Title: <input type="text" className="w-full p-1 border" value={item.title || ''} onChange={e => setItem({...item, title: e.target.value})} /></label>
+// // //             <label>Description: <textarea className="w-full p-1 border" value={item.desc || ''} onChange={e => setItem({...item, desc: e.target.value})} /></label>
+// // //           </>
+// // //         );
+// // //       case 'stats':
+// // //         return (
+// // //           <>
+// // //             <label>Value (Number): <input type="number" className="w-full p-1 border" value={item.value || ''} onChange={e => setItem({...item, value: parseInt(e.target.value)})} /></label>
+// // //             <label>Suffix (e.g., +, M+): <input type="text" className="w-full p-1 border" value={item.suffix || ''} onChange={e => setItem({...item, suffix: e.target.value})} /></label>
+// // //             <label>Label: <input type="text" className="w-full p-1 border" value={item.label || ''} onChange={e => setItem({...item, label: e.target.value})} /></label>
+// // //           </>
+// // //         );
+// // //       case 'core_values':
+// // //         return (
+// // //           <>
+// // //             <label>Icon: <IconPicker value={item.icon_name} onChange={name => setItem({...item, icon_name: name})} /></label>
+// // //             <label>Title: <input type="text" className="w-full p-1 border" value={item.title || ''} onChange={e => setItem({...item, title: e.target.value})} /></label>
+// // //             <label>Description: <textarea className="w-full p-1 border" value={item.desc || ''} onChange={e => setItem({...item, desc: e.target.value})} /></label>
+// // //           </>
+// // //         );
+// // //       default: return null;
+// // //     }
+// // //   };
+
+// // //   if (isLoading) {
+// // //     return <div className="h-screen bg-white flex items-center justify-center text-gray-900">Loading...</div>;
+// // //   }
+  
+// // //   if (!content) {
+// // //     return <div className="h-screen bg-white flex items-center justify-center text-gray-900">Error loading content.</div>;
+// // //   }
+
+// // //   const { about_hero, timeline, facility_video, about_stats, core_values, about_cta } = content;
+
+// // //   return (
+// // //     <div className="bg-white text-gray-900 overflow-x-hidden">
+      
+// // //       {/* --- About Hero Section --- */}
+// // //       <section className="relative h-[70vh] flex items-center justify-center text-center overflow-hidden">
+// // //         <EditableImage
+// // //           isAdmin={isAdmin}
+// // //           src={about_hero.image_url}
+// // //           alt={about_hero.image_alt}
+// // //           onSave={handleImageSave('about_hero', 'image')}
+// // //           className="absolute z-0 w-full h-full"
+// // //           imgProps={{ className: "w-full h-full object-cover" }}
+// // //         />
+// // //         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent z-10"></div>
+// // //         <div className="absolute inset-0 bg-white opacity-40 z-0"></div>
+        
+// // //         <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+// // //           <FadeIn>
+// // //             <EditableText
+// // //               as="h1"
+// // //               isAdmin={isAdmin}
+// // //               value={about_hero.title_prefix}
+// // //               onSave={handleTextSave('about_hero', 'title_prefix')}
+// // //               className="text-6xl md:text-8xl font-bold tracking-tighter text-gray-900 drop-shadow-lg"
+// // //             >
+// // //               {about_hero.title_prefix}{' '}
+// // //               <EditableText
+// // //                 as="span"
+// // //                 isAdmin={isAdmin}
+// // //                 value={about_hero.title_suffix}
+// // //                 onSave={handleTextSave('about_hero', 'title_suffix')}
+// // //                 className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-600"
+// // //               />
+// // //             </EditableText>
+
+// // //             <EditableText
+// // //               as="p"
+// // //               isAdmin={isAdmin}
+// // //               value={about_hero.subtitle}
+// // //               onSave={handleTextSave('about_hero', 'subtitle')}
+// // //               className="mt-6 text-xl md:text-2xl font-light text-gray-600 max-w-3xl mx-auto"
+// // //               useTextarea
+// // //             />
+// // //           </FadeIn>
+// // //         </div>
+// // //       </section>
+      
+// // //       {/* --- Animated Timeline Section (Imported) --- */}
+// // //       <section className="py-24 bg-white relative">
+// // //         {isAdmin && <AdminEditButton onClick={() => setModal('timeline')} text="Edit Timeline" />}
+// // //         <Timeline 
+// // //           timelineData={timeline} 
+// // //           isAdmin={isAdmin}
+// // //           onSave={handleSave} // Pass the main save function
+// // //         />
+// // //       </section>
+
+// // //       {/* --- Facility Video Section --- */}
+// // //       <section className="py-24 bg-gray-50 relative">
+// // //         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+// // //           <FadeIn>
+// // //             <EditableText
+// // //               as="h2"
+// // //               isAdmin={isAdmin}
+// // //               value={facility_video.title}
+// // //               onSave={handleTextSave('facility_video', 'title')}
+// // //               className="text-4xl md:text-5xl font-light mb-4"
+// // //             >
+// // //               {facility_video.title.split(' ').slice(0, -1).join(' ')}
+// // //               <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">
+// // //                 {facility_video.title.split(' ').pop()}
+// // //               </span>
+// // //             </EditableText>
+
+// // //             <EditableText
+// // //               as="p"
+// // //               isAdmin={isAdmin}
+// // //               value={facility_video.subtitle}
+// // //               onSave={handleTextSave('facility_video', 'subtitle')}
+// // //               className="text-xl text-gray-500 max-w-2xl mx-auto mt-4 mb-12"
+// // //               useTextarea
+// // //             />
+            
+// // //             <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl group cursor-pointer border-2 border-gray-200">
+// // //               <EditableImage
+// // //                 isAdmin={isAdmin}
+// // //                 src={facility_video.thumbnail_url}
+// // //                 alt={facility_video.thumbnail_alt}
+// // //                 onSave={handleImageSave('facility_video', 'thumbnail')}
+// // //                 className="w-full h-full"
+// // //                 imgProps={{ className: "w-full h-full object-cover" }}
+// // //               />
+// // //               <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-10 transition-all duration-300"></div>
+// // //               <div className="absolute inset-0 flex items-center justify-center">
+// // //                 <div className="relative">
+// // //                   <PlayCircle size={100} className="text-white text-opacity-80 group-hover:text-opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-lg" />
+// // //                   <div className="absolute inset-0 rounded-full bg-green-500 opacity-30 animate-ping -z-10 group-hover:animate-none"></div>
+// // //                 </div>
+// // //               </div>
+// // //             </div>
+// // //             {/* Note: Video URL editing would require another button/modal */}
+// // //           </FadeIn>
+// // //         </div>
+// // //       </section>
+
+// // //       {/* --- Dynamic Stats Section --- */}
+// // //       <section className="py-24 bg-white relative" style={{ backgroundImage: "url('https://placehold.co/1920x1080/f5f5f5/cccccc?text=Subtle+Circuit+BG&font=inter')" }}>
+// // //         {isAdmin && <AdminEditButton onClick={() => setModal('stats')} text="Edit Stats" />}
+// // //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+// // //           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+// // //             {about_stats.map((stat, index) => (
+// // //               <FadeIn key={stat.id} delay={index * 200}>
+// // //                 <div className="p-6">
+// // //                   <h3 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">
+// // //                     <CountUp end={stat.value} suffix={stat.suffix} />
+// // //                   </h3>
+// // //                   <p className="text-2xl text-gray-500 mt-2">{stat.label}</p>
+// // //                 </div>
+// // //               </FadeIn>
+// // //             ))}
+// // //           </div>
+// // //         </div>
+// // //       </section>
+      
+// // //       {/* --- Core Values Section (Imported) --- */}
+// // //       <section className="py-24 bg-gray-50 relative">
+// // //         {isAdmin && <AdminEditButton onClick={() => setModal('core_values')} text="Edit Core Values" />}
+// // //         <CoreValues 
+// // //           valuesData={core_values} 
+// // //           isAdmin={isAdmin}
+// // //           onSave={handleSave} 
+// // //         />
+// // //       </section>
+
+// // //       {/* --- CTA Section --- */}
+// // //       <section className="py-24 bg-white">
+// // //         <CallToAction 
+// // //           ctaData={about_cta}
+// // //           isAdmin={isAdmin}
+// // //           onSave={handleSave}
+// // //           onImageSave={handleImageSave('about_cta', 'background')}
+// // //         />
+// // //       </section>
+
+// // //       {/* --- List Management Modal --- */}
+// // //       {modal && (
+// // //         <ListManagementModal
+// // //           title={`Manage ${modal.replace('_', ' ')}`}
+// // //           items={
+// // //             modal === 'stats' ? content.about_stats : content[modal].events || content[modal].values
+// // //           }
+// // //           itemTitleKey={modal === 'stats' ? 'label' : 'title'}
+// // //           onClose={() => setModal(null)}
+// // //           renderForm={renderModalForm}
+// // //           onSave={async (newItems) => {
+// // //             let newContent;
+// // //             if (modal === 'stats') {
+// // //               newContent = newItems; // Stats is a root-level array
+// // //             } else {
+// // //               // Timeline and Core Values are objects with an array inside
+// // //               const key = content[modal].events ? 'events' : 'values';
+// // //               newContent = {
+// // //                 ...content[modal],
+// // //                 [key]: newItems
+// // //               };
+// // //             }
+// // //             await handleSave(modal, newContent);
+// // //             setModal(null); // Close modal on save
+// // //           }}
+// // //         />
+// // //       )}
+// // //     </div>
+// // //   );
+// // // };
+
+// // import React, { useState, useEffect } from 'react';
 // // import { FadeIn } from '../components/common/FadeIn';
 // // import { CountUp } from '../components/common/CountUp';
 // // import { CallToAction } from '../components/common/CallToAction';
 // // import { Timeline } from '../components/about/Timeline';
 // // import { CoreValues } from '../components/about/CoreValues';
-// // import { PlayCircle } from 'lucide-react';
+
+// // // Import Admin/CMS tools
+// // import { useAuth } from '../context/AuthContext'; // Make sure this path is correct
+// // import { aboutApi } from '../api/aboutApi';
+// // import { EditableText } from '../components/common/EditableText';
+// // import { EditableImage } from '../components/common/EditableImage';
+// // import { ListManagementModal } from '../components/common/ListManagementModal';
+// // import { IconPicker } from '../components/common/IconPicker';
+// // import { Edit, PlayCircle } from 'lucide-react';
+// // import { v4 as uuidv4 } from 'uuid';
+
+// // // Helper component for admin buttons
+// // const AdminEditButton = ({ onClick, text = 'Edit' }) => (
+// //   <button
+// //     onClick={onClick}
+// //     className="absolute top-2 right-2 z-50 bg-blue-600 text-white px-3 py-1 rounded-md text-sm font-semibold hover:bg-blue-700 transition-all flex items-center gap-1"
+// //   >
+// //     <Edit size={14} /> {text}
+// //   </button>
+// // );
 
 // // export const About = () => {
+// //   // const { isAdmin } = useAuth(); // UNCOMMENT THIS
+// //   const isAdmin = true; // For testing purposes
+// //   const [content, setContent] = useState(null);
+// //   const [isLoading, setIsLoading] = useState(true);
+// //   const [modal, setModal] = useState(null); // 'timeline', 'stats', 'core_values'
+
+// //   // --- Data Fetching ---
+// //   useEffect(() => {
+// //     const loadContent = async () => {
+// //       try {
+// //         const data = await aboutApi.getContent();
+// //         setContent(data);
+// //       } catch (err) {
+// //         console.error('Failed to load page content', err);
+// //       } finally {
+// //         setIsLoading(false);
+// //       }
+// //     };
+// //     loadContent();
+// //   }, []);
+
+// //   // --- Data Saving ---
+// //   const handleSave = async (sectionName, newContent) => {
+// //     // 1. Optimistic UI update
+// //     setContent((prev) => ({
+// //       ...prev,
+// //       [sectionName]: newContent,
+// //     }));
+
+// //     // 2. API call
+// //     try {
+// //       await aboutApi.updateSectionContent(sectionName, newContent);
+// //     } catch (err) {
+// //       console.error('Failed to save content', err);
+// //       alert('Error saving content. Please refresh and try again.');
+// //       // NOTE: In a real app, you'd revert the optimistic update here
+// //     }
+// //   };
+
+// //   // Helper for simple text field updates
+// //   const handleTextSave = (sectionName, field) => async (newValue) => {
+// //     const newContent = {
+// //       ...content[sectionName],
+// //       [field]: newValue,
+// //     };
+// //     await handleSave(sectionName, newContent);
+// //   };
+
+// //   // Helper for image updates
+// //   const handleImageSave = (sectionName, field) => async (newFile) => {
+// //     if (!newFile) {
+// //       console.log('No file selected.');
+// //       return;
+// //     }
+    
+// //     console.log(`Saving image for: ${sectionName}.${field}`);
+    
+// //     const section = content[sectionName];
+// //     if (!section) {
+// //       console.error(`Error: No content found for section '${sectionName}'`);
+// //       return;
+// //     }
+    
+// //     const oldStoragePath = section[`${field}_storage_path`];
+// //     console.log('Old storage path:', oldStoragePath);
+
+// //     try {
+// //       const { publicUrl, storagePath } = await aboutApi.updateFile(newFile, oldStoragePath);
+// //       console.log('Upload success:', { publicUrl, storagePath });
+      
+// //       const newContent = {
+// //         ...section,
+// //         [`${field}_url`]: publicUrl,
+// //         [`${field}_storage_path`]: storagePath,
+// //       };
+// //       await handleSave(sectionName, newContent);
+
+// //     } catch (err) {
+// //       console.error("Failed to update image", err);
+// //       alert("Image update failed. Check the console for details.");
+// //     }
+// //   };
+
+// //   // --- Modal Forms ---
+// //   const renderModalForm = (item, setItem) => {
+// //     switch (modal) {
+// //       case 'timeline':
+// //         return (
+// //           <>
+// //             <label>Year: <input type="number" className="w-full p-1 border rounded" value={item.year || ''} onChange={e => setItem({...item, year: parseInt(e.target.value)})} /></label>
+// //             <label>Title: <input type="text" className="w-full p-1 border rounded" value={item.title || ''} onChange={e => setItem({...item, title: e.target.value})} /></label>
+// //             <label>Description: <textarea className="w-full p-1 border rounded" value={item.desc || ''} onChange={e => setItem({...item, desc: e.target.value})} /></label>
+// //           </>
+// //         );
+// //       case 'stats':
+// //         return (
+// //           <>
+// //             <label>Value (Number): <input type="number" className="w-full p-1 border rounded" value={item.value || ''} onChange={e => setItem({...item, value: parseInt(e.target.value)})} /></label>
+// //             <label>Suffix (e.g., +, M+): <input type="text" className="w-full p-1 border rounded" value={item.suffix || ''} onChange={e => setItem({...item, suffix: e.target.value})} /></label>
+// //             <label>Label: <input type="text" className="w-full p-1 border rounded" value={item.label || ''} onChange={e => setItem({...item, label: e.target.value})} /></label>
+// //           </>
+// //         );
+// //       case 'core_values':
+// //         return (
+// //           <>
+// //             <label>Icon: <IconPicker value={item.icon_name} onChange={name => setItem({...item, icon_name: name})} /></label>
+// //             <label>Title: <input type="text" className="w-full p-1 border rounded" value={item.title || ''} onChange={e => setItem({...item, title: e.target.value})} /></label>
+// //             <label>Description: <textarea className="w-full p-1 border rounded" value={item.desc || ''} onChange={e => setItem({...item, desc: e.target.value})} /></label>
+// //           </>
+// //         );
+// //       default: return null;
+// //     }
+// //   };
+
+// //   if (isLoading) {
+// //     return <div className="h-screen bg-white flex items-center justify-center text-gray-900">Loading...</div>;
+// //   }
+  
+// //   if (!content) {
+// //     return <div className="h-screen bg-white flex items-center justify-center text-gray-900">Error loading content.</div>;
+// //   }
+
+// //   const { about_hero, timeline, facility_video, about_stats, core_values, about_cta } = content;
+
 // //   return (
-// //     // Main container changed to white background and dark text
 // //     <div className="bg-white text-gray-900 overflow-x-hidden">
       
-// //       {/* --- About Hero Section --- */}
+// //       {/* --- About Hero Section (FIXED) --- */}
 // //       <section className="relative h-[70vh] flex items-center justify-center text-center overflow-hidden">
-// //         {/* Updated placeholder for light theme */}
+// //         {/* Layer 1: Image (Z-0) */}
 // //         <img 
-// //           src="https://placehold.co/1920x1080/e0e0e0/555555?text=Our+Facility&font=inter" 
-// //           alt="ECycleGreen Facility"
+// //           src={about_hero.image_url} 
+// //           alt={about_hero.image_alt}
 // //           className="absolute z-0 w-full h-full object-cover"
 // //         />
-// //         {/* Gradient Overlay changed from black to white */}
+// //         {/* Layer 2: Overlays (Z-10) */}
 // //         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent z-10"></div>
-// //         {/* Light opacity overlay */}
 // //         <div className="absolute inset-0 bg-white opacity-40 z-0"></div>
         
-// //         {/* Content */}
+// //         {/* Layer 3: Content (Z-20) */}
 // //         <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 // //           <FadeIn>
-// //             {/* Text changed to dark, gradient updated to greens */}
-// //             <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-gray-900 drop-shadow-lg">
-// //               About <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-600">Us</span>
-// //             </h1>
-// //             {/* Subtitle text changed to a readable gray */}
-// //             <p className="mt-6 text-xl md:text-2xl font-light text-gray-600 max-w-3xl mx-auto">
-// //               We built the world's leading facility to provide the highest quality
-// //               refurbished laptops in the world.
-// //             </p>
+// //             <EditableText
+// //               as="h1"
+// //               isAdmin={isAdmin}
+// //               value={about_hero.title_prefix}
+// //               onSave={handleTextSave('about_hero', 'title_prefix')}
+// //               className="text-6xl md:text-8xl font-bold tracking-tighter text-gray-900 drop-shadow-lg"
+// //             >
+// //               {about_hero.title_prefix}{' '}
+// //               <EditableText
+// //                 as="span"
+// //                 isAdmin={isAdmin}
+// //                 value={about_hero.title_suffix}
+// //                 onSave={handleTextSave('about_hero', 'title_suffix')}
+// //                 className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-600"
+// //               />
+// //             </EditableText>
+
+// //             <EditableText
+// //               as="p"
+// //               isAdmin={isAdmin}
+// //               value={about_hero.subtitle}
+// //               onSave={handleTextSave('about_hero', 'subtitle')}
+// //               className="mt-6 text-xl md:text-2xl font-light text-gray-600 max-w-3xl mx-auto"
+// //               useTextarea
+// //             />
 // //           </FadeIn>
 // //         </div>
+
+// //         {/* Layer 4: Admin Button (Z-30) */}
+// //         <EditableImage
+// //           isAdmin={isAdmin}
+// //           onSave={handleImageSave('about_hero', 'image')}
+// //           className="absolute inset-0 z-30" 
+// //           renderImage={false}
+// //         />
 // //       </section>
       
-// //       {/* --- Animated Timeline Section (Imported) --- */}
-// //       {/* Wrapped in a section for proper padding and background */}
-// //       <section className="py-24 bg-white">
-// //         <Timeline />
+// //       {/* --- Animated Timeline Section --- */}
+// //       <section className="py-24 bg-white relative">
+// //         {isAdmin && <AdminEditButton onClick={() => setModal('timeline')} text="Edit Timeline" />}
+// //         <Timeline 
+// //           timelineData={timeline} 
+// //           isAdmin={isAdmin}
+// //           onSave={handleSave} 
+// //         />
 // //       </section>
 
-// //       {/* --- Facility Video Section --- */}
-// //       {/* Background changed to light gray for separation */}
-// //       <section className="py-24 bg-gray-50">
+// //       {/* --- Facility Video Section (FIXED) --- */}
+// //       <section className="py-24 bg-gray-50 relative">
 // //         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 // //           <FadeIn>
-// //             {/* Gradient updated to a vibrant green/teal */}
-// //             <h2 className="text-4xl md:text-5xl font-light mb-4">
-// //               Our <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">World-Class Facility</span>
-// //             </h2>
-// //             {/* Text color updated */}
-// //             <p className="text-xl text-gray-500 max-w-2xl mx-auto mt-4 mb-12">
-// //               See the technology and the people that make our quality possible.
-// //             </p>
-// //             {/* Border changed to light gray */}
+// //             <EditableText
+// //               as="h2"
+// //               isAdmin={isAdmin}
+// //               value={facility_video.title}
+// //               onSave={handleTextSave('facility_video', 'title')}
+// //               className="text-4xl md:text-5xl font-light mb-4"
+// //             >
+// //               {facility_video.title.split(' ').slice(0, -1).join(' ')}
+// //               <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">
+// //                 {facility_video.title.split(' ').pop()}
+// //               </span>
+// //             </EditableText>
+
+// //             <EditableText
+// //               as="p"
+// //               isAdmin={isAdmin}
+// //               value={facility_video.subtitle}
+// //               onSave={handleTextSave('facility_video', 'subtitle')}
+// //               className="text-xl text-gray-500 max-w-2xl mx-auto mt-4 mb-12"
+// //               useTextarea
+// //             />
+            
 // //             <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl group cursor-pointer border-2 border-gray-200">
-// //               {/* Updated placeholder image */}
+// //               {/* Layer 1: Thumbnail Image */}
 // //               <img 
-// //                 src="https://placehold.co/1280x720/cccccc/555555?text=Our+Facility+Tour&font=inter" 
-// //                 alt="Our Facility Video Thumbnail" 
+// //                 src={facility_video.thumbnail_url} 
+// //                 alt={facility_video.thumbnail_alt} 
 // //                 className="w-full h-full object-cover"
 // //               />
-// //               {/* Dark overlay kept for contrast, hover opacity tweaked */}
+// //               {/* Layer 2: Overlays and Play Button */}
 // //               <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-10 transition-all duration-300"></div>
 // //               <div className="absolute inset-0 flex items-center justify-center">
 // //                 <div className="relative">
-// //                   {/* Icon is white, which is perfect on the dark overlay */}
 // //                   <PlayCircle size={100} className="text-white text-opacity-80 group-hover:text-opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-lg" />
-// //                   {/* Ping animation color changed to green */}
 // //                   <div className="absolute inset-0 rounded-full bg-green-500 opacity-30 animate-ping -z-10 group-hover:animate-none"></div>
 // //                 </div>
 // //               </div>
+
+// //               {/* Layer 3: Admin Button (Z-30) */}
+// //               <EditableImage
+// //                 isAdmin={isAdmin}
+// //                 onSave={handleImageSave('facility_video', 'thumbnail')}
+// //                 className="absolute inset-0 z-30"
+// //                 renderImage={false}
+// //               />
 // //             </div>
 // //           </FadeIn>
 // //         </div>
 // //       </section>
 
 // //       {/* --- Dynamic Stats Section --- */}
-// //       {/* Background changed to white, placeholder BG image updated to a light theme */}
-// //       <section className="py-24 bg-white" style={{ backgroundImage: "url('https://placehold.co/1920x1080/f5f5f5/cccccc?text=Subtle+Circuit+BG&font=inter')" }}>
+// //       <section className="py-24 bg-white relative" style={{ backgroundImage: "url('https://placehold.co/1920x1080/f5f5f5/cccccc?text=Subtle+Circuit+BG&font=inter')" }}>
+// //         {isAdmin && <AdminEditButton onClick={() => setModal('stats')} text="Edit Stats" />}
 // //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 // //           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-// //             <FadeIn delay={0}>
-// //               <div className="p-6">
-// //                 {/* Numbers are now vibrant gradients */}
-// //                 <h3 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">
-// //                   <CountUp end={30} suffix="+" />
-// //                 </h3>
-// //                 <p className="text-2xl text-gray-500 mt-2">Years in the Market</p>
-// //               </div>
-// //             </FadeIn>
-// //             <FadeIn delay={200}>
-// //               <div className="p-6">
-// //                 {/* Added more color variation as requested */}
-// //                 <h3 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-600">
-// //                   <CountUp end={10} suffix="M+" />
-// //                 </h3>
-// //                 <p className="text-2xl text-gray-500 mt-2">Used Assets Sold</p>
-// //               </div>
-// //             </FadeIn>
-// //             <FadeIn delay={400}>
-// //               <div className="p-6">
-// //                 {/* Added more color variation as requested */}
-// //                 <h3 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-lime-500 to-green-600">
-// //                   <CountUp end={1000} suffix="+" />
-// //                 </h3>
-// //                 <p className="text-2xl text-gray-500 mt-2">R&D Projects</p>
-// //               </div>
-// //             </FadeIn>
+// //             {about_stats.map((stat, index) => (
+// //               <FadeIn key={stat.id} delay={index * 200}>
+// //                 <div className="p-6">
+// //                   <h3 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">
+// //                     <CountUp end={stat.value} suffix={stat.suffix} />
+// //                   </h3>
+// //                   <p className="text-2xl text-gray-500 mt-2">{stat.label}</p>
+// //                 </div>
+// //               </FadeIn>
+// //             ))}
 // //           </div>
 // //         </div>
 // //       </section>
       
-// //       {/* --- Core Values Section (Imported) --- */}
-// //       {/* Wrapped in a section with alternating light gray background */}
-// //       <section className="py-24 bg-gray-50">
-// //         <CoreValues />
+// //       {/* --- Core Values Section --- */}
+// //       <section className="py-24 bg-gray-50 relative">
+// //         {isAdmin && <AdminEditButton onClick={() => setModal('core_values')} text="Edit Core Values" />}
+// //         <CoreValues 
+// //           valuesData={core_values} 
+// //           isAdmin={isAdmin}
+// //           onSave={handleSave} 
+// //         />
 // //       </section>
 
 // //       {/* --- CTA Section --- */}
-// //       {/* Wrapped in a section to ensure correct background */}
 // //       <section className="py-24 bg-white">
 // //         <CallToAction 
-// //           title="Let's have a conversation"
-// //           text="Get in touch to learn how our products can provide for you."
-// //           buttonText="Contact Us"
-// //           buttonLink="/contact"
+// //           ctaData={about_cta}
+// //           isAdmin={isAdmin}
+// //           onSave={handleSave}
+// //           onImageSave={handleImageSave('about_cta', 'background')}
 // //         />
 // //       </section>
+
+// //       {/* --- List Management Modal --- */}
+// //       {modal && (
+// //         <ListManagementModal
+// //           title={`Manage ${modal.replace('_', ' ')}`}
+// //           items={
+// //             modal === 'stats' ? content.about_stats : content[modal].events || content[modal].values
+// //           }
+// //           itemTitleKey={modal === 'stats' ? 'label' : 'title'}
+// //           onClose={() => setModal(null)}
+// //           renderForm={renderModalForm}
+// //           onSave={async (newItems) => {
+// //             let newContent;
+// //             if (modal === 'stats') {
+// //               newContent = newItems; // Stats is a root-level array
+// //             } else {
+// //               // Timeline and Core Values are objects with an array inside
+// //               const key = content[modal].events ? 'events' : 'values';
+// //               newContent = {
+// //                 ...content[modal],
+// //                 [key]: newItems
+// //               };
+// //             }
+// //             await handleSave(modal, newContent);
+// //             setModal(null); // Close modal on save
+// //           }}
+// //         />
+// //       )}
 // //     </div>
 // //   );
 // // };
-// /*
-// *
-// * === FULLY INTEGRATED & ADMIN-EDITABLE About.jsx ===
-// *
-// */
-// import React, { useState, useEffect, Fragment, useRef } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-// import { motion, AnimatePresence } from 'framer-motion';
-// import { useInView } from 'react-intersection-observer';
-// import { 
-//   Eye, Heart, Zap as ZapIcon, Shield, PlayCircle, 
-//   Edit, Plus, X, Upload,
-// } from 'lucide-react';
-// import { v4 as uuidv4 } from 'uuid';
 
-// // --- NEW IMPORTS ---
-// // import { useAuth } from '../AuthContext'; // Get admin status
-// // import * as aboutApi from '../api/aboutApi'; // <-- Import new API
-// import { useAuth } from '../context/AuthContext';
-// import * as aboutApi from '../api/aboutApi';
-// // --- HELPER COMPONENTS (Imported or defined here) ---
-// // (These are the same as used on Home.jsx. 
-// // I will paste their full code at the bottom of this file.)
-// import { EditableText } from '../components/common/EditableText';
-// import { EditableImage } from '../components/common/EditableImage';
-// import { DynamicIcon, availableIconNames } from '../components/common/DynamicIcon';
-// // import { ListManagementModal } from '../components/ListManagementModal';
-// // import { IconPicker } from '../components/IconPicker';
-// // import { FadeIn } from '../components/common/FadeIn';
-// // import { CountUp } from '../components/common/CountUp';
-// // ... or if they are not in separate files, their code is at the bottom.
+// /* src/pages/About.jsx */
+
+// import React, { useState, useEffect, useRef } from 'react';
 // import { FadeIn } from '../components/common/FadeIn';
 // import { CountUp } from '../components/common/CountUp';
+// import { CallToAction } from '../components/common/CallToAction';
+// import { Timeline } from '../components/about/Timeline';
+// import { CoreValues } from '../components/about/CoreValues';
 
-// // ---
-// // --- 1. ABOUT HERO SECTION (Integrated & Editable)
-// // ---
-// const IconPicker = ({ value, onChange }) => {
-// const [isOpen, setIsOpen] = useState(false);
-// const [filter, setFilter] = useState('');
+// // Import Admin/CMS tools
+// import { useAuth } from '../context/AuthContext'; // Make sure this path is correct
+// import { aboutApi } from '../api/aboutApi';
+// import { EditableText } from '../components/common/EditableText';
+// // We will NOT use the common EditableImage for backgrounds
+// // import { EditableImage } from '../components/common/EditableImage'; 
+// import { ListManagementModal } from '../components/common/ListManagementModal';
+// import { IconPicker } from '../components/common/IconPicker';
+// import { Edit, PlayCircle, Upload, X, Video } from 'lucide-react';
+// import { v4 as uuidv4 } from 'uuid';
 
-// const filteredIcons = availableIconNames.filter(name => 
-//   name.toLowerCase().includes(filter.toLowerCase())
-// ).slice(0, 50); // Limit to 50
+// // --- NEW HELPER COMPONENTS (Scoped to this file) ---
 
-// return (
-//   <div className="relative">
-//     <button type="button" onClick={() => setIsOpen(!isOpen)} className="flex items-center justify-between w-full p-2 border rounded">
-//       <span>{value ? <DynamicIcon name={value} className="inline-block mr-2" /> : null} {value || 'Select Icon'}</span>
-//       <span>{isOpen ? 'Close' : 'Open'}</span>
-//     </button>
-//     {isOpen && (
-//       <div className="absolute z-50 w-full p-2 bg-white border rounded-lg shadow-lg max-h-60 overflow-y-auto">
-//         <input
-//           type="text"
-//           placeholder="Search icons..."
-//           value={filter}
-//           onChange={e => setFilter(e.target.value)}
-//           className="w-full p-1 mb-2 border rounded"
-//         />
-//         <div className="grid grid-cols-6 gap-1">
-//           {filteredIcons.map(name => (
-//             <button
-//               key={name}
-//               type="button"
-//               onClick={() => {
-//                 onChange(name);
-//                 setIsOpen(false);
-//                 setFilter('');
-//               }}
-//               className="p-2 border rounded hover:bg-gray-100"
-//               title={name}
-//             >
-//               <DynamicIcon name={name} />
-//             </button>
-//           ))}
-//         </div>
-//       </div>
-//     )}
-//   </div>
-// );
-// };
+// /**
+//  * NEW: A dedicated button for uploading media.
+//  * This is just the button, which we can place anywhere.
+//  */
+// const EditableMediaButton = ({
+//   isAdmin,
+//   onSave,
+//   label,
+//   accept, // 'image/*' or 'video/*'
+//   className = '',
+//   icon = <Upload size={14} />
+// }) => {
+//   const fileInputRef = useRef(null);
+//   const [isUploading, setIsUploading] = useState(false);
 
-// const ListManagementModal = ({ title, items, onClose, onSave, renderForm, itemTitleKey, fileKeys = [] }) => {
-//   const [currentItems, setCurrentItems] = useState(items);
-//   const [editingItem, setEditingItem] = useState(null); // The item object to edit
-//   const [isSaving, setIsSaving] = useState(false);
-//   const formRef = useRef(null);
+//   const handleFileChange = async (e) => {
+//     const file = e.target.files[0];
+//     if (!file) return;
 
-//   const handleAddNew = () => {
-//     setEditingItem({ id: uuidv4(), isNew: true }); // Use isNew flag
-//   };
-
-//   const handleEdit = (item) => {
-//     setEditingItem(JSON.parse(JSON.stringify(item))); // Deep copy
-//   };
-
-//   const handleDelete = async (itemToDelete) => {
-//     if (!window.confirm(`Are you sure you want to delete "${itemToDelete[itemTitleKey] || 'this item'}"?`)) return;
-    
-//     setIsSaving(true);
+//     setIsUploading(true);
 //     try {
-//       // Delete any associated files
-//       for (const key of fileKeys) {
-//         if (itemToDelete[`${key}_storage_path`]) {
-//           await contentApi.deleteFile(itemToDelete[`${key}_storage_path`]);
-//         }
-//       }
-      
-//       const newItems = currentItems.filter(i => i.id !== itemToDelete.id);
-//       await onSave(newItems); // Save deletion immediately
-//       setCurrentItems(newItems);
-      
-//     } catch (err) {
-//       console.error('Failed to delete item:', err);
-//       alert('Failed to delete item.');
+//       await onSave(file);
+//     } catch (error) {
+//       console.error('Failed to save media:', error);
+//       alert('Media upload failed.');
 //     } finally {
-//       setIsSaving(false);
+//       setIsUploading(false);
 //     }
 //   };
 
-//   // This handles the form submission for BOTH add and edit
-//   const handleFormSubmit = async (e) => {
-//     e.preventDefault();
-//     setIsSaving(true);
-//     let updatedItem = { ...editingItem };
-    
-//     try {
-//       // Handle file uploads
-//       const fileInputs = formRef.current.querySelectorAll('.file-input');
-//       for (const input of fileInputs) {
-//         const file = input.files[0];
-//         if (file) {
-//           const key = input.dataset.key; // e.g., 'video' or 'logo'
-//           const oldStoragePath = items.find(i => i.id === updatedItem.id)?.[`${key}_storage_path`];
-          
-//           const { publicUrl, storagePath } = await contentApi.updateFile(file, oldStoragePath);
-//           updatedItem[`${key}_url`] = publicUrl;
-//           updatedItem[`${key}_storage_path`] = storagePath;
-//         }
-//       }
-      
-//       delete updatedItem.isNew; // Clean up flag
-
-//       let newItemsArray;
-//       if (items.find(i => i.id === updatedItem.id)) { // It's an update
-//         newItemsArray = currentItems.map(i => i.id === updatedItem.id ? updatedItem : i);
-//       } else { // It's a new item
-//         newItemsArray = [...currentItems, updatedItem];
-//       }
-      
-//       await onSave(newItemsArray); // Save the entire new array
-//       setCurrentItems(newItemsArray);
-//       setEditingItem(null); // Close the form
-//     } catch (err) {
-//       console.error(err);
-//       alert('Failed to save item.');
-//     } finally {
-//       setIsSaving(false);
-//     }
-//   };
+//   if (!isAdmin) return null;
 
 //   return (
-//     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4">
-//       <div className="w-full max-w-4xl p-6 bg-white rounded-lg max-h-[90vh] overflow-y-auto text-gray-900">
-//         <div className="flex items-center justify-between">
-//           <h2 className="text-2xl font-bold">{title}</h2>
-//           <button onClick={onClose}><X /></button>
-//         </div>
-
-//         {/* --- Add/Edit Form --- */}
-//         {editingItem ? (
-//           <form ref={formRef} onSubmit={handleFormSubmit} className="p-4 my-4 border rounded-lg">
-//             <h3 className="text-lg font-semibold">{editingItem.isNew ? 'Add New Item' : `Edit Item`}</h3>
-//             <div className="flex flex-col gap-2 mt-2">
-//               {renderForm(editingItem, setEditingItem, editingItem.isNew)}
-//             </div>
-//             <div className="flex gap-2 mt-4">
-//               <button type="submit" disabled={isSaving} className="px-4 py-1 text-white bg-green-600 rounded">{isSaving ? 'Saving...' : 'Save'}</button>
-//               <button type="button" onClick={() => setEditingItem(null)} className="px-4 py-1 text-white bg-gray-500 rounded">Cancel</button>
-//             </div>
-//           </form>
-//         ) : (
-//           <button onClick={handleAddNew} className="flex items-center gap-2 px-4 py-2 my-4 text-white bg-blue-600 rounded">
-//             <Plus size={18} /> Add New Item
-//           </button>
-//         )}
-
-//         {/* --- List of Current Items --- */}
-//         <div className="space-y-2">
-//           {currentItems.map(item => (
-//             <div key={item.id} className="flex items-center justify-between p-2 border rounded-lg">
-//               <span className="font-semibold">{item[itemTitleKey] || 'New Item'}</span>
-//               <div className="flex gap-2">
-//                 <button onClick={() => handleEdit(item)} disabled={isSaving} className="p-1 text-blue-600 disabled:text-gray-400"><Edit size={16} /></button>
-//                 <button onClick={() => handleDelete(item)} disabled={isSaving} className="p-1 text-red-600 disabled:text-gray-400"><Trash2 size={16} /></button>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// const AboutHeroSection = ({ content, isAdmin, onUpdate }) => {
-//   const { 
-//     image_url, image_alt, image_storage_path, 
-//     title_prefix, title_suffix, subtitle 
-//   } = content || {};
-
-//   const handleTextSave = async (key, newValue) => {
-//     await onUpdate('about_hero', { ...content, [key]: newValue });
-//   };
-
-//   const handleImageSave = async (file) => {
-//     const { publicUrl, storagePath } = await aboutApi.updateFile(file, image_storage_path);
-//     await onUpdate('about_hero', { 
-//       ...content, 
-//       image_url: publicUrl, 
-//       image_storage_path: storagePath 
-//     });
-//   };
-
-//   return (
-//     <section className="relative h-[70vh] flex items-center justify-center text-center overflow-hidden">
-//       <EditableImage
-//         isAdmin={isAdmin}
-//         src={image_url || 'https://placehold.co/1920x1080'}
-//         alt={image_alt || 'About us hero'}
-//         onSave={handleImageSave}
-//         className="absolute z-0 w-full h-full object-cover"
-//         wrapperClassName="absolute z-0 w-full h-full"
+//     <>
+//       <input
+//         type="file"
+//         accept={accept}
+//         ref={fileInputRef}
+//         onChange={handleFileChange}
+//         className="hidden"
 //       />
-//       <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent z-10"></div>
-//       <div className="absolute inset-0 bg-white opacity-40 z-0"></div>
-      
-//       <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <FadeIn>
-//           <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-gray-900 drop-shadow-lg">
-//             <EditableText as="span" isAdmin={isAdmin} value={title_prefix} onSave={val => handleTextSave('title_prefix', val)} />
-//             {' '}
-//             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-600">
-//               <EditableText as="span" isAdmin={isAdmin} value={title_suffix} onSave={val => handleTextSave('title_suffix', val)} />
-//             </span>
-//           </h1>
-//           <EditableText
-//             as="p"
-//             isAdmin={isAdmin}
-//             value={subtitle}
-//             onSave={val => handleTextSave('subtitle', val)}
-//             className="mt-6 text-xl md:text-2xl font-light text-gray-600 max-w-3xl mx-auto"
-//             useTextarea
-//           />
-//         </FadeIn>
-//       </div>
-//     </section>
+//       <button
+//         onClick={() => fileInputRef.current.click()}
+//         disabled={isUploading}
+//         className={`z-50 bg-blue-600 text-white px-3 py-1.5 rounded-md text-sm font-semibold hover:bg-blue-700 transition-all flex items-center gap-2 ${className}`}
+//       >
+//         {isUploading ? 'Uploading...' : (
+//           <>
+//             {icon} {label}
+//           </>
+//         )}
+//       </button>
+//     </>
 //   );
 // };
 
-
-// // ---
-// // --- 2. TIMELINE SECTION (Integrated & Editable)
-// // ---
-// const TimelineSection = ({ content, isAdmin, onUpdate }) => {
-//   const { title, subtitle, events } = content || {};
-//   const [isManageModalOpen, setIsManageModalOpen] = useState(false);
-
-//   const handleTextSave = async (key, newValue) => {
-//     await onUpdate('timeline', { ...content, [key]: newValue });
-//   };
-
+// /**
+//  * NEW: A wrapper for sections with editable background images.
+//  * This solves all z-index and positioning issues.
+//  */
+// const EditableBackgroundImage = ({
+//   isAdmin,
+//   src,
+//   onSave,
+//   children,
+//   className = '',
+// }) => {
 //   return (
-//     <section className="py-24 bg-white" style={{ backgroundImage: "url('https://placehold.co/1920x1080/f5f5f5/cccccc?text=Subtle+Circuit+BG&font=inter')" }}>
-//       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <FadeIn>
-//           <h2 className="text-4xl md:text-5xl font-light text-center mb-4 text-gray-900">
-//             <EditableText as="span" isAdmin={isAdmin} value={title || ''} onSave={val => handleTextSave('title', val)} />
-//           </h2>
-//           <EditableText
-//             as="p"
-//             isAdmin={isAdmin}
-//             value={subtitle || ''}
-//             onSave={val => handleTextSave('subtitle', val)}
-//             className="text-xl text-gray-600 text-center max-w-2xl mx-auto mb-24"
-//             useTextarea
-//           />
-//         </FadeIn>
-        
-//         <div className="relative max-w-2xl mx-auto">
-//           <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-1 h-full bg-gray-200 rounded-full"></div>
-          
-//           {(events || []).map((event, index) => (
-//             <FadeIn key={event.id || index} triggerOnce={true}>
-//               <div className="relative mb-12 flex items-center md:w-full group">
-//                 <div className="absolute left-4 md:left-1/2 -translate-x-1/2 z-10">
-//                   <div className="w-8 h-8 rounded-full bg-white border-4 border-green-500 flex items-center justify-center transition-all duration-300 group-hover:border-teal-400 group-hover:scale-110">
-//                     <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
-//                   </div>
-//                 </div>
-                
-//                 <div className={`w-full p-8 bg-white border border-gray-200 rounded-lg shadow-lg ml-12 md:ml-0 ${index % 2 === 0 ? 'md:mr-auto md:pr-12' : 'md:ml-auto md:pl-12'
-//                   } md:w-[calc(50%-2rem)] transition-all duration-300 hover:shadow-xl hover:border-gray-300`}>
-//                   <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-600 mb-2">{event.year}</h3>
-//                   <h4 className="text-xl font-semibold text-gray-900 mb-2">{event.title}</h4>
-//                   <p className="text-gray-600">{event.desc}</p>
-//                 </div>
-//               </div>
-//             </FadeIn>
-//           ))}
-//         </div>
-        
-//         {isAdmin && (
-//           <div className="text-center mt-12">
-//             <button 
-//               onClick={() => setIsManageModalOpen(true)} 
-//               className="flex items-center gap-2 px-4 py-2 mx-auto text-white transition-all bg-blue-600 rounded-md hover:bg-blue-700"
-//             >
-//               <Edit size={18} /> Manage Timeline
-//             </button>
-//           </div>
-//         )}
-
-//         {isManageModalOpen && (
-//           <ListManagementModal
-//             title="Manage Timeline Events"
-//             items={events || []}
-//             onClose={() => setIsManageModalOpen(false)}
-//             onSave={(newList) => onUpdate('timeline', { ...content, events: newList })}
-//             renderForm={ (item, setItem) => (
-//               <>
-//                 <label>Year: <input type="number" value={item.year || ''} onChange={e => setItem(i => ({...i, year: parseInt(e.target.value)}))} className="w-full p-1 border rounded" /></label>
-//                 <label>Title: <input type="text" value={item.title || ''} onChange={e => setItem(i => ({...i, title: e.target.value}))} className="w-full p-1 border rounded" /></label>
-//                 <label>Description: <textarea value={item.desc || ''} onChange={e => setItem(i => ({...i, desc: e.target.value}))} className="w-full p-1 border rounded" /></label>
-//               </>
-//             )}
-//             itemTitleKey="title"
-//           />
-//         )}
-//       </div>
-//     </section>
-//   );
-// };
-
-
-// // ---
-// // --- 3. FACILITY VIDEO SECTION (Integrated & Editable)
-// // ---
-// const FacilityVideoSection = ({ content, isAdmin, onUpdate }) => {
-//   const { 
-//     title, subtitle, thumbnail_url, 
-//     thumbnail_alt, thumbnail_storage_path, video_url 
-//   } = content || {};
-
-//   const handleTextSave = async (key, newValue) => {
-//     await onUpdate('facility_video', { ...content, [key]: newValue });
-//   };
-  
-//   const handleThumbnailSave = async (file) => {
-//     const { publicUrl, storagePath } = await aboutApi.updateFile(file, thumbnail_storage_path);
-//     await onUpdate('facility_video', { 
-//       ...content, 
-//       thumbnail_url: publicUrl, 
-//       thumbnail_storage_path: storagePath 
-//     });
-//   };
-
-//   return (
-//     <section className="py-24 bg-gray-50">
-//       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-//         <FadeIn>
-//           <h2 className="text-4xl md:text-5xl font-light mb-4">
-//             <EditableText as="span" isAdmin={isAdmin} value={title || ''} onSave={val => handleTextSave('title', val)} />
-//           </h2>
-//           <EditableText
-//             as="p"
-//             isAdmin={isAdmin}
-//             value={subtitle || ''}
-//             onSave={val => handleTextSave('subtitle', val)}
-//             className="text-xl text-gray-500 max-w-2xl mx-auto mt-4 mb-12"
-//             useTextarea
-//           />
-//           <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl group cursor-pointer border-2 border-gray-200">
-//             {/* The actual video link is just a_href, but the thumbnail is editable */}
-//             <a href={video_url || '#'} target="_blank" rel="noopener noreferrer">
-//               <EditableImage
-//                 isAdmin={isAdmin}
-//                 src={thumbnail_url || 'https://placehold.co/1280x720'}
-//                 alt={thumbnail_alt || 'Facility video thumbnail'}
-//                 onSave={handleThumbnailSave}
-//                 className="w-full h-full object-cover"
-//                 wrapperClassName="w-full h-full"
-//               />
-//               <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-10 transition-all duration-300"></div>
-//               <div className="absolute inset-0 flex items-center justify-center">
-//                 <div className="relative">
-//                   <PlayCircle size={100} className="text-white text-opacity-80 group-hover:text-opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-lg" />
-//                   <div className="absolute inset-0 rounded-full bg-green-500 opacity-30 animate-ping -z-10 group-hover:animate-none"></div>
-//                 </div>
-//               </div>
-//             </a>
-//           </div>
-//           {isAdmin && (
-//             <div className="mt-4 text-left max-w-lg mx-auto">
-//               <label className="font-semibold text-gray-700">Video URL:</label>
-//               <EditableText
-//                 as="p"
-//                 isAdmin={isAdmin}
-//                 value={video_url || ''}
-//                 onSave={val => handleTextSave('video_url', val)}
-//                 className="p-2 border rounded bg-white"
-//               />
-//             </div>
-//           )}
-//         </FadeIn>
-//       </div>
-//     </section>
-//   );
-// };
-
-
-// // ---
-// // --- 4. STATS SECTION (Integrated & Editable)
-// // ---
-// const StatsSection = ({ content, isAdmin, onUpdate }) => {
-//   const stats = content || [];
-//   const [isManageModalOpen, setIsManageModalOpen] = useState(false);
-
-//   return (
-//     <section className="py-24 bg-white" style={{ backgroundImage: "url('https://placehold.co/1920x1080/f5f5f5/cccccc?text=Subtle+Circuit+BG&font=inter')" }}>
-//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-//           {(stats).map((stat, index) => (
-//             <FadeIn key={stat.id || index} delay={index * 200}>
-//               <div className="p-6">
-//                 <h3 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">
-//                   <CountUp end={stat.value || 0} suffix={stat.suffix || ''} />
-//                 </h3>
-//                 <p className="text-2xl text-gray-500 mt-2">{stat.label}</p>
-//               </div>
-//             </FadeIn>
-//           ))}
-//         </div>
-        
-//         {isAdmin && (
-//           <div className="text-center mt-12">
-//             <button 
-//               onClick={() => setIsManageModalOpen(true)} 
-//               className="flex items-center gap-2 px-4 py-2 mx-auto text-white transition-all bg-blue-600 rounded-md hover:bg-blue-700"
-//             >
-//               <Edit size={18} /> Manage Stats
-//             </button>
-//           </div>
-//         )}
-
-//         {isManageModalOpen && (
-//           <ListManagementModal
-//             title="Manage Stats"
-//             items={stats}
-//             onClose={() => setIsManageModalOpen(false)}
-//             onSave={(newStats) => onUpdate('about_stats', newStats)}
-//             renderForm={ (item, setItem) => (
-//               <>
-//                 <label>Label: <input type="text" value={item.label || ''} onChange={e => setItem(i => ({...i, label: e.target.value}))} className="w-full p-1 border rounded" /></label>
-//                 <label>Value (Number): <input type="number" value={item.value || 0} onChange={e => setItem(i => ({...i, value: parseFloat(e.target.value)}))} className="w-full p-1 border rounded" /></label>
-//                 <label>Suffix (e.g., + or M+): <input type="text" value={item.suffix || ''} onChange={e => setItem(i => ({...i, suffix: e.target.value}))} className="w-full p-1 border rounded" /></label>
-//               </>
-//             )}
-//             itemTitleKey="label"
-//           />
-//         )}
-//       </div>
-//     </section>
-//   );
-// };
-
-
-// // ---
-// // --- 5. CORE VALUES SECTION (Integrated & Editable)
-// // ---
-// const CoreValuesSection = ({ content, isAdmin, onUpdate }) => {
-//   const { title, values } = content || {};
-//   const [hoveredValue, setHoveredValue] = useState(values?.[0]?.title || '');
-//   const [isManageModalOpen, setIsManageModalOpen] = useState(false);
-
-//   // Sync state if content loads
-//   useEffect(() => {
-//     if (values && values.length > 0) {
-//       setHoveredValue(values[0].title);
-//     }
-//   }, [values]);
-  
-//   const handleTextSave = async (key, newValue) => {
-//     await onUpdate('core_values', { ...content, [key]: newValue });
-//   };
-
-//   return (
-//     <section className="py-24 bg-gray-50">
-//       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <FadeIn>
-//           <h2 className="text-4xl md:text-5xl font-light text-center mb-24 text-gray-900">
-//             <EditableText as="span" isAdmin={isAdmin} value={title || ''} onSave={val => handleTextSave('title', val)} />
-//           </h2>
-//         </FadeIn>
-        
-//         <div className="flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-32">
-//           {/* Interactive Hub */}
-//           <div className="relative w-72 h-72 md:w-96 md:h-96 flex-shrink-0">
-//             <div className="absolute inset-0 rounded-full bg-gray-200/70 border-2 border-gray-300"></div>
-//             <div className="absolute inset-4 rounded-full bg-white border border-gray-200"></div>
-            
-//             <div className="absolute inset-16 md:inset-24 rounded-full bg-white flex items-center justify-center text-center p-4 border-2 border-green-500 shadow-xl shadow-green-500/20">
-//               {(values || []).map(value => (
-//                 <div 
-//                   key={value.title}
-//                   className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-300 ${
-//                     hoveredValue === value.title ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-//                   }`}
-//                 >
-//                   <DynamicIcon name={value.icon_name || 'Box'} className="w-10 h-10 md:w-12 md:h-12 text-green-500" />
-//                   <h3 className="text-xl md:text-2xl font-bold text-gray-900 mt-2">{value.title}</h3>
-//                 </div>
-//               ))}
-//             </div>
-
-//             {/* Spoke Buttons */}
-//             {(values || []).map((value, index) => {
-//               const angle = (index / (values?.length || 1)) * 2 * Math.PI - (Math.PI / 2); // Start at top
-//               const x = Math.cos(angle) * 50 + 50; 
-//               const y = Math.sin(angle) * 50 + 50;
-              
-//               return (
-//                 <div key={value.title} className="absolute" style={{ top: `${y}%`, left: `${x}%` }}>
-//                   <button
-//                     className="w-16 h-16 -translate-x-8 -translate-y-8 md:w-20 md:h-20 md:-translate-x-10 md:-translate-y-10 rounded-full bg-white border border-gray-200 flex items-center justify-center group transition-all duration-300 hover:bg-green-500 hover:border-green-400 hover:scale-110"
-//                     onMouseEnter={() => setHoveredValue(value.title)}
-//                   >
-//                     <DynamicIcon name={value.icon_name || 'Box'} className="w-6 h-6 md:w-8 md:h-8 text-gray-500 transition-colors duration-300 group-hover:text-white" />
-//                   </button>
-//                 </div>
-//               );
-//             })}
-//           </div>
-          
-//           {/* Description Area */}
-//           <div className="relative w-full max-w-md h-48 lg:h-96">
-//             {(values || []).map(value => (
-//               <div 
-//                 key={value.title}
-//                 className={`absolute inset-0 transition-opacity duration-500 ${
-//                   hoveredValue === value.title ? 'opacity-100' : 'opacity-0'
-//                 }`}
-//               >
-//                 <FadeIn>
-//                   <h3 className="text-3xl font-bold text-gray-900 mb-4">{value.title}</h3>
-//                   <p className="text-lg text-gray-600">{value.desc}</p>
-//                 </FadeIn>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-
-//         {isAdmin && (
-//           <div className="text-center mt-24">
-//             <button 
-//               onClick={() => setIsManageModalOpen(true)} 
-//               className="flex items-center gap-2 px-4 py-2 mx-auto text-white transition-all bg-blue-600 rounded-md hover:bg-blue-700"
-//             >
-//               <Edit size={18} /> Manage Core Values
-//             </button>
-//           </div>
-//         )}
-
-//         {isManageModalOpen && (
-//           <ListManagementModal
-//             title="Manage Core Values"
-//             items={values || []}
-//             onClose={() => setIsManageModalOpen(false)}
-//             onSave={(newList) => onUpdate('core_values', { ...content, values: newList })}
-//             renderForm={ (item, setItem) => (
-//               <>
-//                 <label>Title: <input type="text" value={item.title || ''} onChange={e => setItem(i => ({...i, title: e.target.value}))} className="w-full p-1 border rounded" /></label>
-//                 <label>Description: <textarea value={item.desc || ''} onChange={e => setItem(i => ({...i, desc: e.target.value}))} className="w-full p-1 border rounded" /></label>
-//                 <label>Icon Name: <IconPicker value={item.icon_name || ''} onChange={name => setItem(i => ({...i, icon_name: name}))} /></label>
-//               </>
-//             )}
-//             itemTitleKey="title"
-//           />
-//         )}
-//       </div>
-//     </section>
-//   );
-// };
-
-
-// // ---
-// // --- 6. CTA SECTION (Integrated & Editable)
-// // ---
-// const CtaSection = ({ content, isAdmin, onUpdate }) => {
-//   const { 
-//     background_image_url, background_storage_path, 
-//     title, text, buttonText, buttonLink 
-//   } = content || {};
-  
-//   const navigate = useNavigate();
-//   const [isManageModalOpen, setIsManageModalOpen] = useState(false);
-
-//   const handleSave = async (newContentData, file) => {
-//     let newContent = { ...newContentData };
-    
-//     if (file) {
-//       const { publicUrl, storagePath } = await aboutApi.updateFile(file, background_storage_path);
-//       newContent.background_image_url = publicUrl;
-//       newContent.background_storage_path = storagePath;
-//     }
-    
-//     await onUpdate('about_cta', newContent);
-//   };
-
-//   return (
-//     <section 
-//       className="py-24 relative" // Added relative for admin button
-//       style={{ backgroundImage: `url(${background_image_url || ''})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+//     <section
+//       className={`relative bg-cover bg-center ${className}`}
+//       style={{ backgroundImage: `url('${src}')` }}
 //     >
-//       <div className="absolute inset-0 bg-black/70"></div> {/* Overlay for readability */}
-//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-//         <FadeIn>
-//           <h2 className="text-4xl md:text-5xl font-light text-gray-200">
-//             {title}
-//           </h2>
-//           <p className="text-xl text-gray-400 max-w-2xl mx-auto mt-4 mb-10">
-//             {text}
-//           </p>
-//           <button
-//             onClick={() => navigate(buttonLink || '/')}
-//             className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-4 rounded-full text-lg font-medium hover:from-blue-500 hover:to-purple-500 transition-all transform hover:scale-105 shadow-lg shadow-blue-500/20"
-//           >
-//             {buttonText}
-//           </button>
-//         </FadeIn>
-//       </div>
-      
-//       {isAdmin && (
-//         <button
-//           onClick={() => setIsManageModalOpen(true)}
-//           className="absolute top-4 right-4 z-20 flex items-center gap-2 px-4 py-2 text-white transition-all bg-blue-600 rounded-md hover:bg-blue-700"
-//         >
-//           <Edit size={18} /> Edit CTA
-//         </button>
-//       )}
-
-//       {isManageModalOpen && (
-//         <CtaEditModal
-//           content={content}
-//           onClose={() => setIsManageModalOpen(false)}
-//           onSave={handleSave}
-//         />
-//       )}
+//       <EditableMediaButton
+//         isAdmin={isAdmin}
+//         onSave={onSave}
+//         label="Change Background"
+//         accept="image/*"
+//         className="absolute top-4 right-4"
+//       />
+//       {children}
 //     </section>
 //   );
 // };
 
-// // ---
-// // --- 6b. Special Modal for CTA (since it's unique)
-// // ---
-// const CtaEditModal = ({ content, onClose, onSave }) => {
-//   const [formData, setFormData] = useState(content);
-//   const [file, setFile] = useState(null);
+// /**
+//  * NEW: A simple modal for editing text URLs.
+//  */
+// const EditUrlModal = ({ isOpen, onClose, onSave, initialValue }) => {
+//   const [value, setValue] = useState(initialValue);
 //   const [isSaving, setIsSaving] = useState(false);
 
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData(prev => ({ ...prev, [name]: value }));
-//   };
+//   useEffect(() => {
+//     setValue(initialValue);
+//   }, [initialValue]);
 
-//   const handleFileChange = (e) => {
-//     setFile(e.target.files[0]);
-//   };
+//   if (!isOpen) return null;
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
+//   const handleSave = async () => {
 //     setIsSaving(true);
 //     try {
-//       await onSave(formData, file);
+//       await onSave(value);
 //       onClose();
 //     } catch (err) {
-//       console.error("Failed to save CTA", err);
-//       alert("Save failed. See console for details.");
+//       console.error("Failed to save URL", err);
+//       alert("Failed to save URL.");
 //     } finally {
 //       setIsSaving(false);
 //     }
 //   };
 
 //   return (
-//     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4">
-//       <div className="w-full max-w-2xl p-6 bg-white rounded-lg max-h-[90vh] overflow-y-auto text-gray-900">
-//         <form onSubmit={handleSubmit}>
-//           <h2 className="text-2xl font-bold mb-4">Edit Call to Action</h2>
-//           <div className="flex flex-col gap-3">
-//             <label>Title: <input type="text" name="title" value={formData.title} onChange={handleChange} className="w-full p-1 border rounded" /></label>
-//             <label>Text: <textarea name="text" value={formData.text} onChange={handleChange} className="w-full p-1 border rounded" /></label>
-//             <label>Button Text: <input type="text" name="buttonText" value={formData.buttonText} onChange={handleChange} className="w-full p-1 border rounded" /></label>
-//             <label>Button Link (e.g., /contact): <input type="text" name="buttonLink" value={formData.buttonLink} onChange={handleChange} className="w-full p-1 border rounded" /></label>
-//             <label>Background Image (optional): <input type="file" accept="image/*" onChange={handleFileChange} className="w-full p-1 border rounded" /></label>
-//             <small>Leave blank to keep the current image: {content.background_image_url?.substring(0, 50)}...</small>
-//           </div>
-//           <div className="flex gap-2 mt-6">
-//             <button type="submit" disabled={isSaving} className="px-4 py-1 text-white bg-green-600 rounded">{isSaving ? 'Saving...' : 'Save'}</button>
-//             <button type="button" onClick={onClose} className="px-4 py-1 text-white bg-gray-500 rounded">Cancel</button>
-//           </div>
-//         </form>
+//     <div className="fixed inset-0 z-[101] flex items-center justify-center bg-black/80">
+//       <div className="bg-white p-6 rounded-lg w-full max-w-lg text-gray-900">
+//         <div className="flex justify-between items-center mb-4">
+//           <h3 className="text-xl font-bold">Edit Video URL</h3>
+//           <button onClick={onClose}><X size={24} /></button>
+//         </div>
+//         <label className="block text-sm font-medium mb-2">
+//           Video URL (e.g., YouTube, Vimeo, or .mp4 link)
+//         </label>
+//         <input
+//           type="text"
+//           className="w-full p-2 border rounded"
+//           value={value}
+//           onChange={(e) => setValue(e.target.value)}
+//         />
+//         <div className="mt-6 flex justify-end gap-3">
+//           <button onClick={onClose} className="px-4 py-2 bg-gray-200 rounded">
+//             Cancel
+//           </button>
+//           <button
+//             onClick={handleSave}
+//             disabled={isSaving}
+//             className="px-4 py-2 bg-green-600 text-white rounded disabled:bg-gray-400"
+//           >
+//             {isSaving ? 'Saving...' : 'Save'}
+//           </button>
+//         </div>
 //       </div>
 //     </div>
 //   );
 // };
 
+// // --- Main About Page Component ---
 
-// // ---
-// // --- MAIN ABOUT COMPONENT (THE "CONTROLLER")
-// // ---
+// // Helper component for admin buttons (for list modals)
+// const AdminEditButton = ({ onClick, text = 'Edit' }) => (
+//   <button
+//     onClick={onClick}
+//     className="absolute top-2 right-2 z-50 bg-blue-600 text-white px-3 py-1 rounded-md text-sm font-semibold hover:bg-blue-700 transition-all flex items-center gap-1"
+//   >
+//     <Edit size={14} /> {text}
+//   </button>
+// );
+
 // export const About = () => {
-//   //const { isAdmin } = useAuth();
-//   const isAdmin = true; // For testing purposes, set to true. Replace with above line in real app.
-//   const [pageContent, setPageContent] = useState(null);
+//   // const { isAdmin } = useAuth(); // UNCOMMENT THIS
+//   const isAdmin = true; // For testing purposes
+//   const [content, setContent] = useState(null);
 //   const [isLoading, setIsLoading] = useState(true);
-//   const [error, setError] = useState(null);
+//   const [modal, setModal] = useState(null); // 'timeline', 'stats', 'core_values'
+//   const [isVideoUrlModalOpen, setIsVideoUrlModalOpen] = useState(false);
 
+//   // --- Data Fetching ---
 //   useEffect(() => {
-//     const fetchContent = async () => {
+//     const loadContent = async () => {
 //       try {
-//         const content = await aboutApi.getAboutPageContent();
-//         setPageContent(content);
+//         const data = await aboutApi.getContent();
+//         setContent(data);
 //       } catch (err) {
-//         setError(err.message);
-//         console.error(err);
+//         console.error('Failed to load page content', err);
 //       } finally {
 //         setIsLoading(false);
 //       }
 //     };
-//     fetchContent();
+//     loadContent();
 //   }, []);
 
-//   const handleSectionUpdate = async (sectionName, newContent) => {
-//     if (!isAdmin) return;
-
-//     // Optimistic UI update
-//     setPageContent((prev) => ({
+//   // --- Data Saving ---
+//   const handleSave = async (sectionName, newContent) => {
+//     setContent((prev) => ({
 //       ...prev,
 //       [sectionName]: newContent,
 //     }));
-
-//     // Push to DB
 //     try {
-//       await aboutApi.updateAboutSectionContent(sectionName, newContent);
+//       await aboutApi.updateSectionContent(sectionName, newContent);
 //     } catch (err) {
-//       console.error('Failed to save content:', err);
-//       setError('Failed to save changes. Please refresh.');
-//       // TODO: Add rollback logic
+//       console.error('Failed to save content', err);
+//       alert('Error saving content. Please refresh and try again.');
+//     }
+//   };
+
+//   // Helper for simple text field updates
+//   const handleTextSave = (sectionName, field) => async (newValue) => {
+//     const newContent = {
+//       ...content[sectionName],
+//       [field]: newValue,
+//     };
+//     await handleSave(sectionName, newContent);
+//   };
+
+//   // Helper for image/media updates
+//   const handleMediaSave = (sectionName, field) => async (newFile) => {
+//     if (!newFile) {
+//       console.log('No file selected.');
+//       return;
+//     }
+//     const section = content[sectionName];
+//     const oldStoragePath = section[`${field}_storage_path`];
+
+//     try {
+//       const { publicUrl, storagePath } = await aboutApi.updateFile(newFile, oldStoragePath);
+//       const newContent = {
+//         ...section,
+//         [`${field}_url`]: publicUrl,
+//         [`${field}_storage_path`]: storagePath,
+//       };
+//       await handleSave(sectionName, newContent);
+//     } catch (err) {
+//       console.error("Failed to update media", err);
+//       alert("Media update failed. Check console.");
+//     }
+//   };
+
+//   // --- Modal Forms (for ListManagementModal) ---
+//   const renderModalForm = (item, setItem) => {
+//     // ... (This logic remains the same)
+//     switch (modal) {
+//       case 'timeline':
+//         return (
+//           <>
+//             <label>Year: <input type="number" className="w-full p-1 border rounded" value={item.year || ''} onChange={e => setItem({...item, year: parseInt(e.target.value)})} /></label>
+//             <label>Title: <input type="text" className="w-full p-1 border rounded" value={item.title || ''} onChange={e => setItem({...item, title: e.target.value})} /></label>
+//             <label>Description: <textarea className="w-full p-1 border rounded" value={item.desc || ''} onChange={e => setItem({...item, desc: e.target.value})} /></label>
+//           </>
+//         );
+//       case 'stats':
+//         return (
+//           <>
+//             <label>Value (Number): <input type="number" className="w-full p-1 border rounded" value={item.value || ''} onChange={e => setItem({...item, value: parseInt(e.target.value)})} /></label>
+//             <label>Suffix (e.g., +, M+): <input type="text" className="w-full p-1 border rounded" value={item.suffix || ''} onChange={e => setItem({...item, suffix: e.target.value})} /></label>
+//             <label>Label: <input type="text" className="w-full p-1 border rounded" value={item.label || ''} onChange={e => setItem({...item, label: e.target.value})} /></label>
+//           </>
+//         );
+//       case 'core_values':
+//         return (
+//           <>
+//             <label>Icon: <IconPicker value={item.icon_name} onChange={name => setItem({...item, icon_name: name})} /></label>
+//             <label>Title: <input type="text" className="w-full p-1 border rounded" value={item.title || ''} onChange={e => setItem({...item, title: e.target.value})} /></label>
+//             <label>Description: <textarea className="w-full p-1 border rounded" value={item.desc || ''} onChange={e => setItem({...item, desc: e.target.value})} /></label>
+//           </>
+//         );
+//       default: return null;
 //     }
 //   };
 
 //   if (isLoading) {
-//     return <div className="h-screen flex items-center justify-center">Loading About Page...</div>;
+//     return <div className="h-screen bg-white flex items-center justify-center text-gray-900">Loading...</div>;
+//   }
+  
+//   if (!content) {
+//     return <div className="h-screen bg-white flex items-center justify-center text-gray-900">Error loading content.</div>;
 //   }
 
-//   if (error) {
-//     return <div className="h-screen flex items-center justify-center text-red-500">Error: {error}</div>;
-//   }
+//   const { about_hero, timeline, facility_video, about_stats, core_values, about_cta } = content;
 
 //   return (
 //     <div className="bg-white text-gray-900 overflow-x-hidden">
-//       <AboutHeroSection 
-//         content={pageContent.about_hero} 
-//         isAdmin={isAdmin} 
-//         onUpdate={handleSectionUpdate} 
-//       />
-//       <TimelineSection 
-//         content={pageContent.timeline} 
-//         isAdmin={isAdmin} 
-//         onUpdate={handleSectionUpdate} 
-//       />
-//       <FacilityVideoSection 
-//         content={pageContent.facility_video} 
-//         isAdmin={isAdmin} 
-//         onUpdate={handleSectionUpdate} 
-//       />
-//       <StatsSection 
-//         content={pageContent.about_stats} 
-//         isAdmin={isAdmin} 
-//         onUpdate={handleSectionUpdate} 
-//       />
-//       <CoreValuesSection 
-//         content={pageContent.core_values} 
-//         isAdmin={isAdmin} 
-//         onUpdate={handleSectionUpdate} 
-//       />
-//       <CtaSection 
-//         content={pageContent.about_cta} 
-//         isAdmin={isAdmin} 
-//         onUpdate={handleSectionUpdate} 
+      
+//       {/* --- About Hero Section (FIXED) --- */}
+//       <EditableBackgroundImage
+//         isAdmin={isAdmin}
+//         src={about_hero.image_url}
+//         onSave={handleMediaSave('about_hero', 'image')}
+//         className="h-[70vh] flex items-center justify-center text-center overflow-hidden"
+//       >
+//         {/* Overlays */}
+//         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent z-10"></div>
+//         <div className="absolute inset-0 bg-white opacity-40 z-0"></div>
+        
+//         {/* Content */}
+//         <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+//           <FadeIn>
+//             <EditableText
+//               as="h1"
+//               isAdmin={isAdmin}
+//               value={about_hero.title_prefix}
+//               onSave={handleTextSave('about_hero', 'title_prefix')}
+//               className="text-6xl md:text-8xl font-bold tracking-tighter text-gray-900 drop-shadow-lg"
+//             >
+//               {about_hero.title_prefix}{' '}
+//               <EditableText
+//                 as="span"
+//                 isAdmin={isAdmin}
+//                 value={about_hero.title_suffix}
+//                 onSave={handleTextSave('about_hero', 'title_suffix')}
+//                 className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-600"
+//               />
+//             </EditableText>
+
+//             <EditableText
+//               as="p"
+//               isAdmin={isAdmin}
+//               value={about_hero.subtitle}
+//               onSave={handleTextSave('about_hero', 'subtitle')}
+//               className="mt-6 text-xl md:text-2xl font-light text-gray-600 max-w-3xl mx-auto"
+//               useTextarea
+//             />
+//           </FadeIn>
+//         </div>
+//       </EditableBackgroundImage>
+      
+//       {/* --- Animated Timeline Section --- */}
+//       <section className="py-24 bg-white relative">
+//         {isAdmin && <AdminEditButton onClick={() => setModal('timeline')} text="Edit Timeline" />}
+//         <Timeline 
+//           timelineData={timeline} 
+//           isAdmin={isAdmin}
+//           onSave={handleSave} 
+//         />
+//       </section>
+
+//       {/* --- Facility Video Section (FIXED) --- */}
+//       <section className="py-24 bg-gray-50 relative">
+//         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+//           <FadeIn>
+//             <EditableText
+//               as="h2"
+//               isAdmin={isAdmin}
+//               value={facility_video.title}
+//               onSave={handleTextSave('facility_video', 'title')}
+//               className="text-4xl md:text-5xl font-light mb-4"
+//             >
+//               {/* This split logic is brittle. Better to use EditableText twice */}
+//               Our <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">World-Class Facility</span>
+//             </EditableText>
+
+//             <EditableText
+//               as="p"
+//               isAdmin={isAdmin}
+//               value={facility_video.subtitle}
+//               onSave={handleTextSave('facility_video', 'subtitle')}
+//               className="text-xl text-gray-500 max-w-2xl mx-auto mt-4 mb-12"
+//               useTextarea
+//             />
+            
+//             {/* Video Player Wrapper */}
+//             <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl group border-2 border-gray-200">
+              
+//               {/* Admin Buttons (Layer 3 - Top) */}
+//               <div className="absolute top-4 left-4 z-50">
+//                 <button
+//                   onClick={() => setIsVideoUrlModalOpen(true)}
+//                   className="z-50 bg-blue-600 text-white px-3 py-1.5 rounded-md text-sm font-semibold hover:bg-blue-700 transition-all flex items-center gap-2"
+//                 >
+//                   <Video size={14} /> Edit Video URL
+//                 </button>
+//               </div>
+//               <EditableMediaButton
+//                 isAdmin={isAdmin}
+//                 onSave={handleMediaSave('facility_video', 'thumbnail')}
+//                 label="Change Thumbnail"
+//                 accept="image/*"
+//                 className="absolute top-4 right-4 z-50"
+//               />
+
+//               {/* Clickable Area (Layer 2) */}
+//               <a 
+//                 href={facility_video.video_url || '#'} 
+//                 target="_blank" 
+//                 rel="noopener noreferrer"
+//                 className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer"
+//               >
+//                 <div className="relative">
+//                   <PlayCircle size={100} className="text-white text-opacity-80 group-hover:text-opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-lg" />
+//                   <div className="absolute inset-0 rounded-full bg-green-500 opacity-30 animate-ping -z-10 group-hover:animate-none"></div>
+//                 </div>
+//               </a>
+              
+//               {/* Thumbnail Image (Layer 1) */}
+//               <img 
+//                 src={facility_video.thumbnail_url} 
+//                 alt={facility_video.thumbnail_alt} 
+//                 className="w-full h-full object-cover"
+//               />
+//               {/* Overlay (Layer 0) */}
+//               <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-10 transition-all duration-300"></div>
+//             </div>
+//           </FadeIn>
+//         </div>
+//       </section>
+
+//       {/* --- Dynamic Stats Section --- */}
+//       <section className="py-24 bg-white relative" style={{ backgroundImage: "url('https://placehold.co/1920x1080/f5f5f5/cccccc?text=Subtle+Circuit+BG&font=inter')" }}>
+//         {isAdmin && <AdminEditButton onClick={() => setModal('stats')} text="Edit Stats" />}
+//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+//             {about_stats.map((stat, index) => (
+//               <FadeIn key={stat.id} delay={index * 200}>
+//                 <div className="p-6">
+//                   <h3 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">
+//                     <CountUp end={stat.value} suffix={stat.suffix} />
+//                   </h3>
+//                   <p className="text-2xl text-gray-500 mt-2">{stat.label}</p>
+//                 </div>
+//               </FadeIn>
+//             ))}
+//           </div>
+//         </div>
+//       </section>
+      
+//       {/* --- Core Values Section --- */}
+//       <section className="py-24 bg-gray-50 relative">
+//         {isAdmin && <AdminEditButton onClick={() => setModal('core_values')} text="Edit Core Values" />}
+//         <CoreValues 
+//           valuesData={core_values} 
+//           isAdmin={isAdmin}
+//           onSave={handleSave} 
+//         />
+//       </section>
+
+//       {/* --- CTA Section (FIXED) --- */}
+//       {/* This is tricky. The CallToAction component is common.
+//         My previous fix for CallToAction.js was correct. 
+//         Instead of using EditableBackgroundImage, we should fix the common CallToAction.
+//         But you said not to edit common files.
+        
+//         So, I will create a *new* CallToAction *inline* here.
+//       */}
+//       <EditableBackgroundImage
+//         isAdmin={isAdmin}
+//         src={about_cta.background_image_url}
+//         onSave={handleMediaSave('about_cta', 'background')}
+//         className="py-24"
+//       >
+//         {/* Overlay */}
+//         <div className="absolute inset-0 bg-white/80 z-0"></div>
+
+//         {/* Content */}
+//         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+//           <FadeIn>
+//             <EditableText
+//               as="h2"
+//               isAdmin={isAdmin}
+//               value={about_cta.title}
+//               onSave={handleTextSave('about_cta', 'title')}
+//               className="text-4xl md:text-5xl font-light text-gray-900"
+//             />
+//             <EditableText
+//               as="p"
+//               isAdmin={isAdmin}
+//               value={about_cta.text}
+//               onSave={handleTextSave('about_cta', 'text')}
+//               className="text-xl text-gray-600 max-w-2xl mx-auto mt-4 mb-10"
+//               useTextarea
+//             />
+//             <button
+//               onClick={() => alert(`Maps to: ${about_cta.buttonLink}`)} // Use react-router's navigate in real app
+//               className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-10 py-4 rounded-full text-lg font-medium hover:from-green-400 hover:to-emerald-500 transition-all transform hover:scale-105 shadow-lg shadow-green-500/20"
+//             >
+//               <EditableText
+//                 as="span"
+//                 isAdmin={isAdmin}
+//                 value={about_cta.buttonText}
+//                 onSave={handleTextSave('about_cta', 'buttonText')}
+//               />
+//             </button>
+//           </FadeIn>
+//         </div>
+//       </EditableBackgroundImage>
+
+//       {/* --- List Management Modal --- */}
+//       {modal && (
+//         <ListManagementModal
+//           title={`Manage ${modal.replace('_', ' ')}`}
+//           items={
+//             modal === 'stats' ? content.about_stats : content[modal].events || content[modal].values
+//           }
+//           itemTitleKey={modal === 'stats' ? 'label' : 'title'}
+//           onClose={() => setModal(null)}
+//           renderForm={renderModalForm}
+//           onSave={async (newItems) => {
+//             let newContent;
+//             if (modal === 'stats') {
+//               newContent = newItems; // Stats is a root-level array
+//             } else {
+//               // Timeline and Core Values are objects with an array inside
+//               const key = content[modal].events ? 'events' : 'values';
+//               newContent = {
+//                 ...content[modal],
+//                 [key]: newItems
+//               };
+//             }
+//             await handleSave(modal, newContent);
+//             setModal(null); // Close modal on save
+//           }}
+//         />
+//       )}
+
+//       {/* --- Video URL Edit Modal --- */}
+//       <EditUrlModal
+//         isOpen={isVideoUrlModalOpen}
+//         onClose={() => setIsVideoUrlModalOpen(false)}
+//         initialValue={facility_video.video_url}
+//         onSave={async (newUrl) => {
+//           await handleTextSave('facility_video', 'video_url')(newUrl);
+//           setIsVideoUrlModalOpen(false);
+//         }}
 //       />
 //     </div>
 //   );
 // };
 
-// export default About;
+/* src/pages/About.jsx */
 
+import React, { useState, useEffect, useRef } from 'react';
+import { FadeIn } from '../components/common/FadeIn';
+import { CountUp } from '../components/common/CountUp';
+// import { CallToAction } from '../components/common/CallToAction'; // Not using common component
+import { Timeline } from '../components/about/Timeline';
+import { CoreValues } from '../components/about/CoreValues';
 
-// // ---
-// // --- ALL HELPER COMPONENT DEFINITIONS
-// // ---
-// // To make this file standalone, I am pasting the code for the 
-// // helper components here. In a real app, you would import these.
-// // ---
-
-// /*
-// *
-// * --- src/components/EditableText.jsx ---
-// *
-// */
-// // import React, { useState } from 'react';
-// // import { Check, Edit, X } from 'lucide-react';
-// // import { motion } from 'framer-motion';
-// // export const EditableText = ({...}) => { ... };
-// // ... (Full code for EditableText) ...
-
-
-// /*
-// *
-// * --- src/components/EditableImage.jsx ---
-// *
-// */
-// // import React, { useState, useRef } from 'react';
-// // import { Upload } from 'lucide-react';
-// // export const EditableImage = ({...}) => { ... };
-// // ... (Full code for EditableImage,
-// //  * NOTE: I added a `wrapperClassName` prop to it to support the Hero image) ...
-
-
-// /*
-// *
-// * --- src/components/ListManagementModal.jsx ---
-// *
-// */
-// // import React, { useState, useRef } from 'react';
-// // import { v4 as uuidv4 } from 'uuid';
-// // import { Edit, Plus, X, Trash2 } from 'lucide-react';
-// // import * as aboutApi from '../api/aboutApi'; // <-- This modal needs the API
-// // export const ListManagementModal = ({...}) => { ... };
-// // ... (Full code for ListManagementModal,
-// //  * NOTE: It must be adapted to use `aboutApi` or have the API passed in) ...
-
-
-// /*
-// *
-// * --- srcGood/components/DynamicIcon.jsx ---
-// *
-// */
-// // import React from 'react';
-// // import * as LucideIcons from 'lucide-react';
-// // export const DynamicIcon = ({...}) => { ... };
-// // export const availableIconNames = [...]
-// // ... (Full code for DynamicIcon) ...
-
-
-// /*
-// *
-// * --- src/components/IconPicker.jsx ---
-// *
-// */
-// // import React, { useState } from 'react';
-// // import { DynamicIcon, availableIconNames } from './DynamicIcon';
-// // export const IconPicker = ({...}) => { ... };
-// // ... (Full code for IconPicker) ...
-
-
-// /*
-// *
-// * --- src/components/common/FadeIn.jsx & CountUp.jsx ---
-// *
-// */
-// // (These are already in your file, so they are just used)
-/*
-*
-* === FULLY INTEGRATED & COMPLETE About.jsx (Standalone) ===
-*
-* This file contains all components needed for the About page,
-* including helper components (Modals, EditableText, etc.)
-* for admin functionality.
-*
-*/
-
-import React, { useState, useEffect, Fragment, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { 
-  Eye, Heart, Zap as ZapIcon, Shield, PlayCircle, 
-  Edit, Plus, X, Upload, Trash2, Box
-} from 'lucide-react';
+// Import Admin/CMS tools
+import { useAuth } from '../context/AuthContext'; // Make sure this path is correct
+import { aboutApi } from '../api/aboutApi';
+import { EditableText } from '../components/common/EditableText';
+import { ListManagementModal } from '../components/common/ListManagementModal';
+import { IconPicker } from '../components/common/IconPicker';
+import { Edit, Upload, Video } from 'lucide-react'; // Removed PlayCircle, X
 import { v4 as uuidv4 } from 'uuid';
 
-// --- API & AUTH IMPORTS ---
-// Make sure these paths are correct for your project
-// import { useAuth } from '../AuthContext'; 
-import { useAuth } from '../context/AuthContext';
-import * as aboutApi from '../api/aboutApi'; // The API for the About page
-import * as LucideIcons from 'lucide-react'; // For the DynamicIcon
-
-/*
-================================================================================
-|
-|  SECTION 1: REUSABLE UI COMPONENTS (FadeIn, CountUp)
-|  (These are the base components from your original file)
-|
-================================================================================
-*/
+// --- NEW HELPER COMPONENTS (Scoped to this file) ---
 
 /**
- * Fades in children as they scroll into view.
+ * NEW: A dedicated button for uploading media.
+ * This is just the button, which we can place anywhere.
  */
-const FadeIn = ({ children, delay = 0, duration = 0.8, x = 0, y = 20, once = true, ...props }) => {
-  const { ref, inView } = useInView({
-    triggerOnce: once,
-    threshold: 0.1,
-  });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, x, y }}
-      animate={inView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x, y }}
-      transition={{ duration, delay, ease: [0.25, 0.25, 0.25, 0.75] }}
-      {...props}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-/**
- * Animates a number from 0 to 'end' when in view.
- */
-const CountUp = ({ end, duration = 2000, decimals = 0, suffix = '' }) => {
-  const [count, setCount] = useState(0);
-  const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
-  
-  useEffect(() => {
-    if (inView) {
-      let start = 0;
-      const endValue = end;
-      const startTime = Date.now();
-      const easeOutQuad = (t) => t * (2 - t);
-      const frame = () => {
-        const now = Date.now();
-        const progress = Math.min((now - startTime) / duration, 1);
-        const easedProgress = easeOutQuad(progress);
-        const currentCount = easedProgress * endValue;
-        setCount(parseFloat(currentCount.toFixed(decimals)));
-        if (progress < 1) {
-          requestAnimationFrame(frame);
-        } else {
-          setCount(parseFloat(endValue.toFixed(decimals)));
-        }
-      };
-      requestAnimationFrame(frame);
-    }
-  }, [inView, end, duration, decimals]);
-
-  return (
-    <span ref={ref}>
-      {count.toLocaleString(undefined, {
-        minimumFractionDigits: decimals,
-        maximumFractionDigits: decimals
-      })}
-      {suffix}
-    </span>
-  );
-};
-
-
-/*
-================================================================================
-|
-|  SECTION 2: ADMIN HELPER COMPONENTS
-|  (These are the components that provide admin functionality)
-|
-================================================================================
-*/
-
-/**
- * Renders text that becomes an input field for admins.
- */
-const EditableText = ({
-  as: Element = 'p',
+const EditableMediaButton = ({
   isAdmin,
-  value,
   onSave,
-  useTextarea = false,
-  className = '',
-  ...props
+  label,
+  accept, // 'image/*' or 'video/*'
+  className = '', // Parent will add positioning classes
+  icon = <Upload size={14} />
 }) => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [currentValue, setCurrentValue] = useState(value);
-  const [isSaving, setIsSaving] = useState(false);
-
-  // Sync with external value changes
-  useEffect(() => {
-    setCurrentValue(value);
-  }, [value]);
-
-  const handleSave = async () => {
-    if (currentValue === value) {
-      setIsEditing(false);
-      return;
-    }
-    setIsSaving(true);
-    try {
-      await onSave(currentValue);
-      setIsEditing(false);
-    } catch (error) {
-      console.error('Failed to save text:', error);
-    } finally {
-      setIsSaving(false);
-    }
-  };
-
-  if (!isAdmin) {
-    return (
-      <Element className={className} {...props}>
-        {value}
-      </Element>
-    );
-  }
-
-  if (isEditing) {
-    const InputElement = useTextarea ? 'textarea' : 'input';
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="relative"
-      >
-        <InputElement
-          type="text"
-          value={currentValue}
-          onChange={(e) => setCurrentValue(e.target.value)}
-          disabled={isSaving}
-          className={`w-full p-2 border border-blue-500 rounded-md bg-white ${
-            useTextarea ? 'min-h-[100px]' : ''
-          } ${className}`}
-        />
-        <div className="flex gap-2 mt-2">
-          <button
-            onClick={handleSave}
-            disabled={isSaving}
-            className="px-3 py-1 text-sm text-white bg-green-600 rounded-md hover:bg-green-700 disabled:bg-gray-400"
-          >
-            {isSaving ? 'Saving...' : <Check size={16} />}
-          </button>
-          <button
-            onClick={() => {
-              setIsEditing(false);
-              setCurrentValue(value);
-            }}
-            disabled={isSaving}
-            className="px-3 py-1 text-sm text-white bg-red-500 rounded-md hover:bg-red-700"
-          >
-            <X size={16} />
-          </button>
-        </div>
-      </motion.div>
-    );
-  }
-
-  return (
-    <Element
-      className={`relative group ${className}`}
-      {...props}
-    >
-      {value}
-      <button
-        onClick={() => setIsEditing(true)}
-        className="absolute -top-1 -right-1 p-1 text-blue-600 transition-opacity bg-white/70 rounded-full opacity-0 group-hover:opacity-100"
-        aria-label="Edit text"
-        style={{ zIndex: 1 }} // Ensure button is on top
-      >
-        <Edit size={16} />
-      </button>
-    </Element>
-  );
-};
-
-/**
- * Renders an image with an "Upload" overlay for admins.
- * This version includes `wrapperClassName` for better layout control.
- */
-const EditableImage = ({ 
-  isAdmin, 
-  src, 
-  alt, 
-  onSave, 
-  className, 
-  wrapperClassName = '', // <-- NEW prop
-  ...props 
-}) => {
-  const [isUploading, setIsUploading] = useState(false);
   const fileInputRef = useRef(null);
+  const [isUploading, setIsUploading] = useState(false);
 
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
@@ -1255,877 +1409,413 @@ const EditableImage = ({
     try {
       await onSave(file);
     } catch (error) {
-      console.error('Failed to save image:', error);
-      alert('Image upload failed.');
+      console.error('Failed to save media:', error);
+      alert('Media upload failed.');
     } finally {
       setIsUploading(false);
     }
   };
 
+  if (!isAdmin) return null;
+
   return (
-    <div className={`relative ${wrapperClassName}`}>
-      <img src={src} alt={alt} className={className} {...props} />
-      {isAdmin && (
-        <>
-          <input
-            type="file"
-            accept="image/*"
-            ref={fileInputRef}
-            onChange={handleFileChange}
-            className="hidden"
-          />
-          <button
-            onClick={() => fileInputRef.current.click()}
-            disabled={isUploading}
-            className="absolute inset-0 z-10 flex items-center justify-center text-white transition-all bg-black bg-opacity-0 hover:bg-opacity-50"
-            aria-label="Change image"
-          >
-            <div className="flex flex-col items-center p-4 rounded-lg bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity">
-              <Upload size={24} />
-              <span className="text-sm">
-                {isUploading ? 'Uploading...' : 'Change Image'}
-              </span>
-            </div>
-          </button>
-        </>
-      )}
-    </div>
+    <>
+      <input
+        type="file"
+        accept={accept}
+        ref={fileInputRef}
+        onChange={handleFileChange}
+        className="hidden"
+      />
+      <button
+        onClick={() => fileInputRef.current.click()}
+        disabled={isUploading}
+        // Removed z-50 and absolute classes. Parent will position.
+        className={`bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition-all flex items-center gap-2 ${className}`}
+      >
+        {isUploading ? 'Uploading...' : (
+          <>
+            {icon} {label}
+          </>
+        )}
+      </button>
+    </>
   );
 };
 
 /**
- * Renders a Lucide icon component dynamically based on its string name.
+ * NEW: A wrapper for sections with editable background images.
+ * This now places the admin button in the center on hover.
  */
-const DynamicIcon = ({ name, ...props }) => {
-  const IconComponent = LucideIcons[name] || LucideIcons.Box; // Fallback to 'Box'
-  return <IconComponent {...props} />;
+const EditableBackgroundImage = ({
+  isAdmin,
+  src,
+  onSave,
+  children,
+  className = '',
+}) => {
+  return (
+    <section
+      className={`relative bg-cover bg-center ${className}`}
+      style={{ backgroundImage: `url('${src}')` }}
+    >
+      {/* Admin Overlay: Centered, appears on hover */}
+      {isAdmin && (
+        <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/0 hover:bg-black/50 opacity-0 hover:opacity-100 transition-opacity duration-300">
+          <EditableMediaButton
+            isAdmin={isAdmin}
+            onSave={onSave}
+            label="Change Background"
+            accept="image/*"
+            // No positioning classes needed here
+          />
+        </div>
+      )}
+
+      {/* Children are placed on top of the BG, but under the admin overlay */}
+      <div className="relative z-10">
+        {children}
+      </div>
+    </section>
+  );
 };
 
-/**
- * List of all available icon names from lucide-react.
- */
-const availableIconNames = Object.keys(LucideIcons).filter(
-  (key) => typeof LucideIcons[key] === 'object' && key !== 'default'
+
+// --- Main About Page Component ---
+
+// Helper component for admin buttons (for list modals)
+const AdminEditButton = ({ onClick, text = 'Edit' }) => (
+  <button
+    onClick={onClick}
+    className="absolute top-2 right-2 z-50 bg-blue-600 text-white px-3 py-1 rounded-md text-sm font-semibold hover:bg-blue-700 transition-all flex items-center gap-1"
+  >
+    <Edit size={14} /> {text}
+  </button>
 );
 
-/**
- * A dropdown/searchable picker for Lucide icons.
- */
-const IconPicker = ({ value, onChange }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [filter, setFilter] = useState('');
-  
-  const filteredIcons = availableIconNames.filter(name => 
-    name.toLowerCase().includes(filter.toLowerCase())
-  ).slice(0, 50); // Limit to 50
-  
-  return (
-    <div className="relative">
-      <label className="block text-sm font-medium text-gray-700">Icon:</label>
-      <button 
-        type="button" 
-        onClick={() => setIsOpen(!isOpen)} 
-        className="flex items-center justify-between w-full p-2 border border-gray-300 rounded-md bg-white"
-      >
-        <span className="flex items-center gap-2">
-          {value ? <DynamicIcon name={value} className="inline-block" /> : null} 
-          {value || 'Select Icon'}
-        </span>
-        <span>{isOpen ? 'Close' : 'Open'}</span>
-      </button>
-      {isOpen && (
-        <div className="absolute z-50 w-full p-2 bg-white border rounded-lg shadow-lg max-h-60 overflow-y-auto mt-1">
-          <input
-            type="text"
-            placeholder="Search icons..."
-            value={filter}
-            onChange={e => setFilter(e.target.value)}
-            className="w-full p-1 mb-2 border rounded"
-          />
-          <div className="grid grid-cols-6 gap-1">
-            {filteredIcons.map(name => (
-              <button
-                key={name}
-                type="button"
-                onClick={() => {
-                  onChange(name);
-                  setIsOpen(false);
-                  setFilter('');
-                }}
-                className="p-2 border rounded hover:bg-gray-100"
-                title={name}
-              >
-                <DynamicIcon name={name} />
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-/**
- * A generic modal for managing a list of items (add, edit, delete).
- * This version is corrected to accept API functions as props.
- */
-const ListManagementModal = ({
-  title,
-  items,
-  onClose,
-  onSave,
-  renderForm,
-  itemTitleKey,
-  fileKeys = [],
-  api // <-- NEW PROP: Pass in { updateFile, deleteFile }
-}) => {
-  const [currentItems, setCurrentItems] = useState(items);
-  const [editingItem, setEditingItem] = useState(null); // The item object to edit
-  const [isSaving, setIsSaving] = useState(false);
-  const formRef = useRef(null);
-
-  const handleAddNew = () => {
-    setEditingItem({ id: uuidv4(), isNew: true });
-  };
-
-  const handleEdit = (item) => {
-    setEditingItem(JSON.parse(JSON.stringify(item))); // Deep copy
-  };
-
-  const handleDelete = async (itemToDelete) => {
-    if (!window.confirm(`Are you sure you want to delete "${itemToDelete[itemTitleKey] || 'this item'}"?`)) return;
-    
-    setIsSaving(true);
-    try {
-      // Check for and delete associated files
-      for (const key of fileKeys) {
-        const storagePath = itemToDelete[`${key}_storage_path`];
-        if (storagePath && api.deleteFile) {
-          await api.deleteFile(storagePath);
-        }
-      }
-      
-      const newItems = currentItems.filter(i => i.id !== itemToDelete.id);
-      await onSave(newItems); // Save deletion immediately
-      setCurrentItems(newItems);
-      
-    } catch (err) {
-      console.error('Failed to delete item:', err);
-      alert('Failed to delete item.');
-    } finally {
-      setIsSaving(false);
-    }
-  };
-
-  // This handles the form submission for BOTH add and edit
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    if (!api.updateFile) {
-      console.error("api.updateFile function was not provided to ListManagementModal");
-      alert("Configuration error: Cannot update files.");
-      return;
-    }
-    
-    setIsSaving(true);
-    let updatedItem = { ...editingItem };
-    
-    try {
-      // Handle file uploads
-      const fileInputs = formRef.current.querySelectorAll('.file-input');
-      for (const input of fileInputs) {
-        const file = input.files[0];
-        if (file) {
-          const key = input.dataset.key; // e.g., 'video' or 'logo'
-          const oldStoragePath = items.find(i => i.id === updatedItem.id)?.[`${key}_storage_path`];
-          
-          const { publicUrl, storagePath } = await api.updateFile(file, oldStoragePath);
-          updatedItem[`${key}_url`] = publicUrl;
-          updatedItem[`${key}_storage_path`] = storagePath;
-        }
-      }
-      
-      delete updatedItem.isNew; // Clean up flag
-
-      let newItemsArray;
-      if (items.find(i => i.id === updatedItem.id)) { // It's an update
-        newItemsArray = currentItems.map(i => i.id === updatedItem.id ? updatedItem : i);
-      } else { // It's a new item
-        newItemsArray = [...currentItems, updatedItem];
-      }
-      
-      await onSave(newItemsArray); // Save the entire new array
-      setCurrentItems(newItemsArray);
-      setEditingItem(null); // Close the form
-    } catch (err) {
-      console.error(err);
-      alert('Failed to save item.');
-    } finally {
-      setIsSaving(false);
-    }
-  };
-
-  return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4">
-      <div className="w-full max-w-4xl p-6 bg-white rounded-lg max-h-[90vh] overflow-y-auto text-gray-900">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold">{title}</h2>
-          <button onClick={onClose}><X /></button>
-        </div>
-
-        {/* --- Add/Edit Form --- */}
-        {editingItem ? (
-          <form ref={formRef} onSubmit={handleFormSubmit} className="p-4 my-4 border rounded-lg space-y-3">
-            <h3 className="text-lg font-semibold">{editingItem.isNew ? 'Add New Item' : `Edit Item`}</h3>
-            {renderForm(editingItem, setEditingItem, editingItem.isNew)}
-            <div className="flex gap-2 mt-4">
-              <button type="submit" disabled={isSaving} className="px-4 py-1 text-white bg-green-600 rounded">{isSaving ? 'Saving...' : 'Save'}</button>
-              <button type="button" onClick={() => setEditingItem(null)} className="px-4 py-1 text-white bg-gray-500 rounded">Cancel</button>
-            </div>
-          </form>
-        ) : (
-          <button onClick={handleAddNew} className="flex items-center gap-2 px-4 py-2 my-4 text-white bg-blue-600 rounded">
-            <Plus size={18} /> Add New Item
-          </button>
-        )}
-
-        {/* --- List of Current Items --- */}
-        <div className="space-y-2">
-          {currentItems.map(item => (
-            <div key={item.id} className="flex items-center justify-between p-2 border rounded-lg">
-              <span className="font-semibold">{item[itemTitleKey] || 'New Item'}</span>
-              <div className="flex gap-2">
-                <button onClick={() => handleEdit(item)} disabled={isSaving} className="p-1 text-blue-600 disabled:text-gray-400"><Edit size={16} /></button>
-                <button onClick={() => handleDelete(item)} disabled={isSaving} className="p-1 text-red-600 disabled:text-gray-400"><Trash2 size={16} /></button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-
-/*
-================================================================================
-|
-|  SECTION 3: PAGE SECTION COMPONENTS
-|  (These are the visual blocks of the About page)
-|
-================================================================================
-*/
-
-// --- 1. ABOUT HERO SECTION ---
-const AboutHeroSection = ({ content, isAdmin, onUpdate }) => {
-  const { 
-    image_url, image_alt, image_storage_path, 
-    title_prefix, title_suffix, subtitle 
-  } = content || {};
-
-  const handleTextSave = async (key, newValue) => {
-    await onUpdate('about_hero', { ...content, [key]: newValue });
-  };
-
-  const handleImageSave = async (file) => {
-    const { publicUrl, storagePath } = await aboutApi.updateFile(file, image_storage_path);
-    await onUpdate('about_hero', { 
-      ...content, 
-      image_url: publicUrl, 
-      image_storage_path: storagePath 
-    });
-  };
-
-  return (
-    <section className="relative h-[70vh] flex items-center justify-center text-center overflow-hidden">
-      <EditableImage
-        isAdmin={isAdmin}
-        src={image_url || 'https://placehold.co/1920x1080'}
-        alt={image_alt || 'About us hero'}
-        onSave={handleImageSave}
-        className="absolute z-0 w-full h-full object-cover"
-        // This wrapper is crucial for the admin overlay to cover the image
-        wrapperClassName="absolute z-0 w-full h-full group" 
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent z-10"></div>
-      <div className="absolute inset-0 bg-white opacity-40 z-0"></div>
-      
-      <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn>
-          <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-gray-900 drop-shadow-lg">
-            <EditableText as="span" isAdmin={isAdmin} value={title_prefix || 'About'} onSave={val => handleTextSave('title_prefix', val)} />
-            {' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-600">
-              <EditableText as="span" isAdmin={isAdmin} value={title_suffix || 'Us'} onSave={val => handleTextSave('title_suffix', val)} />
-            </span>
-          </h1>
-          <EditableText
-            as="p"
-            isAdmin={isAdmin}
-            value={subtitle || 'Subtitle text...'}
-            onSave={val => handleTextSave('subtitle', val)}
-            className="mt-6 text-xl md:text-2xl font-light text-gray-600 max-w-3xl mx-auto"
-            useTextarea
-          />
-        </FadeIn>
-      </div>
-    </section>
-  );
-};
-
-// --- 2. TIMELINE SECTION ---
-const TimelineSection = ({ content, isAdmin, onUpdate }) => {
-  const { title, subtitle, events } = content || {};
-  const [isManageModalOpen, setIsManageModalOpen] = useState(false);
-
-  const handleTextSave = async (key, newValue) => {
-    await onUpdate('timeline', { ...content, [key]: newValue });
-  };
-
-  return (
-    <section className="py-24 bg-white" style={{ backgroundImage: "url('https://placehold.co/1920x1080/f5f5f5/cccccc?text=Subtle+Circuit+BG&font=inter')" }}>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn>
-          <h2 className="text-4xl md:text-5xl font-light text-center mb-4 text-gray-900">
-            <EditableText as="span" isAdmin={isAdmin} value={title || 'Our Journey'} onSave={val => handleTextSave('title', val)} />
-          </h2>
-          <EditableText
-            as="p"
-            isAdmin={isAdmin}
-            value={subtitle || 'Subtitle...'}
-            onSave={val => handleTextSave('subtitle', val)}
-            className="text-xl text-gray-600 text-center max-w-2xl mx-auto mb-24"
-            useTextarea
-          />
-        </FadeIn>
-        
-        <div className="relative max-w-2xl mx-auto">
-          <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-1 h-full bg-gray-200 rounded-full"></div>
-          
-          {(events || []).map((event, index) => (
-            <FadeIn key={event.id || index} triggerOnce={true}>
-              <div className="relative mb-12 flex items-center md:w-full group">
-                <div className="absolute left-4 md:left-1/half -translate-x-1/2 z-10">
-                  <div className="w-8 h-8 rounded-full bg-white border-4 border-green-500 flex items-center justify-center transition-all duration-300 group-hover:border-teal-400 group-hover:scale-110">
-                    <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
-                  </div>
-                </div>
-                
-                <div className={`w-full p-8 bg-white border border-gray-200 rounded-lg shadow-lg ml-12 md:ml-0 ${index % 2 === 0 ? 'md:mr-auto md:pr-12' : 'md:ml-auto md:pl-12'
-                  } md:w-[calc(50%-2rem)] transition-all duration-300 hover:shadow-xl hover:border-gray-300`}>
-                  <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-600 mb-2">{event.year}</h3>
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">{event.title}</h4>
-                  <p className="text-gray-600">{event.desc}</p>
-                </div>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-        
-        {isAdmin && (
-          <div className="text-center mt-12">
-            <button 
-              onClick={() => setIsManageModalOpen(true)} 
-              className="flex items-center gap-2 px-4 py-2 mx-auto text-white transition-all bg-blue-600 rounded-md hover:bg-blue-700"
-            >
-              <Edit size={18} /> Manage Timeline
-            </button>
-          </div>
-        )}
-
-        {isManageModalOpen && (
-          <ListManagementModal
-            title="Manage Timeline Events"
-            items={events || []}
-            onClose={() => setIsManageModalOpen(false)}
-            onSave={(newList) => onUpdate('timeline', { ...content, events: newList })}
-            api={{ updateFile: aboutApi.updateFile, deleteFile: aboutApi.deleteFile }} // <-- Pass API functions
-            renderForm={ (item, setItem) => (
-              <>
-                <label>Year: <input type="number" value={item.year || ''} onChange={e => setItem(i => ({...i, year: parseInt(e.target.value)}))} className="w-full p-1 border rounded" /></label>
-                <label>Title: <input type="text" value={item.title || ''} onChange={e => setItem(i => ({...i, title: e.target.value}))} className="w-full p-1 border rounded" /></label>
-                <label>Description: <textarea value={item.desc || ''} onChange={e => setItem(i => ({...i, desc: e.target.value}))} className="w-full p-1 border rounded" /></label>
-              </>
-            )}
-            itemTitleKey="title"
-          />
-        )}
-      </div>
-    </section>
-  );
-};
-
-// --- 3. FACILITY VIDEO SECTION ---
-const FacilityVideoSection = ({ content, isAdmin, onUpdate }) => {
-  const { 
-    title, subtitle, thumbnail_url, 
-    thumbnail_alt, thumbnail_storage_path, video_url 
-  } = content || {};
-
-  const handleTextSave = async (key, newValue) => {
-    await onUpdate('facility_video', { ...content, [key]: newValue });
-  };
-  
-  const handleThumbnailSave = async (file) => {
-    const { publicUrl, storagePath } = await aboutApi.updateFile(file, thumbnail_storage_path);
-    await onUpdate('facility_video', { 
-      ...content, 
-      thumbnail_url: publicUrl, 
-      thumbnail_storage_path: storagePath 
-    });
-  };
-
-  return (
-    <section className="py-24 bg-gray-50">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <FadeIn>
-          <h2 className="text-4xl md:text-5xl font-light mb-4 text-gray-900">
-            <EditableText as="span" isAdmin={isAdmin} value={title || 'Our Facility'} onSave={val => handleTextSave('title', val)} />
-          </h2>
-          <EditableText
-            as="p"
-            isAdmin={isAdmin}
-            value={subtitle || 'Subtitle...'}
-            onSave={val => handleTextSave('subtitle', val)}
-            className="text-xl text-gray-500 max-w-2xl mx-auto mt-4 mb-12"
-            useTextarea
-          />
-          <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl group cursor-pointer border-2 border-gray-200">
-            {/* The actual video link is just a_href, but the thumbnail is editable */}
-            <a href={video_url || '#'} target="_blank" rel="noopener noreferrer" aria-label="Play facility video">
-              <EditableImage
-                isAdmin={isAdmin}
-                src={thumbnail_url || 'https://placehold.co/1280x720'}
-                alt={thumbnail_alt || 'Facility video thumbnail'}
-                onSave={handleThumbnailSave}
-                className="w-full h-full object-cover"
-                wrapperClassName="w-full h-full"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-10 transition-all duration-300"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative">
-                  <PlayCircle size={100} className="text-white text-opacity-80 group-hover:text-opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-lg" />
-                  <div className="absolute inset-0 rounded-full bg-green-500 opacity-30 animate-ping -z-10 group-hover:animate-none"></div>
-                </div>
-              </div>
-            </a>
-          </div>
-          {isAdmin && (
-            <div className="mt-4 text-left max-w-full mx-auto p-4 bg-gray-100 rounded-lg">
-              <label className="block text-sm font-medium text-gray-700">Video URL (e.g., YouTube, Vimeo link):</label>
-              <EditableText
-                as="p"
-                isAdmin={isAdmin}
-                value={video_url || ''}
-                onSave={val => handleTextSave('video_url', val)}
-                className="p-2 border rounded bg-white text-gray-900"
-              />
-            </div>
-          )}
-        </FadeIn>
-      </div>
-    </section>
-  );
-};
-
-// --- 4. STATS SECTION ---
-const StatsSection = ({ content, isAdmin, onUpdate }) => {
-  const stats = content || [];
-  const [isManageModalOpen, setIsManageModalOpen] = useState(false);
-
-  return (
-    <section className="py-24 bg-white" style={{ backgroundImage: "url('https://placehold.co/1920x1080/f5f5f5/cccccc?text=Subtle+Circuit+BG&font=inter')" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-          {(stats).map((stat, index) => (
-            <FadeIn key={stat.id || index} delay={index * 200}>
-              <div className="p-6">
-                <h3 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">
-                  <CountUp end={stat.value || 0} suffix={stat.suffix || ''} />
-                </h3>
-                <p className="text-2xl text-gray-500 mt-2">{stat.label}</p>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-        
-        {isAdmin && (
-          <div className="text-center mt-12">
-            <button 
-              onClick={() => setIsManageModalOpen(true)} 
-              className="flex items-center gap-2 px-4 py-2 mx-auto text-white transition-all bg-blue-600 rounded-md hover:bg-blue-700"
-            >
-              <Edit size={18} /> Manage Stats
-            </button>
-          </div>
-        )}
-
-        {isManageModalOpen && (
-          <ListManagementModal
-            title="Manage Stats"
-            items={stats}
-            onClose={() => setIsManageModalOpen(false)}
-            onSave={(newStats) => onUpdate('about_stats', newStats)}
-            api={{ updateFile: aboutApi.updateFile, deleteFile: aboutApi.deleteFile }} // <-- Pass API functions
-            renderForm={ (item, setItem) => (
-              <>
-                <label>Label: <input type="text" value={item.label || ''} onChange={e => setItem(i => ({...i, label: e.target.value}))} className="w-full p-1 border rounded" /></label>
-                <label>Value (Number): <input type="number" value={item.value || 0} onChange={e => setItem(i => ({...i, value: parseFloat(e.target.value)}))} className="w-full p-1 border rounded" /></label>
-                <label>Suffix (e.g., + or M+): <input type="text" value={item.suffix || ''} onChange={e => setItem(i => ({...i, suffix: e.target.value}))} className="w-full p-1 border rounded" /></label>
-              </>
-            )}
-            itemTitleKey="label"
-          />
-        )}
-      </div>
-    </section>
-  );
-};
-
-// --- 5. CORE VALUES SECTION ---
-const CoreValuesSection = ({ content, isAdmin, onUpdate }) => {
-  const { title, values } = content || {};
-  const [hoveredValue, setHoveredValue] = useState(values?.[0]?.title || '');
-  const [isManageModalOpen, setIsManageModalOpen] = useState(false);
-
-  // Sync state if content loads or changes
-  useEffect(() => {
-    if (!hoveredValue && values && values.length > 0) {
-      setHoveredValue(values[0].title);
-    }
-  }, [values, hoveredValue]);
-  
-  const handleTextSave = async (key, newValue) => {
-    await onUpdate('core_values', { ...content, [key]: newValue });
-  };
-
-  return (
-    <section className="py-24 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn>
-          <h2 className="text-4xl md:text-5xl font-light text-center mb-24 text-gray-900">
-            <EditableText as="span" isAdmin={isAdmin} value={title || 'Our Core Values'} onSave={val => handleTextSave('title', val)} />
-          </h2>
-        </FadeIn>
-        
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-32">
-          {/* Interactive Hub */}
-          <div className="relative w-72 h-72 md:w-96 md:h-96 flex-shrink-0">
-            <div className="absolute inset-0 rounded-full bg-gray-200/70 border-2 border-gray-300"></div>
-            <div className="absolute inset-4 rounded-full bg-white border border-gray-200"></div>
-            
-            <div className="absolute inset-16 md:inset-24 rounded-full bg-white flex items-center justify-center text-center p-4 border-2 border-green-500 shadow-xl shadow-green-500/20">
-              {(values || []).map(value => (
-                <div 
-                  key={value.title}
-                  className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-300 ${
-                    hoveredValue === value.title ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-                  }`}
-                >
-                  <DynamicIcon name={value.icon_name || 'Box'} className="w-10 h-10 md:w-12 md:h-12 text-green-500" />
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mt-2">{value.title}</h3>
-                </div>
-              ))}
-            </div>
-
-            {/* Spoke Buttons */}
-            {(values || []).map((value, index) => {
-              const angle = (index / (values?.length || 1)) * 2 * Math.PI - (Math.PI / 2); // Start at top
-              const x = Math.cos(angle) * 50 + 50; 
-              const y = Math.sin(angle) * 50 + 50;
-              
-              return (
-                <div key={value.title} className="absolute" style={{ top: `${y}%`, left: `${x}%` }}>
-                  <button
-                    className="w-16 h-16 -translate-x-8 -translate-y-8 md:w-20 md:h-20 md:-translate-x-10 md:-translate-y-10 rounded-full bg-white border border-gray-200 flex items-center justify-center group transition-all duration-300 hover:bg-green-500 hover:border-green-400 hover:scale-110"
-                    onMouseEnter={() => setHoveredValue(value.title)}
-                  >
-                    <DynamicIcon name={value.icon_name || 'Box'} className="w-6 h-6 md:w-8 md:h-8 text-gray-500 transition-colors duration-300 group-hover:text-white" />
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-          
-          {/* Description Area */}
-          <div className="relative w-full max-w-md h-48 lg:h-96">
-            {(values || []).map(value => (
-              <div 
-                key={value.title}
-                className={`absolute inset-0 transition-opacity duration-500 ${
-                  hoveredValue === value.title ? 'opacity-100' : 'opacity-0'
-                }`}
-              >
-                <FadeIn>
-                  <h3 className="text-3xl font-bold text-gray-900 mb-4">{value.title}</h3>
-                  <p className="text-lg text-gray-600">{value.desc}</p>
-                </FadeIn>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {isAdmin && (
-          <div className="text-center mt-24">
-            <button 
-              onClick={() => setIsManageModalOpen(true)} 
-              className="flex items-center gap-2 px-4 py-2 mx-auto text-white transition-all bg-blue-600 rounded-md hover:bg-blue-700"
-            >
-              <Edit size={18} /> Manage Core Values
-            </button>
-          </div>
-        )}
-
-        {isManageModalOpen && (
-          <ListManagementModal
-            title="Manage Core Values"
-            items={values || []}
-            onClose={() => setIsManageModalOpen(false)}
-            onSave={(newList) => onUpdate('core_values', { ...content, values: newList })}
-            api={{ updateFile: aboutApi.updateFile, deleteFile: aboutApi.deleteFile }} // <-- Pass API functions
-            renderForm={ (item, setItem) => (
-              <>
-                <label>Title: <input type="text" value={item.title || ''} onChange={e => setItem(i => ({...i, title: e.target.value}))} className="w-full p-1 border rounded" /></label>
-                <label>Description: <textarea value={item.desc || ''} onChange={e => setItem(i => ({...i, desc: e.target.value}))} className="w-full p-1 border rounded" /></label>
-                <IconPicker value={item.icon_name || ''} onChange={name => setItem(i => ({...i, icon_name: name}))} />
-              </>
-            )}
-            itemTitleKey="title"
-          />
-        )}
-      </div>
-    </section>
-  );
-};
-
-// --- 6. CTA SECTION ---
-const CtaSection = ({ content, isAdmin, onUpdate }) => {
-  const { 
-    background_image_url, background_storage_path, 
-    title, text, buttonText, buttonLink 
-  } = content || {};
-  
-  const navigate = useNavigate();
-  const [isManageModalOpen, setIsManageModalOpen] = useState(false);
-
-  // This save handler is passed to the modal
-  const handleSave = async (newContentData, file) => {
-    let newContent = { ...newContentData };
-    
-    if (file) {
-      const { publicUrl, storagePath } = await aboutApi.updateFile(file, background_storage_path);
-      newContent.background_image_url = publicUrl;
-      newContent.background_storage_path = storagePath;
-    }
-    
-    await onUpdate('about_cta', newContent);
-  };
-
-  return (
-    <section 
-      className="py-24 relative" 
-      style={{ backgroundImage: `url(${background_image_url || ''})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-    >
-      {/* This overlay is part of the design */}
-      <div className="absolute inset-0 bg-black/70"></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <FadeIn>
-          <h2 className="text-4xl md:text-5xl font-light text-gray-200">
-            {title}
-          </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto mt-4 mb-10">
-            {text}
-          </p>
-          <button
-            onClick={() => navigate(buttonLink || '/')}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-4 rounded-full text-lg font-medium hover:from-blue-500 hover:to-purple-500 transition-all transform hover:scale-105 shadow-lg shadow-blue-500/20"
-          >
-            {buttonText}
-          </button>
-        </FadeIn>
-      </div>
-      
-      {isAdmin && (
-        <button
-          onClick={() => setIsManageModalOpen(true)}
-          className="absolute top-4 right-4 z-20 flex items-center gap-2 px-4 py-2 text-white transition-all bg-blue-600 rounded-md hover:bg-blue-700"
-        >
-          <Edit size={18} /> Edit CTA
-        </button>
-      )}
-
-      {isManageModalOpen && (
-        <CtaEditModal
-          content={content}
-          onClose={() => setIsManageModalOpen(false)}
-          onSave={handleSave} // Pass the save handler
-        />
-      )}
-    </section>
-  );
-};
-
-// --- 6b. Special Modal for CTA (since it's a unique section) ---
-const CtaEditModal = ({ content, onClose, onSave }) => {
-  const [formData, setFormData] = useState(content);
-  const [file, setFile] = useState(null);
-  const [isSaving, setIsSaving] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSaving(true);
-    try {
-      await onSave(formData, file); // onSave is the function passed from CtaSection
-      onClose();
-    } catch (err) {
-      console.error("Failed to save CTA", err);
-      alert("Save failed. See console for details.");
-    } finally {
-      setIsSaving(false);
-    }
-  };
-
-  return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4">
-      <div className="w-full max-w-2xl p-6 bg-white rounded-lg max-h-[90vh] overflow-y-auto text-gray-900">
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <h2 className="text-2xl font-bold mb-4">Edit Call to Action</h2>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Title:</label>
-            <input type="text" name="title" value={formData.title} onChange={handleChange} className="w-full p-2 border rounded-md" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Text:</label>
-            <textarea name="text" value={formData.text} onChange={handleChange} className="w-full p-2 border rounded-md" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Button Text:</label>
-            <input type="text" name="buttonText" value={formData.buttonText} onChange={handleChange} className="w-full p-2 border rounded-md" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Button Link (e.g., /contact):</label>
-            <input type="text" name="buttonLink" value={formData.buttonLink} onChange={handleChange} className="w-full p-2 border rounded-md" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Background Image (optional):</label>
-            <input type="file" accept="image/*" onChange={handleFileChange} className="w-full p-2 border rounded-md" />
-            <small className="text-gray-500">Leave blank to keep the current image: {content.background_image_url?.substring(0, 50)}...</small>
-          </div>
-          <div className="flex gap-2 mt-6">
-            <button type="submit" disabled={isSaving} className="px-4 py-2 text-white bg-green-600 rounded-md">{isSaving ? 'Saving...' : 'Save'}</button>
-            <button type="button" onClick={onClose} className="px-4 py-2 text-white bg-gray-500 rounded-md">Cancel</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
-};
-
-
-/*
-================================================================================
-|
-|  SECTION 4: MAIN ABOUT PAGE CONTROLLER
-|  (This is the main component that fetches data and renders sections)
-|
-================================================================================
-*/
 export const About = () => {
-  const { isAdmin } = useAuth();
-  const [pageContent, setPageContent] = useState(null);
+  // const { isAdmin } = useAuth(); // UNCOMMENT THIS
+  const isAdmin = true; // For testing purposes
+  const [content, setContent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [modal, setModal] = useState(null); // 'timeline', 'stats', 'core_values'
+  // Removed isVideoUrlModalOpen state
 
+  // --- Data Fetching ---
   useEffect(() => {
-    const fetchContent = async () => {
+    const loadContent = async () => {
       try {
-        const content = await aboutApi.getAboutPageContent();
-        setPageContent(content);
+        const data = await aboutApi.getContent();
+        setContent(data);
       } catch (err) {
-        setError(err.message);
-        console.error(err);
+        console.error('Failed to load page content', err);
       } finally {
         setIsLoading(false);
       }
     };
-    fetchContent();
+    loadContent();
   }, []);
 
-  const handleSectionUpdate = async (sectionName, newContent) => {
-    if (!isAdmin) return;
-
-    // 1. Optimistic UI update
-    setPageContent((prev) => ({
+  // --- Data Saving ---
+  const handleSave = async (sectionName, newContent) => {
+    setContent((prev) => ({
       ...prev,
       [sectionName]: newContent,
     }));
-
-    // 2. Push to DB
     try {
-      await aboutApi.updateAboutSectionContent(sectionName, newContent);
+      await aboutApi.updateSectionContent(sectionName, newContent);
     } catch (err) {
-      console.error('Failed to save content:', err);
-      setError('Failed to save changes. Please refresh.');
-      // You could add rollback logic here by re-fetching all content
+      console.error('Failed to save content', err);
+      alert('Error saving content. Please refresh and try again.');
+    }
+  };
+
+  // Helper for simple text field updates
+  const handleTextSave = (sectionName, field) => async (newValue) => {
+    const newContent = {
+      ...content[sectionName],
+      [field]: newValue,
+    };
+    await handleSave(sectionName, newContent);
+  };
+
+  // Helper for image/media updates
+  // This function now handles both image and video uploads
+  const handleMediaSave = (sectionName, field) => async (newFile) => {
+    if (!newFile) {
+      console.log('No file selected.');
+      return;
+    }
+    const section = content[sectionName];
+    // Note: This assumes your DB has 'field_url' and 'field_storage_path'
+    // e.g., 'video_url' and 'video_storage_path'
+    const oldStoragePath = section[`${field}_storage_path`];
+
+    try {
+      const { publicUrl, storagePath } = await aboutApi.updateFile(newFile, oldStoragePath);
+      const newContent = {
+        ...section,
+        [`${field}_url`]: publicUrl,
+        [`${field}_storage_path`]: storagePath,
+      };
+      await handleSave(sectionName, newContent);
+    } catch (err) {
+      console.error("Failed to update media", err);
+      alert("Media update failed. Check console.");
+    }
+  };
+
+  // --- Modal Forms (for ListManagementModal) ---
+  const renderModalForm = (item, setItem) => {
+    // ... (This logic remains the same)
+    switch (modal) {
+      case 'timeline':
+        return (
+          <>
+            <label>Year: <input type="number" className="w-full p-1 border rounded" value={item.year || ''} onChange={e => setItem({...item, year: parseInt(e.target.value)})} /></label>
+            <label>Title: <input type="text" className="w-full p-1 border rounded" value={item.title || ''} onChange={e => setItem({...item, title: e.target.value})} /></label>
+            <label>Description: <textarea className="w-full p-1 border rounded" value={item.desc || ''} onChange={e => setItem({...item, desc: e.target.value})} /></label>
+          </>
+        );
+      case 'stats':
+        return (
+          <>
+            <label>Value (Number): <input type="number" className="w-full p-1 border rounded" value={item.value || ''} onChange={e => setItem({...item, value: parseInt(e.target.value)})} /></label>
+            <label>Suffix (e.g., +, M+): <input type="text" className="w-full p-1 border rounded" value={item.suffix || ''} onChange={e => setItem({...item, suffix: e.target.value})} /></label>
+            <label>Label: <input type="text" className="w-full p-1 border rounded" value={item.label || ''} onChange={e => setItem({...item, label: e.target.value})} /></label>
+          </>
+        );
+      case 'core_values':
+        return (
+          <>
+            <label>Icon: <IconPicker value={item.icon_name} onChange={name => setItem({...item, icon_name: name})} /></label>
+            <label>Title: <input type="text" className="w-full p-1 border rounded" value={item.title || ''} onChange={e => setItem({...item, title: e.target.value})} /></label>
+            <label>Description: <textarea className="w-full p-1 border rounded" value={item.desc || ''} onChange={e => setItem({...item, desc: e.target.value})} /></label>
+          </>
+        );
+      default: return null;
     }
   };
 
   if (isLoading) {
-    return <div className="h-screen flex items-center justify-center">Loading About Page...</div>;
+    return <div className="h-screen bg-white flex items-center justify-center text-gray-900">Loading...</div>;
+  }
+  
+  if (!content) {
+    return <div className="h-screen bg-white flex items-center justify-center text-gray-900">Error loading content.</div>;
   }
 
-  if (error) {
-    return <div className="h-screen flex items-center justify-center text-red-500">Error: {error}</div>;
-  }
+  const { about_hero, timeline, facility_video, about_stats, core_values, about_cta } = content;
 
-  // Render all sections only when pageContent is not null
   return (
     <div className="bg-white text-gray-900 overflow-x-hidden">
-      {pageContent && (
-        <>
-          <AboutHeroSection 
-            content={pageContent.about_hero} 
-            isAdmin={isAdmin} 
-            onUpdate={handleSectionUpdate} 
-          />
-          <TimelineSection 
-            content={pageContent.timeline} 
-            isAdmin={isAdmin} 
-            onUpdate={handleSectionUpdate} 
-          />
-          <FacilityVideoSection 
-            content={pageContent.facility_video} 
-            isAdmin={isAdmin} 
-            onUpdate={handleSectionUpdate} 
-          />
-          <StatsSection 
-            content={pageContent.about_stats} 
-            isAdmin={isAdmin} 
-            onUpdate={handleSectionUpdate} 
-          />
-          <CoreValuesSection 
-            content={pageContent.core_values} 
-            isAdmin={isAdmin} 
-            onUpdate={handleSectionUpdate} 
-          />
-          <CtaSection 
-            content={pageContent.about_cta} 
-            isAdmin={isAdmin} 
-            onUpdate={handleSectionUpdate} 
-          />
-        </>
+      
+      {/* --- About Hero Section (FIXED) --- */}
+      <EditableBackgroundImage
+        isAdmin={isAdmin}
+        src={about_hero.image_url}
+        onSave={handleMediaSave('about_hero', 'image')}
+        className="h-[70vh] flex items-center justify-center text-center overflow-hidden"
+      >
+        {/* Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t to-transparent z-10"></div>
+        <div className="absolute inset-0 opacity-40 z-0"></div>
+        
+        {/* Content (z-10 is default from parent) */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <EditableText
+              as="h1"
+              isAdmin={isAdmin}
+              value={about_hero.title_prefix}
+              onSave={handleTextSave('about_hero', 'title_prefix')}
+              className="text-6xl md:text-8xl font-bold tracking-tighter text-gray-900 drop-shadow-lg"
+            >
+              {about_hero.title_prefix}{' '}
+              <EditableText
+                as="span"
+                isAdmin={isAdmin}
+                value={about_hero.title_suffix}
+                onSave={handleTextSave('about_hero', 'title_suffix')}
+                className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-600"
+              />
+            </EditableText>
+
+            <EditableText
+              as="p"
+              isAdmin={isAdmin}
+              value={about_hero.subtitle}
+              onSave={handleTextSave('about_hero', 'subtitle')}
+              className="mt-6 text-xl md:text-2xl font-light text-gray-600 max-w-3xl mx-auto"
+              useTextarea
+            />
+          </FadeIn>
+        </div>
+      </EditableBackgroundImage>
+      
+      {/* --- Animated Timeline Section --- */}
+      <section className="py-24 bg-white relative">
+        {isAdmin && <AdminEditButton onClick={() => setModal('timeline')} text="Edit Timeline" />}
+        <Timeline 
+          timelineData={timeline} 
+          isAdmin={isAdmin}
+          onSave={handleSave} 
+        />
+      </section>
+
+      {/* --- Facility Video Section (FIXED) --- */}
+      <section className="py-24 bg-gray-50 relative">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <FadeIn>
+            <EditableText
+              as="h2"
+              isAdmin={isAdmin}
+              value={facility_video.title}
+              onSave={handleTextSave('facility_video', 'title')}
+              className="text-4xl md:text-5xl font-light mb-4"
+            >
+              Our <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">World-Class Facility</span>
+            </EditableText>
+
+            <EditableText
+              as="p"
+              isAdmin={isAdmin}
+              value={facility_video.subtitle}
+              onSave={handleTextSave('facility_video', 'subtitle')}
+              className="text-xl text-gray-500 max-w-2xl mx-auto mt-4 mb-12"
+              useTextarea
+            />
+            
+            {/* Video Player Wrapper */}
+            <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl group border-2 border-gray-200">
+              
+              {/* Admin Button: Upload Video */}
+              <EditableMediaButton
+                isAdmin={isAdmin}
+                // This assumes your DB has 'video_url' and 'video_storage_path'
+                onSave={handleMediaSave('facility_video', 'video')} 
+                label="Upload Video"
+                accept="video/*"
+                icon={<Video size={14} />}
+                className="absolute top-4 right-4 z-20" // Positioned top-right
+              />
+
+              {/* The Video Player */}
+              <video
+                key={facility_video.video_url} // Force re-render if URL changes
+                src={facility_video.video_url}
+                controls // Adds browser's play/pause/volume controls
+                // poster={facility_video.thumbnail_url} // We removed thumbnail
+                className="w-full h-full object-cover bg-black"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* --- Dynamic Stats Section --- */}
+      <section className="py-24 bg-white relative" style={{ backgroundImage: "url('https://placehold.co/1920x1080/f5f5f5/cccccc?text=Subtle+Circuit+BG&font--inter')" }}>
+        {isAdmin && <AdminEditButton onClick={() => setModal('stats')} text="Edit Stats" />}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            {about_stats.map((stat, index) => (
+              <FadeIn key={stat.id} delay={index * 200}>
+                <div className="p-6">
+                  <h3 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">
+                    <CountUp end={stat.value} suffix={stat.suffix} />
+                  </h3>
+                  <p className="text-2xl text-gray-500 mt-2">{stat.label}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* --- Core Values Section --- */}
+      <section className="py-24 bg-gray-50 relative">
+        {isAdmin && <AdminEditButton onClick={() => setModal('core_values')} text="Edit Core Values" />}
+        <CoreValues 
+          valuesData={core_values} 
+          isAdmin={isAdmin}
+          onSave={handleSave} 
+        />
+      </section>
+
+      {/* --- CTA Section (FIXED) --- */}
+      <EditableBackgroundImage
+        isAdmin={isAdmin}
+        src={about_cta.background_url}
+        onSave={handleMediaSave('about_cta', 'background')}
+        className="py-24"
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-white/80 z-0"></div>
+
+        {/* Content (z-10 is default from parent) */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <FadeIn>
+            <EditableText
+              as="h2"
+              isAdmin={isAdmin}
+              value={about_cta.title}
+              onSave={handleTextSave('about_cta', 'title')}
+              className="text-4xl md:text-5xl font-light text-gray-900"
+            />
+            <EditableText
+              as="p"
+              isAdmin={isAdmin}
+              value={about_cta.text}
+              onSave={handleTextSave('about_cta', 'text')}
+              className="text-xl text-gray-600 max-w-2xl mx-auto mt-4 mb-10"
+              useTextarea
+            />
+            <button
+              onClick={() => alert(`Maps to: ${about_cta.buttonLink}`)} // Use react-router's navigate in real app
+              className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-10 py-4 rounded-full text-lg font-medium hover:from-green-400 hover:to-emerald-500 transition-all transform hover:scale-105 shadow-lg shadow-green-500/20"
+            >
+              <EditableText
+                as="span"
+                isAdmin={isAdmin}
+                value={about_cta.buttonText}
+                onSave={handleTextSave('about_cta', 'buttonText')}
+              />
+            </button>
+          </FadeIn>
+        </div>
+      </EditableBackgroundImage>
+
+      {/* --- List Management Modal --- */}
+      {modal && (
+        <ListManagementModal
+          title={`Manage ${modal.replace('_', ' ')}`}
+          items={
+            modal === 'stats' ? content.about_stats : content[modal].events || content[modal].values
+          }
+          itemTitleKey={modal === 'stats' ? 'label' : 'title'}
+          onClose={() => setModal(null)}
+          renderForm={renderModalForm}
+          onSave={async (newItems) => {
+            let newContent;
+            if (modal === 'stats') {
+              newContent = newItems; // Stats is a root-level array
+            } else {
+              // Timeline and Core Values are objects with an array inside
+              const key = content[modal].events ? 'events' : 'values';
+              newContent = {
+                ...content[modal],
+                [key]: newItems
+              };
+            }
+            await handleSave(modal, newContent);
+            setModal(null); // Close modal on save
+          }}
+        />
       )}
+      
+      {/* Removed Video URL Edit Modal */}
     </div>
   );
 };
-
-export default About;

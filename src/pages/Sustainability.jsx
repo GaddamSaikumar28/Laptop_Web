@@ -261,8 +261,8 @@ const PartnerCard = ({ icon: Icon, title, description, link }) => (
 
 // --- Main Sustainability Page Component ---
 export const Sustainability = () => {
-  // const { isAdmin } = useAuth(); // UNCOMMENT THIS
-  const isAdmin = true; // For testing
+  const { isAdmin } = useAuth(); // UNCOMMENT THIS
+  //const isAdmin = true; // For testing
   
   const [content, setContent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);

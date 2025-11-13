@@ -755,8 +755,8 @@ const ITADContent = ({ content, isAdmin, onTextSave, onImageSave, onListEdit }) 
 
 // --- Main Page Component (Refactored) ---
 export const ITAssetDisposition = () => {
-  // const { isAdmin } = useAuth(); // UNCOMMENT THIS
-  const isAdmin = true; // For testing
+  const { isAdmin } = useAuth(); // UNCOMMENT THIS
+  //const isAdmin = true; // For testing
   
   const [content, setContent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);

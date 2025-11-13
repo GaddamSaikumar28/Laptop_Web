@@ -25,8 +25,8 @@ export const AuthProvider = ({ children }) => {
 
   // --- NEW: Derived admin state ---
   // This boolean flag is true only if the user's profile role is 'admin'
-  //const isAdmin = profile?.role === 'admin';
-  const isAdmin = true;
+  const isAdmin = profile?.role === 'admin';
+  //const isAdmin = true;
   useEffect(() => {
     // 1. Get the initial session on app load
     const fetchSession = async () => {

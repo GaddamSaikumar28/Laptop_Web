@@ -699,8 +699,8 @@ const DecommissionContent = ({ content, isAdmin, onTextSave, onImageSave, onList
 
 // --- Main Page Component ---
 export const EquipmentDecommission = () => {
-  // const { isAdmin } = useAuth(); // UNCOMMENT THIS
-  const isAdmin = true; // For testing
+  const { isAdmin } = useAuth(); // UNCOMMENT THIS
+  //const isAdmin = true; // For testing
   
   const [content, setContent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);

@@ -702,8 +702,8 @@ const EcoFriendlySection = ({ data, isAdmin, onTextSave, onImageSave }) => (
 
 // --- Main Page Component ---
 export const JunkRemoval = () => {
-  // const { isAdmin } = useAuth(); // UNCOMMENT THIS
-  const isAdmin = true; // For testing
+  const { isAdmin } = useAuth(); // UNCOMMENT THIS
+  //const isAdmin = true; // For testing
   
   const [content, setContent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);

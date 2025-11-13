@@ -76,7 +76,19 @@ export const Timeline = ({ timelineData, isAdmin, onSave }) => {
   };
 
   return (
-    <section className="py-24 bg-white" style={{ backgroundImage: "url('https://placehold.co/1920x1080/f5f5f5/cccccc?text=Subtle+Circuit+BG&font=inter')" }}>
+    <>
+     <style>
+        {`
+          @keyframes subtleGradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+        `}
+      </style>
+    {/* // <section className="py-24 bg-white" style={{ backgroundImage: "url('https://placehold.co/1920x1080/f5f5f5/cccccc?text=Subtle+Circuit+BG&font=inter')" }}> */}
+     {/* <section className="py-24 bg-gradient-to-b from-green-50 to-white"> */}
+      <section className="py-24 bg-gradient-to-r from-green-50 to-white bg-[length:200%_200%] animate-[subtleGradientShift_15s_ease_infinite]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <EditableText
@@ -124,5 +136,6 @@ export const Timeline = ({ timelineData, isAdmin, onSave }) => {
         </div>
       </div>
     </section>
+    </>
   );
 };
